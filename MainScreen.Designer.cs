@@ -86,6 +86,7 @@ namespace MyBook
             this.UstawieniaButton.TabIndex = 5;
             this.UstawieniaButton.Text = "USTAWIENIA";
             this.UstawieniaButton.UseVisualStyleBackColor = true;
+            this.UstawieniaButton.Click += new System.EventHandler(this.UstawieniaButton_Click);
             // 
             // TBRButton
             // 
@@ -100,6 +101,7 @@ namespace MyBook
             this.TBRButton.TabIndex = 4;
             this.TBRButton.Text = "TBR";
             this.TBRButton.UseVisualStyleBackColor = true;
+            this.TBRButton.Click += new System.EventHandler(this.TBRButton_Click);
             // 
             // StatystykiButton
             // 
@@ -114,6 +116,7 @@ namespace MyBook
             this.StatystykiButton.TabIndex = 3;
             this.StatystykiButton.Text = "STATYSTYKI";
             this.StatystykiButton.UseVisualStyleBackColor = true;
+            this.StatystykiButton.Click += new System.EventHandler(this.StatystykiButton_Click);
             // 
             // PrzeczytaneButton
             // 
@@ -128,6 +131,7 @@ namespace MyBook
             this.PrzeczytaneButton.TabIndex = 2;
             this.PrzeczytaneButton.Text = "PRZECZYTANE";
             this.PrzeczytaneButton.UseVisualStyleBackColor = true;
+            this.PrzeczytaneButton.Click += new System.EventHandler(this.PrzeczytaneButton_Click);
             // 
             // ChallengeButton
             // 
@@ -142,6 +146,7 @@ namespace MyBook
             this.ChallengeButton.TabIndex = 1;
             this.ChallengeButton.Text = "CHALLENGE";
             this.ChallengeButton.UseVisualStyleBackColor = true;
+            this.ChallengeButton.Click += new System.EventHandler(this.ChallengeButton_Click);
             // 
             // CentrumButton
             // 
@@ -188,17 +193,15 @@ namespace MyBook
             // 
             // TitleLabel
             // 
-            this.TitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.TitleLabel.Location = new System.Drawing.Point(358, 9);
+            this.TitleLabel.Location = new System.Drawing.Point(0, 9);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(348, 86);
+            this.TitleLabel.Size = new System.Drawing.Size(1090, 86);
             this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = " CENTRUM";
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
             // MainPanel
             // 
@@ -224,7 +227,6 @@ namespace MyBook
             this.LogoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TopBarPanel.ResumeLayout(false);
-            this.TopBarPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

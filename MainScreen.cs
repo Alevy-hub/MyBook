@@ -27,9 +27,19 @@ namespace MyBook
         public MainScreen()
         {
             InitializeComponent();
+            OpenChildForm(new forms.CentrumScreen(), CentrumButton);
         }
 
         private void TopBarPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -87,6 +97,31 @@ namespace MyBook
         private void CentrumButton_Click(object sender, EventArgs e)
         {
             OpenChildForm(new forms.CentrumScreen(), sender);
+        }
+
+        private void ChallengeButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new forms.ChallengeScreen(), sender);
+        }
+
+        private void PrzeczytaneButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new forms.PrzeczytaneScreen(), sender);
+        }
+
+        private void StatystykiButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new forms.StatystykiScreen(), sender);
+        }
+
+        private void TBRButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new forms.TBRScreen(), sender);
+        }
+
+        private void UstawieniaButton_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new forms.UstawieniaScreen(), sender);
         }
     }
 }
