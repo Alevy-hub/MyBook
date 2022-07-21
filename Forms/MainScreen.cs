@@ -28,6 +28,7 @@ namespace MyBook
         {
             InitializeComponent();
             OpenChildForm(new forms.CentrumScreen(), CentrumButton);
+            Database databaseObject = new Database();
         }
 
         private void TopBarPanel_MouseDown(object sender, MouseEventArgs e)
