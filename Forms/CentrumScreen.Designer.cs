@@ -42,8 +42,8 @@ namespace MyBook.forms
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AktualnieCzytaneLabel = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
-            this.AddBookButton = new System.Windows.Forms.Button();
             this.TestFillDb = new System.Windows.Forms.Button();
+            this.AddBookButton = new System.Windows.Forms.Button();
             this.ContainerPanel.SuspendLayout();
             this.AktualnieCzytanePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AktualnieCzytaneGrid)).BeginInit();
@@ -72,6 +72,7 @@ namespace MyBook.forms
             // 
             // AktualnieCzytaneGrid
             // 
+            this.AktualnieCzytaneGrid.AllowUserToAddRows = false;
             this.AktualnieCzytaneGrid.AllowUserToDeleteRows = false;
             this.AktualnieCzytaneGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.AktualnieCzytaneGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -175,6 +176,16 @@ namespace MyBook.forms
             this.TopPanel.Size = new System.Drawing.Size(1090, 120);
             this.TopPanel.TabIndex = 0;
             // 
+            // TestFillDb
+            // 
+            this.TestFillDb.Location = new System.Drawing.Point(733, 44);
+            this.TestFillDb.Name = "TestFillDb";
+            this.TestFillDb.Size = new System.Drawing.Size(118, 46);
+            this.TestFillDb.TabIndex = 1;
+            this.TestFillDb.Text = "Test Fill DB";
+            this.TestFillDb.UseVisualStyleBackColor = true;
+            this.TestFillDb.Click += new System.EventHandler(this.TestFillDb_Click);
+            // 
             // AddBookButton
             // 
             this.AddBookButton.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -188,16 +199,7 @@ namespace MyBook.forms
             this.AddBookButton.TabIndex = 0;
             this.AddBookButton.Text = "DODAJ KSIĄŻKĘ";
             this.AddBookButton.UseVisualStyleBackColor = false;
-            // 
-            // TestFillDb
-            // 
-            this.TestFillDb.Location = new System.Drawing.Point(733, 44);
-            this.TestFillDb.Name = "TestFillDb";
-            this.TestFillDb.Size = new System.Drawing.Size(118, 46);
-            this.TestFillDb.TabIndex = 1;
-            this.TestFillDb.Text = "Test Fill DB";
-            this.TestFillDb.UseVisualStyleBackColor = true;
-            this.TestFillDb.Click += new System.EventHandler(this.TestFillDb_Click);
+            this.AddBookButton.Click += new System.EventHandler(this.AddBookButton_Click);
             // 
             // CentrumScreen
             // 
