@@ -80,5 +80,54 @@ namespace MyBook.Forms.CentrumSubForms
 
             databaseObject.CloseConnection();
         }
+
+        private void StatusRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CzytamRadio.Checked == true)
+            {
+                StartDatePicker.Enabled = true;
+                FinishDatePicker.Enabled = false;
+            }
+            else if (TBRRadio.Checked == true)
+            {
+                StartDatePicker.Enabled = false;
+                FinishDatePicker.Enabled = false;
+            }
+            else if (UkonczoneRadio.Checked)
+            {
+                StartDatePicker.Enabled = true;
+                FinishDatePicker.Enabled = true;
+            }
+            StatusAlertLabel.Visible = false;
+        }
+
+        private void FormRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            FormAlertLabel.Visible = false;
+        }
+
+        private void CheckRadioButtons()
+        {
+            if (PapierRadio.Checked == false && EbookRadio.Checked == false && AudiobookRadio.Checked == false)
+            {
+                FormAlertLabel.Visible = true;
+            }
+
+            if (CzytamRadio.Checked == false && TBRRadio.Checked == false && UkonczoneRadio.Checked == false)
+            {
+                StatusAlertLabel.Visible = true;
+            }
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            CheckRadioButtons();
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
