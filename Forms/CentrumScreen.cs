@@ -30,7 +30,7 @@ namespace MyBook.forms
             databaseObject.CloseConnection();
         }
 
-        private void FillAktualnieCzytaneGrid()
+        public void FillAktualnieCzytaneGrid()
         {
             Database databaseObject = new Database();
             databaseObject.OpenConnection();
@@ -55,7 +55,13 @@ namespace MyBook.forms
         private void AddBookButton_Click(object sender, EventArgs e)
         {
             AddBook AddBookForm = new AddBook();
+            AddBookForm.FormClosed += AddBookForm_FormClosed;
             AddBookForm.ShowDialog();
+        }
+
+        private void AddBookForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FillAktualnieCzytaneGrid();
         }
     }
 }

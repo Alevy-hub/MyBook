@@ -30,6 +30,9 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
+            this.CountLabel = new System.Windows.Forms.Label();
+            this.RatingNumeric = new System.Windows.Forms.NumericUpDown();
+            this.PagesCountNumeric = new System.Windows.Forms.NumericUpDown();
             this.CancelButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.FinishDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -54,7 +57,10 @@ namespace MyBook.Forms.CentrumSubForms
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.RatingLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).BeginInit();
             this.StatusPanel.SuspendLayout();
             this.FormPanel.SuspendLayout();
             this.TopBar.SuspendLayout();
@@ -62,7 +68,12 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             // Container
             // 
+            this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
+            this.Container.Controls.Add(this.RatingLabel);
+            this.Container.Controls.Add(this.CountLabel);
+            this.Container.Controls.Add(this.RatingNumeric);
+            this.Container.Controls.Add(this.PagesCountNumeric);
             this.Container.Controls.Add(this.CancelButton);
             this.Container.Controls.Add(this.AddButton);
             this.Container.Controls.Add(this.FinishDatePicker);
@@ -79,8 +90,63 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Container.Location = new System.Drawing.Point(0, 0);
             this.Container.Name = "Container";
-            this.Container.Size = new System.Drawing.Size(600, 624);
+            this.Container.Size = new System.Drawing.Size(600, 706);
             this.Container.TabIndex = 0;
+            this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
+            // 
+            // CountLabel
+            // 
+            this.CountLabel.AutoSize = true;
+            this.CountLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CountLabel.Location = new System.Drawing.Point(72, 412);
+            this.CountLabel.Name = "CountLabel";
+            this.CountLabel.Size = new System.Drawing.Size(166, 32);
+            this.CountLabel.TabIndex = 5;
+            this.CountLabel.Text = "ILOŚĆ STRON";
+            this.CountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // RatingNumeric
+            // 
+            this.RatingNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.RatingNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RatingNumeric.DecimalPlaces = 2;
+            this.RatingNumeric.Enabled = false;
+            this.RatingNumeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RatingNumeric.Location = new System.Drawing.Point(387, 457);
+            this.RatingNumeric.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.RatingNumeric.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.RatingNumeric.Name = "RatingNumeric";
+            this.RatingNumeric.Size = new System.Drawing.Size(75, 29);
+            this.RatingNumeric.TabIndex = 16;
+            this.RatingNumeric.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // PagesCountNumeric
+            // 
+            this.PagesCountNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.PagesCountNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PagesCountNumeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PagesCountNumeric.Location = new System.Drawing.Point(113, 457);
+            this.PagesCountNumeric.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.PagesCountNumeric.Name = "PagesCountNumeric";
+            this.PagesCountNumeric.Size = new System.Drawing.Size(75, 29);
+            this.PagesCountNumeric.TabIndex = 15;
             // 
             // CancelButton
             // 
@@ -88,7 +154,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.CancelButton.FlatAppearance.BorderSize = 0;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CancelButton.Location = new System.Drawing.Point(311, 532);
+            this.CancelButton.Location = new System.Drawing.Point(311, 603);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(199, 51);
             this.CancelButton.TabIndex = 14;
@@ -102,7 +168,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.AddButton.FlatAppearance.BorderSize = 0;
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddButton.Location = new System.Drawing.Point(94, 532);
+            this.AddButton.Location = new System.Drawing.Point(94, 603);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(199, 51);
             this.AddButton.TabIndex = 13;
@@ -116,7 +182,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.FinishDatePicker.Enabled = false;
             this.FinishDatePicker.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FinishDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FinishDatePicker.Location = new System.Drawing.Point(311, 466);
+            this.FinishDatePicker.Location = new System.Drawing.Point(311, 537);
             this.FinishDatePicker.Name = "FinishDatePicker";
             this.FinishDatePicker.Size = new System.Drawing.Size(199, 33);
             this.FinishDatePicker.TabIndex = 12;
@@ -127,7 +193,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.StartDatePicker.Enabled = false;
             this.StartDatePicker.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.StartDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.StartDatePicker.Location = new System.Drawing.Point(94, 466);
+            this.StartDatePicker.Location = new System.Drawing.Point(94, 537);
             this.StartDatePicker.Name = "StartDatePicker";
             this.StartDatePicker.Size = new System.Drawing.Size(199, 33);
             this.StartDatePicker.TabIndex = 11;
@@ -137,7 +203,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label2.Location = new System.Drawing.Point(311, 438);
+            this.label2.Location = new System.Drawing.Point(311, 509);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(199, 25);
             this.label2.TabIndex = 10;
@@ -149,7 +215,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label1.Location = new System.Drawing.Point(98, 438);
+            this.label1.Location = new System.Drawing.Point(98, 509);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 25);
             this.label1.TabIndex = 4;
@@ -163,7 +229,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.StatusPanel.Controls.Add(this.TBRRadio);
             this.StatusPanel.Controls.Add(this.CzytamRadio);
             this.StatusPanel.Controls.Add(this.StatusLabel);
-            this.StatusPanel.Location = new System.Drawing.Point(300, 252);
+            this.StatusPanel.Location = new System.Drawing.Point(300, 224);
             this.StatusPanel.Name = "StatusPanel";
             this.StatusPanel.Size = new System.Drawing.Size(300, 168);
             this.StatusPanel.TabIndex = 9;
@@ -252,7 +318,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.FormPanel.Controls.Add(this.EbookRadio);
             this.FormPanel.Controls.Add(this.PapierRadio);
             this.FormPanel.Controls.Add(this.FormaLabel);
-            this.FormPanel.Location = new System.Drawing.Point(0, 252);
+            this.FormPanel.Location = new System.Drawing.Point(0, 224);
             this.FormPanel.Name = "FormPanel";
             this.FormPanel.Size = new System.Drawing.Size(300, 168);
             this.FormPanel.TabIndex = 8;
@@ -371,12 +437,13 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleComboBox.Size = new System.Drawing.Size(400, 38);
             this.TitleComboBox.TabIndex = 5;
             this.TitleComboBox.Text = "Tytuł...";
+            this.TitleComboBox.SelectedIndexChanged += new System.EventHandler(this.TitleComboBox_SelectedIndexChanged);
             // 
             // BottomBar
             // 
             this.BottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
             this.BottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomBar.Location = new System.Drawing.Point(0, 599);
+            this.BottomBar.Location = new System.Drawing.Point(0, 681);
             this.BottomBar.Name = "BottomBar";
             this.BottomBar.Size = new System.Drawing.Size(600, 25);
             this.BottomBar.TabIndex = 1;
@@ -404,23 +471,38 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
+            // RatingLabel
+            // 
+            this.RatingLabel.AutoSize = true;
+            this.RatingLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RatingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.RatingLabel.Location = new System.Drawing.Point(377, 412);
+            this.RatingLabel.Name = "RatingLabel";
+            this.RatingLabel.Size = new System.Drawing.Size(96, 32);
+            this.RatingLabel.TabIndex = 17;
+            this.RatingLabel.Text = "OCENA";
+            this.RatingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AddBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 624);
+            this.ClientSize = new System.Drawing.Size(600, 706);
             this.Controls.Add(this.Container);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddBook";
             this.Text = "AddBook";
             this.Container.ResumeLayout(false);
             this.Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).EndInit();
             this.StatusPanel.ResumeLayout(false);
             this.StatusPanel.PerformLayout();
             this.FormPanel.ResumeLayout(false);
             this.FormPanel.PerformLayout();
             this.TopBar.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -451,5 +533,9 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label StatusAlertLabel;
         private System.Windows.Forms.Label FormAlertLabel;
+        private System.Windows.Forms.NumericUpDown PagesCountNumeric;
+        private System.Windows.Forms.Label CountLabel;
+        private System.Windows.Forms.NumericUpDown RatingNumeric;
+        private System.Windows.Forms.Label RatingLabel;
     }
 }
