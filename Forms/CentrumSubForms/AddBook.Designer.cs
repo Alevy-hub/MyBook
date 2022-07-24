@@ -30,6 +30,8 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
+            this.DateAlertLabel = new System.Windows.Forms.Label();
+            this.RatingLabel = new System.Windows.Forms.Label();
             this.CountLabel = new System.Windows.Forms.Label();
             this.RatingNumeric = new System.Windows.Forms.NumericUpDown();
             this.PagesCountNumeric = new System.Windows.Forms.NumericUpDown();
@@ -57,7 +59,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.RatingLabel = new System.Windows.Forms.Label();
+            this.NoTitleAlertLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).BeginInit();
@@ -70,6 +72,8 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
+            this.Container.Controls.Add(this.NoTitleAlertLabel);
+            this.Container.Controls.Add(this.DateAlertLabel);
             this.Container.Controls.Add(this.RatingLabel);
             this.Container.Controls.Add(this.CountLabel);
             this.Container.Controls.Add(this.RatingNumeric);
@@ -94,6 +98,31 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.TabIndex = 0;
             this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
             // 
+            // DateAlertLabel
+            // 
+            this.DateAlertLabel.AutoSize = true;
+            this.DateAlertLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DateAlertLabel.ForeColor = System.Drawing.Color.Red;
+            this.DateAlertLabel.Location = new System.Drawing.Point(103, 573);
+            this.DateAlertLabel.Name = "DateAlertLabel";
+            this.DateAlertLabel.Size = new System.Drawing.Size(395, 17);
+            this.DateAlertLabel.TabIndex = 5;
+            this.DateAlertLabel.Text = "Data zakończenia nie może być wcześniejsza niż data rozpoczęcia!";
+            this.DateAlertLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DateAlertLabel.Visible = false;
+            // 
+            // RatingLabel
+            // 
+            this.RatingLabel.AutoSize = true;
+            this.RatingLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RatingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.RatingLabel.Location = new System.Drawing.Point(377, 412);
+            this.RatingLabel.Name = "RatingLabel";
+            this.RatingLabel.Size = new System.Drawing.Size(96, 32);
+            this.RatingLabel.TabIndex = 17;
+            this.RatingLabel.Text = "OCENA";
+            this.RatingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CountLabel
             // 
             this.CountLabel.AutoSize = true;
@@ -113,6 +142,11 @@ namespace MyBook.Forms.CentrumSubForms
             this.RatingNumeric.DecimalPlaces = 2;
             this.RatingNumeric.Enabled = false;
             this.RatingNumeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.RatingNumeric.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.RatingNumeric.Location = new System.Drawing.Point(387, 457);
             this.RatingNumeric.Maximum = new decimal(new int[] {
             5,
@@ -471,17 +505,18 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
-            // RatingLabel
+            // NoTitleAlertLabel
             // 
-            this.RatingLabel.AutoSize = true;
-            this.RatingLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.RatingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.RatingLabel.Location = new System.Drawing.Point(377, 412);
-            this.RatingLabel.Name = "RatingLabel";
-            this.RatingLabel.Size = new System.Drawing.Size(96, 32);
-            this.RatingLabel.TabIndex = 17;
-            this.RatingLabel.Text = "OCENA";
-            this.RatingLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.NoTitleAlertLabel.AutoSize = true;
+            this.NoTitleAlertLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NoTitleAlertLabel.ForeColor = System.Drawing.Color.Red;
+            this.NoTitleAlertLabel.Location = new System.Drawing.Point(234, 73);
+            this.NoTitleAlertLabel.Name = "NoTitleAlertLabel";
+            this.NoTitleAlertLabel.Size = new System.Drawing.Size(121, 17);
+            this.NoTitleAlertLabel.TabIndex = 18;
+            this.NoTitleAlertLabel.Text = "Musisz podać tytuł!";
+            this.NoTitleAlertLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.NoTitleAlertLabel.Visible = false;
             // 
             // AddBook
             // 
@@ -491,6 +526,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.Controls.Add(this.Container);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddBook";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddBook";
             this.Container.ResumeLayout(false);
             this.Container.PerformLayout();
@@ -537,5 +573,7 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Label CountLabel;
         private System.Windows.Forms.NumericUpDown RatingNumeric;
         private System.Windows.Forms.Label RatingLabel;
+        private System.Windows.Forms.Label DateAlertLabel;
+        private System.Windows.Forms.Label NoTitleAlertLabel;
     }
 }

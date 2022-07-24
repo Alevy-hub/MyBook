@@ -10,245 +10,277 @@ using System.Data.SQLite;
 
 namespace MyBook.Forms.CentrumSubForms
 {
-    public partial class AddBook : Form
-    {
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
+	public partial class AddBook : Form
+	{
+		public const int WM_NCLBUTTONDOWN = 0xA1;
+		public const int HT_CAPTION = 0x2;
 
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
+		[DllImportAttribute("user32.dll")]
+		public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+		[DllImportAttribute("user32.dll")]
+		public static extern bool ReleaseCapture();
 
-        public AddBook()
-        {
-            InitializeComponent();
-            FillComboBoxes();
-            StartDatePicker.Format = DateTimePickerFormat.Custom;
-            StartDatePicker.CustomFormat = "dd.MM.yyyy";
-            FinishDatePicker.Format = DateTimePickerFormat.Custom;
-            FinishDatePicker.CustomFormat = "dd.MM.yyyy";
-            
-        }
+		public AddBook()
+		{
+			InitializeComponent();
+			FillComboBoxes();
+			StartDatePicker.Format = DateTimePickerFormat.Custom;
+			StartDatePicker.CustomFormat = "dd.MM.yyyy";
+			FinishDatePicker.Format = DateTimePickerFormat.Custom;
+			FinishDatePicker.CustomFormat = "dd.MM.yyyy";
+			
+		}
 
-        private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
+		private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
+		}
 
-        private void FillComboBoxes()
-        {
-            Database databaseObject = new Database();
-            databaseObject.OpenConnection();
-            SQLiteCommand FillComboBoxQuery = new SQLiteCommand("SELECT name from books", databaseObject.dbConnection);
-            SQLiteDataReader result = FillComboBoxQuery.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    TitleComboBox.Items.Add(
-                    
-                        result.GetValue(0)
-                    );
-                }
-            }
+		private void FillComboBoxes()
+		{
+			Database databaseObject = new Database();
+			databaseObject.OpenConnection();
+			SQLiteCommand FillComboBoxQuery = new SQLiteCommand("SELECT name from books", databaseObject.dbConnection);
+			SQLiteDataReader result = FillComboBoxQuery.ExecuteReader();
+			if (result.HasRows)
+			{
+				while (result.Read())
+				{
+					TitleComboBox.Items.Add(                  
+						result.GetValue(0)
+					);
+				}
+			}
 
-            FillComboBoxQuery = new SQLiteCommand("SELECT name from authors", databaseObject.dbConnection);
-            result = FillComboBoxQuery.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    AuthorComboBox.Items.Add(
+			FillComboBoxQuery = new SQLiteCommand("SELECT name from authors", databaseObject.dbConnection);
+			result = FillComboBoxQuery.ExecuteReader();
+			if (result.HasRows)
+			{
+				while (result.Read())
+				{
+					AuthorComboBox.Items.Add(
 
-                        result.GetValue(0)
-                    );
-                }
-            }
+						result.GetValue(0)
+					);
+				}
+			}
 
-            FillComboBoxQuery = new SQLiteCommand("SELECT DISTINCT genre from books", databaseObject.dbConnection);
-            result = FillComboBoxQuery.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    GenreComboBox.Items.Add(
+			FillComboBoxQuery = new SQLiteCommand("SELECT DISTINCT genre from books", databaseObject.dbConnection);
+			result = FillComboBoxQuery.ExecuteReader();
+			if (result.HasRows)
+			{
+				while (result.Read())
+				{
+					GenreComboBox.Items.Add(
 
-                        result.GetValue(0)
-                    );
-                }
-            }
+						result.GetValue(0)
+					);
+				}
+			}
 
-            databaseObject.CloseConnection();
-        }
+			databaseObject.CloseConnection();
+		}
 
-        private void StatusRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (CzytamRadio.Checked == true)
-            {
-                StartDatePicker.Enabled = true;
-                FinishDatePicker.Enabled = false;
-                RatingNumeric.Enabled = false;
-            }
-            else if (TBRRadio.Checked == true)
-            {
-                StartDatePicker.Enabled = false;
-                FinishDatePicker.Enabled = false;
-                RatingNumeric.Enabled = false;
-            }
-            else if (UkonczoneRadio.Checked)
-            {
-                StartDatePicker.Enabled = true;
-                FinishDatePicker.Enabled = true;
-                RatingNumeric.Enabled = true;
-            }
-            StatusAlertLabel.Visible = false;
-        }
+		private void StatusRadio_CheckedChanged(object sender, EventArgs e)
+		{
+			if (CzytamRadio.Checked == true)
+			{
+				StartDatePicker.Enabled = true;
+				FinishDatePicker.Enabled = false;
+				RatingNumeric.Enabled = false;
+			}
+			else if (TBRRadio.Checked == true)
+			{
+				StartDatePicker.Enabled = false;
+				FinishDatePicker.Enabled = false;
+				RatingNumeric.Enabled = false;
+			}
+			else if (UkonczoneRadio.Checked)
+			{
+				StartDatePicker.Enabled = true;
+				FinishDatePicker.Enabled = true;
+				RatingNumeric.Enabled = true;
+			}
+			StatusAlertLabel.Visible = false;
+		}
 
-        private void FormRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            FormAlertLabel.Visible = false;
-        }
+		private void FormRadio_CheckedChanged(object sender, EventArgs e)
+		{
+			FormAlertLabel.Visible = false;
+		}
 
-        private void CheckRadioButtons()
-        {
-            if (PapierRadio.Checked == false && EbookRadio.Checked == false && AudiobookRadio.Checked == false)
-            {
-                FormAlertLabel.Visible = true;
-            }
+		private bool CheckRadioButtons()
+		{
+			if (PapierRadio.Checked == false && EbookRadio.Checked == false && AudiobookRadio.Checked == false)
+			{
+				FormAlertLabel.Visible = true;
+				return false;
+			}
 
-            if (CzytamRadio.Checked == false && TBRRadio.Checked == false && UkonczoneRadio.Checked == false)
-            {
-                StatusAlertLabel.Visible = true;
-            }
-        }
+			if (CzytamRadio.Checked == false && TBRRadio.Checked == false && UkonczoneRadio.Checked == false)
+			{
+				StatusAlertLabel.Visible = true;
+				return false;
+			}
+			return true;
+		}
 
-        private void TitleComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Database databaseObject = new Database();
-            databaseObject.OpenConnection();
-            SQLiteCommand writeDetails = new SQLiteCommand("SELECT a.name, b.genre from authors a join books b on a.id = b.author_id where b.name = @bookName", databaseObject.dbConnection);
-            writeDetails.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
-            SQLiteDataReader result = writeDetails.ExecuteReader();
+		private bool CheckDates()
+		{
+			if (UkonczoneRadio.Checked && StartDatePicker.Value.Day == FinishDatePicker.Value.Day)
+			{
+				DateAlertLabel.Visible = false;
+				return true;
+			}
+			else if (UkonczoneRadio.Checked && StartDatePicker.Value > FinishDatePicker.Value)
+			{
+				DateAlertLabel.Visible = true;
+				return false;
+			}
 
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    AuthorComboBox.Text = result["name"].ToString();
-                    GenreComboBox.Text = result["genre"].ToString();
-                }
-            }
-        }
+			DateAlertLabel.Visible = false;
+			return true;
+		}
 
-        private void AddBookToDb()
-        {
-            int authorId = 0;
-            int bookId = 0;
-            Database databaseObject = new Database();
-            SQLiteCommand addAuthor = new SQLiteCommand("INSERT or IGNORE INTO authors ('name') VALUES (@authorName)", databaseObject.dbConnection);
-            addAuthor.Parameters.AddWithValue("@authorName", AuthorComboBox.Text.ToString());
-            databaseObject.OpenConnection();
-            addAuthor.ExecuteNonQuery();
+		private bool CheckTitlePresence()
+		{
+			if (TitleComboBox.Text == "" || TitleComboBox.Text == "Tytuł...")
+			{
+				NoTitleAlertLabel.Visible = true;
+				return false;
+			}
+			NoTitleAlertLabel.Visible = false;
+			return true;          
+		}
 
-            SQLiteCommand checkAuthorId = new SQLiteCommand("SELECT id FROM authors WHERE name = @authorName", databaseObject.dbConnection);
-            checkAuthorId.Parameters.AddWithValue("@authorName", AuthorComboBox.Text.ToString());
-            SQLiteDataReader result = checkAuthorId.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    authorId = (int)(long)result["id"];
-                }
-            }
-            SQLiteCommand addBook = new SQLiteCommand("INSERT or IGNORE INTO books ('name', 'author_id', 'genre', 'pages') VALUES (@bookName, @bookAuthorId, @bookGenre, @bookPages)", databaseObject.dbConnection);
-            addBook.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
-            addBook.Parameters.AddWithValue("@bookAuthorId", authorId);
-            addBook.Parameters.AddWithValue("@bookGenre", GenreComboBox.Text.ToString());
-            addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
-            addBook.ExecuteNonQuery();
-            
-            if (CzytamRadio.Checked == true || UkonczoneRadio.Checked == true)
-            {
-                SQLiteCommand checkBookId = new SQLiteCommand("SELECT id FROM books WHERE name = @bookName", databaseObject.dbConnection);
-                checkBookId.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
-                result = checkBookId.ExecuteReader();
-                if (result.HasRows)
-                {
-                    while (result.Read())
-                    {
-                        bookId = (int)(long)result["id"];
-                    }
-                }
-            }
+		private void TitleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			Database databaseObject = new Database();
+			databaseObject.OpenConnection();
+			SQLiteCommand writeDetails = new SQLiteCommand("SELECT a.name, b.genre from authors a join books b on a.id = b.author_id where b.name = @bookName", databaseObject.dbConnection);
+			writeDetails.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
+			SQLiteDataReader result = writeDetails.ExecuteReader();
 
-            
-            if (UkonczoneRadio.Checked == true)
-            {
-                SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'finish_date', 'rating', 'form') VALUES (@bookId, @startDate, @finishDate, @rating, @form)", databaseObject.dbConnection);
-                addBookToRead.Parameters.AddWithValue("@bookId", bookId);
-                addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("dd.MM.yyyy"));
-                addBookToRead.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("dd.MM.yyyy"));
-                addBookToRead.Parameters.AddWithValue("@rating", (double)RatingNumeric.Value);
-                if (EbookRadio.Checked == true)
-                {
-                    addBookToRead.Parameters.AddWithValue("@form", "ebook");
-                }
-                else if (PapierRadio.Checked == true)
-                {
-                    addBookToRead.Parameters.AddWithValue("@form", "papier");
-                }
-                else if (AudiobookRadio.Checked == true)
-                {
-                    addBookToRead.Parameters.AddWithValue("@form", "AudiobookRadio");
-                }
-                addBookToRead.ExecuteNonQuery();
+			if (result.HasRows)
+			{
+				while (result.Read())
+				{
+					AuthorComboBox.Text = result["name"].ToString();
+					GenreComboBox.Text = result["genre"].ToString();
+				}
+			}
+		}
 
-            }
-            else if (CzytamRadio.Checked == true)
-            {
-                SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'form') VALUES (@bookId, @startDate, @form)", databaseObject.dbConnection);
-                addBookToRead.Parameters.AddWithValue("@bookId", bookId);
-                addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("dd.MM.yyyy"));
-                if (EbookRadio.Checked == true)
-                {
-                    addBookToRead.Parameters.AddWithValue("@form", "ebook");
-                }
-                else if (PapierRadio.Checked == true)
-                {
-                    addBookToRead.Parameters.AddWithValue("@form", "papier");
-                }
-                else if (AudiobookRadio.Checked == true)
-                {
-                    addBookToRead.Parameters.AddWithValue("@form", "AudiobookRadio");
-                }
-                addBookToRead.ExecuteNonQuery();
-            }
-            
-            databaseObject.CloseConnection();
-        }
+		private void AddBookToDb()
+		{
+			int authorId = 0;
+			int bookId = 0;
+			Database databaseObject = new Database();
+			SQLiteCommand addAuthor = new SQLiteCommand("INSERT or IGNORE INTO authors ('name') VALUES (@authorName)", databaseObject.dbConnection);
+			addAuthor.Parameters.AddWithValue("@authorName", AuthorComboBox.Text.ToString());
+			databaseObject.OpenConnection();
+			addAuthor.ExecuteNonQuery();
+
+			SQLiteCommand checkAuthorId = new SQLiteCommand("SELECT id FROM authors WHERE name = @authorName", databaseObject.dbConnection);
+			checkAuthorId.Parameters.AddWithValue("@authorName", AuthorComboBox.Text.ToString());
+			SQLiteDataReader result = checkAuthorId.ExecuteReader();
+			if (result.HasRows)
+			{
+				while (result.Read())
+				{
+					authorId = (int)(long)result["id"];
+				}
+			}
+			SQLiteCommand addBook = new SQLiteCommand("INSERT or IGNORE INTO books ('name', 'author_id', 'genre', 'pages') VALUES (@bookName, @bookAuthorId, @bookGenre, @bookPages)", databaseObject.dbConnection);
+			addBook.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
+			addBook.Parameters.AddWithValue("@bookAuthorId", authorId);
+			addBook.Parameters.AddWithValue("@bookGenre", GenreComboBox.Text.ToString());
+			addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
+			addBook.ExecuteNonQuery();
+			
+			if (CzytamRadio.Checked == true || UkonczoneRadio.Checked == true)
+			{
+				SQLiteCommand checkBookId = new SQLiteCommand("SELECT id FROM books WHERE name = @bookName", databaseObject.dbConnection);
+				checkBookId.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
+				result = checkBookId.ExecuteReader();
+				if (result.HasRows)
+				{
+					while (result.Read())
+					{
+						bookId = (int)(long)result["id"];
+					}
+				}
+			}
+
+			
+			if (UkonczoneRadio.Checked == true)
+			{
+				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'finish_date', 'rating', 'form') VALUES (@bookId, @startDate, @finishDate, @rating, @form)", databaseObject.dbConnection);
+				addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+				addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("dd.MM.yyyy"));
+				addBookToRead.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("dd.MM.yyyy"));
+				addBookToRead.Parameters.AddWithValue("@rating", (double)RatingNumeric.Value);
+				if (EbookRadio.Checked == true)
+				{
+					addBookToRead.Parameters.AddWithValue("@form", "ebook");
+				}
+				else if (PapierRadio.Checked == true)
+				{
+					addBookToRead.Parameters.AddWithValue("@form", "papier");
+				}
+				else if (AudiobookRadio.Checked == true)
+				{
+					addBookToRead.Parameters.AddWithValue("@form", "AudiobookRadio");
+				}
+				addBookToRead.ExecuteNonQuery();
+
+			}
+			else if (CzytamRadio.Checked == true)
+			{
+				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'form') VALUES (@bookId, @startDate, @form)", databaseObject.dbConnection);
+				addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+				addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("dd.MM.yyyy"));
+				if (EbookRadio.Checked == true)
+				{
+					addBookToRead.Parameters.AddWithValue("@form", "ebook");
+				}
+				else if (PapierRadio.Checked == true)
+				{
+					addBookToRead.Parameters.AddWithValue("@form", "papier");
+				}
+				else if (AudiobookRadio.Checked == true)
+				{
+					addBookToRead.Parameters.AddWithValue("@form", "AudiobookRadio");
+				}
+				addBookToRead.ExecuteNonQuery();
+			}
+			
+			databaseObject.CloseConnection();
+		}
 
 
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            CheckRadioButtons();
-            AddBookToDb();
-            
-            this.Close();
-        }
+		private void AddButton_Click(object sender, EventArgs e)
+		{
+			if (CheckRadioButtons() && CheckDates() && CheckTitlePresence())
+			{
+				AddBookToDb();
+				this.Close();
+			}
+			
+		}
 
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+		private void CancelButton_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
 
-        private void Container_Paint(object sender, PaintEventArgs e)
-        {
+		private void Container_Paint(object sender, PaintEventArgs e)
+		{
 
-        }
-    }
+		}
+	}
 }
