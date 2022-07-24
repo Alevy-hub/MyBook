@@ -127,7 +127,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.RatingLabel.AutoSize = true;
             this.RatingLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.RatingLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.RatingLabel.Location = new System.Drawing.Point(172, 175);
+            this.RatingLabel.Location = new System.Drawing.Point(174, 183);
             this.RatingLabel.Name = "RatingLabel";
             this.RatingLabel.Size = new System.Drawing.Size(96, 32);
             this.RatingLabel.TabIndex = 19;
@@ -145,7 +145,7 @@ namespace MyBook.Forms.CentrumSubForms
             0,
             0,
             65536});
-            this.RatingNumeric.Location = new System.Drawing.Point(182, 211);
+            this.RatingNumeric.Location = new System.Drawing.Point(184, 219);
             this.RatingNumeric.Maximum = new decimal(new int[] {
             5,
             0,

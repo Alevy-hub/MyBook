@@ -30,6 +30,7 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
+            this.EmptyComboBoxAlertLabel = new System.Windows.Forms.Label();
             this.DateAlertLabel = new System.Windows.Forms.Label();
             this.RatingLabel = new System.Windows.Forms.Label();
             this.CountLabel = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@ namespace MyBook.Forms.CentrumSubForms
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.NoTitleAlertLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).BeginInit();
@@ -72,7 +72,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
-            this.Container.Controls.Add(this.NoTitleAlertLabel);
+            this.Container.Controls.Add(this.EmptyComboBoxAlertLabel);
             this.Container.Controls.Add(this.DateAlertLabel);
             this.Container.Controls.Add(this.RatingLabel);
             this.Container.Controls.Add(this.CountLabel);
@@ -97,6 +97,19 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Size = new System.Drawing.Size(600, 706);
             this.Container.TabIndex = 0;
             this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
+            // 
+            // NoTitleAlertLabel
+            // 
+            this.EmptyComboBoxAlertLabel.AutoSize = true;
+            this.EmptyComboBoxAlertLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EmptyComboBoxAlertLabel.ForeColor = System.Drawing.Color.Red;
+            this.EmptyComboBoxAlertLabel.Location = new System.Drawing.Point(153, 73);
+            this.EmptyComboBoxAlertLabel.Name = "NoTitleAlertLabel";
+            this.EmptyComboBoxAlertLabel.Size = new System.Drawing.Size(286, 17);
+            this.EmptyComboBoxAlertLabel.TabIndex = 18;
+            this.EmptyComboBoxAlertLabel.Text = "Pola: tytuł, autor oraz gatunek są obowiązkowe!";
+            this.EmptyComboBoxAlertLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EmptyComboBoxAlertLabel.Visible = false;
             // 
             // DateAlertLabel
             // 
@@ -505,19 +518,6 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
-            // NoTitleAlertLabel
-            // 
-            this.NoTitleAlertLabel.AutoSize = true;
-            this.NoTitleAlertLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NoTitleAlertLabel.ForeColor = System.Drawing.Color.Red;
-            this.NoTitleAlertLabel.Location = new System.Drawing.Point(234, 73);
-            this.NoTitleAlertLabel.Name = "NoTitleAlertLabel";
-            this.NoTitleAlertLabel.Size = new System.Drawing.Size(121, 17);
-            this.NoTitleAlertLabel.TabIndex = 18;
-            this.NoTitleAlertLabel.Text = "Musisz podać tytuł!";
-            this.NoTitleAlertLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.NoTitleAlertLabel.Visible = false;
-            // 
             // AddBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -574,6 +574,6 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.NumericUpDown RatingNumeric;
         private System.Windows.Forms.Label RatingLabel;
         private System.Windows.Forms.Label DateAlertLabel;
-        private System.Windows.Forms.Label NoTitleAlertLabel;
+        private System.Windows.Forms.Label EmptyComboBoxAlertLabel;
     }
 }

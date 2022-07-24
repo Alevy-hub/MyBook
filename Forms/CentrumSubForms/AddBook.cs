@@ -146,14 +146,14 @@ namespace MyBook.Forms.CentrumSubForms
 			return true;
 		}
 
-		private bool CheckTitlePresence()
+		private bool CheckComboBoxes()
 		{
-			if (TitleComboBox.Text == "" || TitleComboBox.Text == "Tytuł...")
+			if (TitleComboBox.Text == "" || TitleComboBox.Text == "Tytuł..." || AuthorComboBox.Text == "" || AuthorComboBox.Text == "Autor..." || GenreComboBox.Text == "" || GenreComboBox.Text == "Gatunek...")
 			{
-				NoTitleAlertLabel.Visible = true;
+				EmptyComboBoxAlertLabel.Visible = true;
 				return false;
 			}
-			NoTitleAlertLabel.Visible = false;
+			EmptyComboBoxAlertLabel.Visible = false;
 			return true;          
 		}
 
@@ -265,12 +265,11 @@ namespace MyBook.Forms.CentrumSubForms
 
 		private void AddButton_Click(object sender, EventArgs e)
 		{
-			if (CheckRadioButtons() && CheckDates() && CheckTitlePresence())
+			if (CheckComboBoxes() && CheckRadioButtons() && CheckDates())
 			{
 				AddBookToDb();
 				this.Close();
-			}
-			
+			}			
 		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
