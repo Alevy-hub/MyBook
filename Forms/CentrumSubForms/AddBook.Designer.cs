@@ -60,6 +60,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).BeginInit();
@@ -72,6 +73,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
+            this.Container.Controls.Add(this.label3);
             this.Container.Controls.Add(this.EmptyComboBoxAlertLabel);
             this.Container.Controls.Add(this.DateAlertLabel);
             this.Container.Controls.Add(this.RatingLabel);
@@ -98,13 +100,13 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.TabIndex = 0;
             this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
             // 
-            // NoTitleAlertLabel
+            // EmptyComboBoxAlertLabel
             // 
             this.EmptyComboBoxAlertLabel.AutoSize = true;
             this.EmptyComboBoxAlertLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EmptyComboBoxAlertLabel.ForeColor = System.Drawing.Color.Red;
             this.EmptyComboBoxAlertLabel.Location = new System.Drawing.Point(153, 73);
-            this.EmptyComboBoxAlertLabel.Name = "NoTitleAlertLabel";
+            this.EmptyComboBoxAlertLabel.Name = "EmptyComboBoxAlertLabel";
             this.EmptyComboBoxAlertLabel.Size = new System.Drawing.Size(286, 17);
             this.EmptyComboBoxAlertLabel.TabIndex = 18;
             this.EmptyComboBoxAlertLabel.Text = "Pola: tytuł, autor oraz gatunek są obowiązkowe!";
@@ -201,7 +203,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.CancelButton.FlatAppearance.BorderSize = 0;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CancelButton.Location = new System.Drawing.Point(311, 603);
+            this.CancelButton.Location = new System.Drawing.Point(311, 612);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(199, 51);
             this.CancelButton.TabIndex = 14;
@@ -215,7 +217,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.AddButton.FlatAppearance.BorderSize = 0;
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddButton.Location = new System.Drawing.Point(94, 603);
+            this.AddButton.Location = new System.Drawing.Point(94, 612);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(199, 51);
             this.AddButton.TabIndex = 13;
@@ -518,6 +520,19 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(201, 590);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(201, 17);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Daty nie mogą być w przyszłości!";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Visible = false;
+            // 
             // AddBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -575,5 +590,6 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Label RatingLabel;
         private System.Windows.Forms.Label DateAlertLabel;
         private System.Windows.Forms.Label EmptyComboBoxAlertLabel;
+        private System.Windows.Forms.Label label3;
     }
 }

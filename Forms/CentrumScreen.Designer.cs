@@ -100,7 +100,7 @@ namespace MyBook.forms
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.AktualnieCzytaneGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.AktualnieCzytaneGrid.Location = new System.Drawing.Point(12, 56);
+            this.AktualnieCzytaneGrid.Location = new System.Drawing.Point(38, 56);
             this.AktualnieCzytaneGrid.Name = "AktualnieCzytaneGrid";
             this.AktualnieCzytaneGrid.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -117,7 +117,7 @@ namespace MyBook.forms
             this.AktualnieCzytaneGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.AktualnieCzytaneGrid.RowTemplate.Height = 50;
             this.AktualnieCzytaneGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.AktualnieCzytaneGrid.Size = new System.Drawing.Size(1051, 373);
+            this.AktualnieCzytaneGrid.Size = new System.Drawing.Size(1011, 373);
             this.AktualnieCzytaneGrid.TabIndex = 1;
             this.AktualnieCzytaneGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AktualnieCzytaneGrid_CellClick);
             // 
@@ -137,7 +137,7 @@ namespace MyBook.forms
             this.StartDateColumn.Name = "StartDateColumn";
             this.StartDateColumn.ReadOnly = true;
             this.StartDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.StartDateColumn.Width = 250;
+            this.StartDateColumn.Width = 230;
             // 
             // Finish
             // 
@@ -146,7 +146,7 @@ namespace MyBook.forms
             this.Finish.Name = "Finish";
             this.Finish.ReadOnly = true;
             this.Finish.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Finish.Width = 125;
+            this.Finish.Width = 110;
             // 
             // Delete
             // 
@@ -155,7 +155,6 @@ namespace MyBook.forms
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Delete.Width = 125;
             // 
             // AktualnieCzytaneLabel
             // 

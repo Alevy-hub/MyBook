@@ -52,7 +52,13 @@ namespace MyBook
 									'form'	TEXT NOT NULL,
 									FOREIGN KEY('book_id') REFERENCES 'books'('id'),
 									PRIMARY KEY('id' AUTOINCREMENT)
-								)";
+								);
+								CREATE TABLE 'challenges'(
+									'year'	INTEGER NOT NULL,
+									'count' INTEGER NOT NULL,
+									PRIMARY KEY('year')
+								);
+								";
 
 				SQLiteCommand createDB = new SQLiteCommand(query, databaseObject.dbConnection);
 				databaseObject.OpenConnection();
