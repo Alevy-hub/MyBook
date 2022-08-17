@@ -50,7 +50,7 @@ namespace MyBook.forms
             this.ChallengeColor1Panel.Name = "ChallengeColor1Panel";
             this.ChallengeColor1Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor1Panel.TabIndex = 0;
-            this.ChallengeColor1Panel.Click += new System.EventHandler(this.ChallengeColor1Panel_Click);
+            this.ChallengeColor1Panel.Click += new System.EventHandler(this.ChallengeColorPanel_Click);
             // 
             // ChallengeColor1Label
             // 
@@ -79,7 +79,7 @@ namespace MyBook.forms
             this.ChallengeColor2Panel.Name = "ChallengeColor2Panel";
             this.ChallengeColor2Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor2Panel.TabIndex = 2;
-            this.ChallengeColor2Panel.Click += new System.EventHandler(this.ChallengeColor2Panel_Click);
+            this.ChallengeColor2Panel.Click += new System.EventHandler(this.ChallengeColorPanel_Click);
             // 
             // ChallengeColor3Label
             // 
@@ -98,7 +98,7 @@ namespace MyBook.forms
             this.ChallengeColor3Panel.Name = "ChallengeColor3Panel";
             this.ChallengeColor3Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor3Panel.TabIndex = 2;
-            this.ChallengeColor3Panel.Click += new System.EventHandler(this.ChallengeColor3Panel_Click);
+            this.ChallengeColor3Panel.Click += new System.EventHandler(this.ChallengeColorPanel_Click);
             // 
             // ChallengeColor4Label
             // 
@@ -117,7 +117,7 @@ namespace MyBook.forms
             this.ChallengeColor4Panel.Name = "ChallengeColor4Panel";
             this.ChallengeColor4Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor4Panel.TabIndex = 2;
-            this.ChallengeColor4Panel.Click += new System.EventHandler(this.ChallengeColor4Panel_Click);
+            this.ChallengeColor4Panel.Click += new System.EventHandler(this.ChallengeColorPanel_Click);
             // 
             // ChallengeColor5Panel
             // 
@@ -126,7 +126,7 @@ namespace MyBook.forms
             this.ChallengeColor5Panel.Name = "ChallengeColor5Panel";
             this.ChallengeColor5Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor5Panel.TabIndex = 2;
-            this.ChallengeColor5Panel.Click += new System.EventHandler(this.ChallengeColor5Panel_Click);
+            this.ChallengeColor5Panel.Click += new System.EventHandler(this.ChallengeColorPanel_Click);
             // 
             // ChallengeColor5Label
             // 

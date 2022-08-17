@@ -34,7 +34,9 @@ namespace MyBook.forms
             this.ChallengeYearLabel = new System.Windows.Forms.Label();
             this.IncreaseYearButton = new System.Windows.Forms.Button();
             this.DecreaseYearButton = new System.Windows.Forms.Button();
+            this.ChallengeBoxesContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.ChallengeBoxesContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // SetChallengeButton
@@ -44,7 +46,7 @@ namespace MyBook.forms
             this.SetChallengeButton.FlatAppearance.BorderSize = 0;
             this.SetChallengeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SetChallengeButton.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SetChallengeButton.Location = new System.Drawing.Point(395, 350);
+            this.SetChallengeButton.Location = new System.Drawing.Point(395, 300);
             this.SetChallengeButton.Name = "SetChallengeButton";
             this.SetChallengeButton.Size = new System.Drawing.Size(300, 100);
             this.SetChallengeButton.TabIndex = 1;
@@ -99,22 +101,32 @@ namespace MyBook.forms
             this.DecreaseYearButton.Text = "<";
             this.DecreaseYearButton.UseVisualStyleBackColor = true;
             // 
+            // ChallengeBoxesContainer
+            // 
+            this.ChallengeBoxesContainer.Controls.Add(this.SetChallengeButton);
+            this.ChallengeBoxesContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ChallengeBoxesContainer.Location = new System.Drawing.Point(0, 77);
+            this.ChallengeBoxesContainer.Name = "ChallengeBoxesContainer";
+            this.ChallengeBoxesContainer.Size = new System.Drawing.Size(1090, 723);
+            this.ChallengeBoxesContainer.TabIndex = 5;
+            // 
             // ChallengeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(1090, 800);
+            this.Controls.Add(this.ChallengeBoxesContainer);
             this.Controls.Add(this.DecreaseYearButton);
             this.Controls.Add(this.IncreaseYearButton);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.SetChallengeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ChallengeScreen";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "ChallengeScreen";
             this.Load += new System.EventHandler(this.ChallengeScreen_Load);
             this.panel1.ResumeLayout(false);
+            this.ChallengeBoxesContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -126,5 +138,6 @@ namespace MyBook.forms
         private System.Windows.Forms.Label ChallengeYearLabel;
         private System.Windows.Forms.Button IncreaseYearButton;
         private System.Windows.Forms.Button DecreaseYearButton;
+        private System.Windows.Forms.Panel ChallengeBoxesContainer;
     }
 }

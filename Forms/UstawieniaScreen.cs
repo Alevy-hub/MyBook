@@ -26,40 +26,17 @@ namespace MyBook.forms
             ChallengeColor5Panel.BackColor = Properties.Settings.Default.color5;
         }
 
-        private void ChallengeColor1Panel_Click(object sender, EventArgs e)
+        private void ChallengeColorPanel_Click(object sender, EventArgs e)
         {
-            ColorDialog color1dialog = new ColorDialog();
-            color1dialog.ShowDialog();
-            ChallengeColor1Panel.BackColor = color1dialog.Color;
+            Panel colorPanel = sender as Panel;
+            ColorDialog colorDialog = new ColorDialog();
+            
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                colorPanel.BackColor = colorDialog.Color;
+            }
         }
 
-        private void ChallengeColor2Panel_Click(object sender, EventArgs e)
-        {
-            ColorDialog color2dialog = new ColorDialog();
-            color2dialog.ShowDialog();
-            ChallengeColor2Panel.BackColor = color2dialog.Color;
-        }
-
-        private void ChallengeColor3Panel_Click(object sender, EventArgs e)
-        {
-            ColorDialog color3dialog = new ColorDialog();
-            color3dialog.ShowDialog();
-            ChallengeColor3Panel.BackColor = color3dialog.Color;
-        }
-
-        private void ChallengeColor4Panel_Click(object sender, EventArgs e)
-        {
-            ColorDialog color4dialog = new ColorDialog();
-            color4dialog.ShowDialog();
-            ChallengeColor4Panel.BackColor = color4dialog.Color;
-        }
-
-        private void ChallengeColor5Panel_Click(object sender, EventArgs e)
-        {
-            ColorDialog color5dialog = new ColorDialog();
-            color5dialog.ShowDialog();
-            ChallengeColor5Panel.BackColor = color5dialog.Color;
-        }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {

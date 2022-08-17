@@ -221,6 +221,7 @@ namespace MyBook
             this.Controls.Add(this.LeftPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainScreen";
             this.LeftPanel.ResumeLayout(false);
             this.MenuPanel.ResumeLayout(false);
