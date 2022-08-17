@@ -87,6 +87,7 @@ namespace MyBook.forms
             this.IncreaseYearButton.TabIndex = 3;
             this.IncreaseYearButton.Text = ">";
             this.IncreaseYearButton.UseVisualStyleBackColor = true;
+            this.IncreaseYearButton.Click += new System.EventHandler(this.IncreaseYearButton_Click);
             // 
             // DecreaseYearButton
             // 
@@ -100,6 +101,7 @@ namespace MyBook.forms
             this.DecreaseYearButton.TabIndex = 4;
             this.DecreaseYearButton.Text = "<";
             this.DecreaseYearButton.UseVisualStyleBackColor = true;
+            this.DecreaseYearButton.Click += new System.EventHandler(this.DecreaseYearButton_Click);
             // 
             // ChallengeBoxesContainer
             // 
