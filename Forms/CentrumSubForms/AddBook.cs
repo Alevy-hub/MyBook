@@ -173,6 +173,7 @@ namespace MyBook.Forms.CentrumSubForms
 					GenreComboBox.Text = result["genre"].ToString();
 				}
 			}
+			databaseObject.CloseConnection();
 		}
 
 		private void AddBookToDb()

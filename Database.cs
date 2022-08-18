@@ -1,4 +1,5 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.Data.SQLite;
 using System.IO;
 
 namespace MyBook
@@ -77,9 +78,11 @@ namespace MyBook
 
 		public void CloseConnection()
 		{
-			if (dbConnection.State != System.Data.ConnectionState.Closed)
+			while (dbConnection.State != System.Data.ConnectionState.Closed)
 			{
 				dbConnection.Close();
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
 			}
 		}
 

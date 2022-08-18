@@ -23,6 +23,7 @@ namespace MyBook.forms
 			FillChallengeScreenBlank();
 
 			ChallengeYearLabel.Text = DateTime.Now.Year.ToString();
+			ChangeYearButtonShow();
 		}
 
 		private void ShowSetChallengeButton()
@@ -63,21 +64,29 @@ namespace MyBook.forms
 
 		private bool CheckIfChallengeSet()
 		{
+			bool hasRows = false;
 			Database databaseObject = new Database();
-			databaseObject.OpenConnection();
 			SQLiteCommand checkChallenge = new SQLiteCommand("SELECT year FROM challenges WHERE year = @challengeYear", databaseObject.dbConnection);
 			checkChallenge.Parameters.AddWithValue("@challengeYear", int.Parse(ChallengeYearLabel.Text.ToString()));
+			databaseObject.OpenConnection();
 			SQLiteDataReader result = checkChallenge.ExecuteReader();
 			if (result.HasRows)
 			{
-				databaseObject.CloseConnection();
+				hasRows = true;
+			}
+
+			databaseObject.CloseConnection();
+
+
+
+			if (hasRows == true)
+            {
 				return true;
-			}
-			else
-			{
-				databaseObject.CloseConnection();
+            }
+            else
+            {
 				return false;
-			}
+            }
 		}
 
 		private void SetChallengeButton_Click(object sender, EventArgs e)
@@ -144,10 +153,9 @@ namespace MyBook.forms
 			}
 		}
 
-		private void IncreaseYearButton_Click(object sender, EventArgs e)
-		{
-			int year = int.Parse(ChallengeYearLabel.Text) + 1;
-			if(year > DateTime.Now.Year)
+		private void ChangeYearButtonShow()
+        {
+			if (int.Parse(ChallengeYearLabel.Text) > DateTime.Now.Year)
 			{
 				IncreaseYearButton.Visible = false;
 			}
@@ -155,7 +163,29 @@ namespace MyBook.forms
 			{
 				IncreaseYearButton.Visible = true;
 			}
+
+			Database databaseObject = new Database();
+			databaseObject.OpenConnection();
+			SQLiteCommand checkYear = new SQLiteCommand("SELECT year FROM challenges WHERE year = @challengeYear", databaseObject.dbConnection);
+			checkYear.Parameters.AddWithValue("@challengeYear", int.Parse(ChallengeYearLabel.Text) - 1);
+			SQLiteDataReader result = checkYear.ExecuteReader();
+			if (result.HasRows)
+			{
+				DecreaseYearButton.Visible = true;
+			}
+            else
+            {
+				DecreaseYearButton.Visible = false;
+            }
+			databaseObject.CloseConnection();
+		}
+
+		private void IncreaseYearButton_Click(object sender, EventArgs e)
+		{
+			int year = int.Parse(ChallengeYearLabel.Text) + 1;
 			ChallengeYearLabel.Text = year.ToString();
+
+			ChangeYearButtonShow();
 			ClearPanel();
 			FillChallengeScreenBlank();
 			ShowSetChallengeButton();
@@ -164,17 +194,12 @@ namespace MyBook.forms
         private void DecreaseYearButton_Click(object sender, EventArgs e)
         {
 			int year = int.Parse(ChallengeYearLabel.Text) - 1;
+			ChallengeYearLabel.Text = year.ToString();
 
-			Database databaseObject = new Database();
-			databaseObject.OpenConnection();
-			SQLiteCommand checkYear = new SQLiteCommand("SELECT year FROM challenges WHERE year = @challengeYear", databaseObject.dbConnection);
-			checkYear.Parameters.AddWithValue("@challengeYear", year);
-			SQLiteDataReader result = checkYear.ExecuteReader();
-			if (result.HasRows)
-            {
-				ChallengeYearLabel.Text = year.ToString();
-			}
-
+			ChangeYearButtonShow();
+			ShowSetChallengeButton();
+			ClearPanel();
+			FillChallengeScreenBlank();
 		}
     }
 }
