@@ -23,19 +23,14 @@ namespace MyBook.Forms.ChallengeSubForms
 
         private void SetButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1");
             if (IsYearGood() && IsCountGood())
             {
-                MessageBox.Show("2");
                 Database databaseObject = new Database();
-                MessageBox.Show("3");
                 SQLiteCommand addChallenge = new SQLiteCommand("INSERT INTO challenges VALUES (@year, @count)", databaseObject.dbConnection);
                 addChallenge.Parameters.AddWithValue("@year", YearNumeric.Value);
                 addChallenge.Parameters.AddWithValue("@count", CountNumeric.Value);
                 databaseObject.OpenConnection();
-                MessageBox.Show("5");
                 addChallenge.ExecuteNonQuery();
-                MessageBox.Show("4");
                 databaseObject.CloseConnection();
                 this.Close();
             }
