@@ -28,6 +28,8 @@ namespace MyBook.Forms.CentrumSubForms
 			StartDatePicker.CustomFormat = "dd.MM.yyyy";
 			FinishDatePicker.Format = DateTimePickerFormat.Custom;
 			FinishDatePicker.CustomFormat = "dd.MM.yyyy";
+			NoRateCheckBox.Enabled = false;
+			NoRateCheckBox.Visible = false;
 			
 		}
 
@@ -92,18 +94,24 @@ namespace MyBook.Forms.CentrumSubForms
 				StartDatePicker.Enabled = true;
 				FinishDatePicker.Enabled = false;
 				RatingNumeric.Enabled = false;
+				NoRateCheckBox.Enabled = false;
+				NoRateCheckBox.Visible = false;
 			}
 			else if (TBRRadio.Checked == true)
 			{
 				StartDatePicker.Enabled = false;
 				FinishDatePicker.Enabled = false;
 				RatingNumeric.Enabled = false;
+				NoRateCheckBox.Enabled = false;
+				NoRateCheckBox.Visible = false;
 			}
 			else if (UkonczoneRadio.Checked)
 			{
 				StartDatePicker.Enabled = true;
 				FinishDatePicker.Enabled = true;
 				RatingNumeric.Enabled = true;
+				NoRateCheckBox.Enabled = true;
+				NoRateCheckBox.Visible = true;
 			}
 			StatusAlertLabel.Visible = false;
 		}
@@ -222,8 +230,8 @@ namespace MyBook.Forms.CentrumSubForms
 			{
 				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'finish_date', 'rating', 'form') VALUES (@bookId, @startDate, @finishDate, @rating, @form)", databaseObject.dbConnection);
 				addBookToRead.Parameters.AddWithValue("@bookId", bookId);
-				addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("dd.MM.yyyy"));
-				addBookToRead.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("dd.MM.yyyy"));
+				addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("yyyy-MM-dd"));
+				addBookToRead.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("yyyy-MM-dd"));
 				addBookToRead.Parameters.AddWithValue("@rating", (double)RatingNumeric.Value);
 				if (EbookRadio.Checked == true)
 				{
@@ -244,7 +252,7 @@ namespace MyBook.Forms.CentrumSubForms
 			{
 				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'form') VALUES (@bookId, @startDate, @form)", databaseObject.dbConnection);
 				addBookToRead.Parameters.AddWithValue("@bookId", bookId);
-				addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("dd.MM.yyyy"));
+				addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("yyyy-MM-dd"));
 				if (EbookRadio.Checked == true)
 				{
 					addBookToRead.Parameters.AddWithValue("@form", "ebook");
@@ -282,5 +290,21 @@ namespace MyBook.Forms.CentrumSubForms
 		{
 
 		}
-	}
+
+        private void NoRateCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NoRateCheckBox.Checked)
+            {
+				RatingNumeric.Enabled = false;
+				RatingNumeric.Minimum = 0;
+				RatingNumeric.Value = 0;
+            }
+            else
+            {
+				RatingNumeric.Enabled = true;
+				RatingNumeric.Minimum = 1;
+				RatingNumeric.Value = 1;
+            }
+        }
+    }
 }

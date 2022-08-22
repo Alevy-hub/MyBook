@@ -82,5 +82,17 @@ namespace MyBook.Properties {
                 this["color5"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("224, 224, 224")]
+        public global::System.Drawing.Color colorNone {
+            get {
+                return ((global::System.Drawing.Color)(this["colorNone"]));
+            }
+            set {
+                this["colorNone"] = value;
+            }
+        }
     }
 }

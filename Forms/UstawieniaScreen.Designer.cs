@@ -41,12 +41,14 @@ namespace MyBook.forms
             this.ChallengeColor5Label = new System.Windows.Forms.Label();
             this.SaveButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ChallengeColorNonePanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // ChallengeColor1Panel
             // 
             this.ChallengeColor1Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChallengeColor1Panel.Location = new System.Drawing.Point(32, 45);
+            this.ChallengeColor1Panel.Location = new System.Drawing.Point(71, 45);
             this.ChallengeColor1Panel.Name = "ChallengeColor1Panel";
             this.ChallengeColor1Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor1Panel.TabIndex = 0;
@@ -55,7 +57,7 @@ namespace MyBook.forms
             // ChallengeColor1Label
             // 
             this.ChallengeColor1Label.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ChallengeColor1Label.Location = new System.Drawing.Point(32, 98);
+            this.ChallengeColor1Label.Location = new System.Drawing.Point(71, 98);
             this.ChallengeColor1Label.Name = "ChallengeColor1Label";
             this.ChallengeColor1Label.Size = new System.Drawing.Size(50, 23);
             this.ChallengeColor1Label.TabIndex = 0;
@@ -65,7 +67,7 @@ namespace MyBook.forms
             // ChallengeColor2Label
             // 
             this.ChallengeColor2Label.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ChallengeColor2Label.Location = new System.Drawing.Point(88, 98);
+            this.ChallengeColor2Label.Location = new System.Drawing.Point(127, 98);
             this.ChallengeColor2Label.Name = "ChallengeColor2Label";
             this.ChallengeColor2Label.Size = new System.Drawing.Size(50, 23);
             this.ChallengeColor2Label.TabIndex = 1;
@@ -75,7 +77,7 @@ namespace MyBook.forms
             // ChallengeColor2Panel
             // 
             this.ChallengeColor2Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChallengeColor2Panel.Location = new System.Drawing.Point(88, 45);
+            this.ChallengeColor2Panel.Location = new System.Drawing.Point(127, 45);
             this.ChallengeColor2Panel.Name = "ChallengeColor2Panel";
             this.ChallengeColor2Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor2Panel.TabIndex = 2;
@@ -84,7 +86,7 @@ namespace MyBook.forms
             // ChallengeColor3Label
             // 
             this.ChallengeColor3Label.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ChallengeColor3Label.Location = new System.Drawing.Point(144, 98);
+            this.ChallengeColor3Label.Location = new System.Drawing.Point(183, 98);
             this.ChallengeColor3Label.Name = "ChallengeColor3Label";
             this.ChallengeColor3Label.Size = new System.Drawing.Size(50, 23);
             this.ChallengeColor3Label.TabIndex = 1;
@@ -94,7 +96,7 @@ namespace MyBook.forms
             // ChallengeColor3Panel
             // 
             this.ChallengeColor3Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChallengeColor3Panel.Location = new System.Drawing.Point(144, 45);
+            this.ChallengeColor3Panel.Location = new System.Drawing.Point(183, 45);
             this.ChallengeColor3Panel.Name = "ChallengeColor3Panel";
             this.ChallengeColor3Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor3Panel.TabIndex = 2;
@@ -103,7 +105,7 @@ namespace MyBook.forms
             // ChallengeColor4Label
             // 
             this.ChallengeColor4Label.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ChallengeColor4Label.Location = new System.Drawing.Point(200, 98);
+            this.ChallengeColor4Label.Location = new System.Drawing.Point(239, 98);
             this.ChallengeColor4Label.Name = "ChallengeColor4Label";
             this.ChallengeColor4Label.Size = new System.Drawing.Size(50, 23);
             this.ChallengeColor4Label.TabIndex = 1;
@@ -113,7 +115,7 @@ namespace MyBook.forms
             // ChallengeColor4Panel
             // 
             this.ChallengeColor4Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChallengeColor4Panel.Location = new System.Drawing.Point(200, 45);
+            this.ChallengeColor4Panel.Location = new System.Drawing.Point(239, 45);
             this.ChallengeColor4Panel.Name = "ChallengeColor4Panel";
             this.ChallengeColor4Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor4Panel.TabIndex = 2;
@@ -122,7 +124,7 @@ namespace MyBook.forms
             // ChallengeColor5Panel
             // 
             this.ChallengeColor5Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChallengeColor5Panel.Location = new System.Drawing.Point(256, 45);
+            this.ChallengeColor5Panel.Location = new System.Drawing.Point(295, 45);
             this.ChallengeColor5Panel.Name = "ChallengeColor5Panel";
             this.ChallengeColor5Panel.Size = new System.Drawing.Size(50, 50);
             this.ChallengeColor5Panel.TabIndex = 2;
@@ -131,7 +133,7 @@ namespace MyBook.forms
             // ChallengeColor5Label
             // 
             this.ChallengeColor5Label.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ChallengeColor5Label.Location = new System.Drawing.Point(256, 98);
+            this.ChallengeColor5Label.Location = new System.Drawing.Point(295, 98);
             this.ChallengeColor5Label.Name = "ChallengeColor5Label";
             this.ChallengeColor5Label.Size = new System.Drawing.Size(50, 23);
             this.ChallengeColor5Label.TabIndex = 1;
@@ -158,12 +160,31 @@ namespace MyBook.forms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label3.Location = new System.Drawing.Point(18, 17);
+            this.label3.Location = new System.Drawing.Point(31, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(304, 25);
             this.label3.TabIndex = 14;
             this.label3.Text = "KOLORY DLA SEKCJI CHALLENGE";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(15, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Brak";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ChallengeColorNonePanel
+            // 
+            this.ChallengeColorNonePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChallengeColorNonePanel.Location = new System.Drawing.Point(15, 45);
+            this.ChallengeColorNonePanel.Name = "ChallengeColorNonePanel";
+            this.ChallengeColorNonePanel.Size = new System.Drawing.Size(50, 50);
+            this.ChallengeColorNonePanel.TabIndex = 2;
+            this.ChallengeColorNonePanel.Click += new System.EventHandler(this.ChallengeColorPanel_Click);
             // 
             // UstawieniaScreen
             // 
@@ -171,7 +192,9 @@ namespace MyBook.forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(1090, 800);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.ChallengeColorNonePanel);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.ChallengeColor5Label);
             this.Controls.Add(this.ChallengeColor4Label);
@@ -206,5 +229,7 @@ namespace MyBook.forms
         private System.Windows.Forms.Label ChallengeColor5Label;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel ChallengeColorNonePanel;
     }
 }

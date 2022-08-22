@@ -19,6 +19,7 @@ namespace MyBook.forms
 
         private void UstawieniaScreen_Load(object sender, EventArgs e)
         {
+            ChallengeColorNonePanel.BackColor = Properties.Settings.Default.colorNone;
             ChallengeColor1Panel.BackColor = Properties.Settings.Default.color1;
             ChallengeColor2Panel.BackColor = Properties.Settings.Default.color2;
             ChallengeColor3Panel.BackColor = Properties.Settings.Default.color3;
@@ -40,6 +41,7 @@ namespace MyBook.forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.colorNone = ChallengeColorNonePanel.BackColor;
             Properties.Settings.Default.color1 = ChallengeColor1Panel.BackColor;
             Properties.Settings.Default.color2 = ChallengeColor2Panel.BackColor;
             Properties.Settings.Default.color3 = ChallengeColor3Panel.BackColor;

@@ -30,6 +30,7 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
+            this.NoRateCheckBox = new System.Windows.Forms.CheckBox();
             this.FutureDateAlertLabel = new System.Windows.Forms.Label();
             this.DateAlertLabel = new System.Windows.Forms.Label();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -43,6 +44,8 @@ namespace MyBook.Forms.CentrumSubForms
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.CommentLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
             this.TopBar.SuspendLayout();
@@ -50,6 +53,9 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             // Container
             // 
+            this.Container.Controls.Add(this.richTextBox1);
+            this.Container.Controls.Add(this.CommentLabel);
+            this.Container.Controls.Add(this.NoRateCheckBox);
             this.Container.Controls.Add(this.FutureDateAlertLabel);
             this.Container.Controls.Add(this.DateAlertLabel);
             this.Container.Controls.Add(this.CancelButton);
@@ -65,8 +71,22 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Container.Location = new System.Drawing.Point(0, 0);
             this.Container.Name = "Container";
-            this.Container.Size = new System.Drawing.Size(442, 344);
+            this.Container.Size = new System.Drawing.Size(442, 449);
             this.Container.TabIndex = 0;
+            // 
+            // NoRateCheckBox
+            // 
+            this.NoRateCheckBox.AutoSize = true;
+            this.NoRateCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NoRateCheckBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NoRateCheckBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.NoRateCheckBox.Location = new System.Drawing.Point(265, 219);
+            this.NoRateCheckBox.Name = "NoRateCheckBox";
+            this.NoRateCheckBox.Size = new System.Drawing.Size(134, 29);
+            this.NoRateCheckBox.TabIndex = 21;
+            this.NoRateCheckBox.Text = "Nie oceniam";
+            this.NoRateCheckBox.UseVisualStyleBackColor = true;
+            this.NoRateCheckBox.CheckedChanged += new System.EventHandler(this.NoRateCheckBox_CheckedChanged);
             // 
             // FutureDateAlertLabel
             // 
@@ -100,7 +120,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.CancelButton.FlatAppearance.BorderSize = 0;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CancelButton.Location = new System.Drawing.Point(229, 258);
+            this.CancelButton.Location = new System.Drawing.Point(229, 372);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(199, 51);
             this.CancelButton.TabIndex = 21;
@@ -114,7 +134,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.AddButton.FlatAppearance.BorderSize = 0;
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddButton.Location = new System.Drawing.Point(12, 258);
+            this.AddButton.Location = new System.Drawing.Point(12, 372);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(199, 51);
             this.AddButton.TabIndex = 20;
@@ -213,7 +233,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.BottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
             this.BottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomBar.Location = new System.Drawing.Point(0, 324);
+            this.BottomBar.Location = new System.Drawing.Point(0, 429);
             this.BottomBar.Name = "BottomBar";
             this.BottomBar.Size = new System.Drawing.Size(442, 20);
             this.BottomBar.TabIndex = 1;
@@ -241,12 +261,36 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox1.Location = new System.Drawing.Point(16, 290);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
+            this.richTextBox1.Size = new System.Drawing.Size(416, 76);
+            this.richTextBox1.TabIndex = 26;
+            this.richTextBox1.Text = "";
+            // 
+            // CommentLabel
+            // 
+            this.CommentLabel.AutoSize = true;
+            this.CommentLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CommentLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CommentLabel.Location = new System.Drawing.Point(145, 255);
+            this.CommentLabel.Name = "CommentLabel";
+            this.CommentLabel.Size = new System.Drawing.Size(162, 32);
+            this.CommentLabel.TabIndex = 25;
+            this.CommentLabel.Text = "KOMENTARZ";
+            this.CommentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FinishBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
-            this.ClientSize = new System.Drawing.Size(442, 344);
+            this.ClientSize = new System.Drawing.Size(442, 449);
             this.Controls.Add(this.Container);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FinishBook";
@@ -276,5 +320,8 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Label DateAlertLabel;
         private System.Windows.Forms.Label FutureDateAlertLabel;
+        private System.Windows.Forms.CheckBox NoRateCheckBox;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label CommentLabel;
     }
 }

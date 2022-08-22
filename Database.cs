@@ -30,11 +30,6 @@ namespace MyBook
 									FOREIGN KEY('author_id') REFERENCES 'authors'('id'),
 									PRIMARY KEY('id' AUTOINCREMENT)
 								);
-								CREATE TABLE 'challenge' (
-									'year'	INTEGER,
-									'count'	INTEGER NOT NULL,
-									PRIMARY KEY('year')
-								);
 								CREATE TABLE 'month_statistics' (
 									'month'	INTEGER,
 									'year'	INTEGER,

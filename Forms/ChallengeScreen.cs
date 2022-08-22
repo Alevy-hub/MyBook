@@ -170,7 +170,7 @@ namespace MyBook.forms
             {
 				Database databaseObject = new Database();
 				databaseObject.OpenConnection();
-				SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE substr(finish_date, 7) LIKE @finishYear", databaseObject.dbConnection);
+				SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear", databaseObject.dbConnection);
 				checkCount.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
 				SQLiteDataReader result = checkCount.ExecuteReader();
 				if (result.HasRows)
@@ -189,7 +189,7 @@ namespace MyBook.forms
 				List<int> rates = new List<int>();
 				Database databaseObject = new Database();
 				databaseObject.OpenConnection();
-				SQLiteCommand checkRating = new SQLiteCommand("SELECT cast(rating as int) FROM read_books WHERE substr(finish_date, 7) LIKE @finishYear", databaseObject.dbConnection);
+				SQLiteCommand checkRating = new SQLiteCommand("SELECT cast(rating as int) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear ORDER BY finish_date ASC", databaseObject.dbConnection);
 				checkRating.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
 				SQLiteDataReader result = checkRating.ExecuteReader();
 				if (result.HasRows)
@@ -215,7 +215,11 @@ namespace MyBook.forms
 						{
 							int rate = rates[i];
 							i++;
-							if (rate == 1)
+							if (rate == 0)
+                            {
+								c.BackColor = Properties.Settings.Default.colorNone;
+							}
+							else if (rate == 1)
 							{
 								c.BackColor = Properties.Settings.Default.color1;
 							}

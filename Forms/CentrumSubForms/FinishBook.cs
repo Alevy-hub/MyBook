@@ -42,10 +42,11 @@ namespace MyBook.Forms.CentrumSubForms
             {
                 while (result.Read())
                 {
-                    StartDatePicker.Value = DateTime.ParseExact((string)result["start_date"], "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    StartDatePicker.Value = DateTime.ParseExact((string)result["start_date"], "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
                 }
 
             }
+            databaseObject.CloseConnection();
         }
 
         private bool CheckDates()
@@ -77,8 +78,8 @@ namespace MyBook.Forms.CentrumSubForms
         {
             Database databaseObject = new Database();
             SQLiteCommand updateReadBook = new SQLiteCommand("UPDATE read_books SET start_date = @startDate, finish_date = @finishDate, rating = @rating WHERE id = @readBookId", databaseObject.dbConnection);
-            updateReadBook.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("dd.MM.yyyy"));
-            updateReadBook.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("dd.MM.yyyy"));
+            updateReadBook.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("yyyy-MM-dd"));
+            updateReadBook.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("yyyy-MM-dd"));
             updateReadBook.Parameters.AddWithValue("@rating", (double)RatingNumeric.Value);
             updateReadBook.Parameters.AddWithValue("@readBookId", CentrumScreen.readId);
             databaseObject.OpenConnection();
@@ -109,5 +110,20 @@ namespace MyBook.Forms.CentrumSubForms
             }
         }
 
+        private void NoRateCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NoRateCheckBox.Checked)
+            {
+                RatingNumeric.Enabled = false;
+                RatingNumeric.Minimum = 0;
+                RatingNumeric.Value = 0;
+            }
+            else
+            {
+                RatingNumeric.Enabled = true;
+                RatingNumeric.Minimum = 1;
+                RatingNumeric.Value = 1;
+            }
+        }
     }
 }
