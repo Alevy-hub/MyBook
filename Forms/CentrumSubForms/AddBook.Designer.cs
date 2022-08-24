@@ -30,7 +30,7 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.CommentTextBox = new System.Windows.Forms.RichTextBox();
             this.CommentLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
@@ -78,7 +78,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
-            this.Container.Controls.Add(this.richTextBox1);
+            this.Container.Controls.Add(this.CommentTextBox);
             this.Container.Controls.Add(this.CommentLabel);
             this.Container.Controls.Add(this.panel1);
             this.Container.Controls.Add(this.SidePanel);
@@ -110,17 +110,17 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.TabIndex = 0;
             this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
             // 
-            // richTextBox1
+            // CommentTextBox
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox1.Location = new System.Drawing.Point(94, 652);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.richTextBox1.Size = new System.Drawing.Size(416, 76);
-            this.richTextBox1.TabIndex = 24;
-            this.richTextBox1.Text = "";
+            this.CommentTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CommentTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CommentTextBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CommentTextBox.Location = new System.Drawing.Point(94, 652);
+            this.CommentTextBox.Name = "CommentTextBox";
+            this.CommentTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
+            this.CommentTextBox.Size = new System.Drawing.Size(416, 76);
+            this.CommentTextBox.TabIndex = 24;
+            this.CommentTextBox.Text = "";
             // 
             // CommentLabel
             // 
@@ -660,7 +660,7 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.CheckBox NoRateCheckBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel SidePanel;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox CommentTextBox;
         private System.Windows.Forms.Label CommentLabel;
     }
 }

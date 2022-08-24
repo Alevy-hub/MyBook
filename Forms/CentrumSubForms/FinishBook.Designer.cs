@@ -30,6 +30,8 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
+            this.CommentTextBox = new System.Windows.Forms.RichTextBox();
+            this.CommentLabel = new System.Windows.Forms.Label();
             this.NoRateCheckBox = new System.Windows.Forms.CheckBox();
             this.FutureDateAlertLabel = new System.Windows.Forms.Label();
             this.DateAlertLabel = new System.Windows.Forms.Label();
@@ -44,8 +46,6 @@ namespace MyBook.Forms.CentrumSubForms
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.CommentLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
             this.TopBar.SuspendLayout();
@@ -53,7 +53,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             // Container
             // 
-            this.Container.Controls.Add(this.richTextBox1);
+            this.Container.Controls.Add(this.CommentTextBox);
             this.Container.Controls.Add(this.CommentLabel);
             this.Container.Controls.Add(this.NoRateCheckBox);
             this.Container.Controls.Add(this.FutureDateAlertLabel);
@@ -73,6 +73,30 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Name = "Container";
             this.Container.Size = new System.Drawing.Size(442, 449);
             this.Container.TabIndex = 0;
+            // 
+            // CommentTextBox
+            // 
+            this.CommentTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CommentTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CommentTextBox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CommentTextBox.Location = new System.Drawing.Point(16, 290);
+            this.CommentTextBox.Name = "CommentTextBox";
+            this.CommentTextBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
+            this.CommentTextBox.Size = new System.Drawing.Size(416, 76);
+            this.CommentTextBox.TabIndex = 26;
+            this.CommentTextBox.Text = "";
+            // 
+            // CommentLabel
+            // 
+            this.CommentLabel.AutoSize = true;
+            this.CommentLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CommentLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CommentLabel.Location = new System.Drawing.Point(145, 255);
+            this.CommentLabel.Name = "CommentLabel";
+            this.CommentLabel.Size = new System.Drawing.Size(162, 32);
+            this.CommentLabel.TabIndex = 25;
+            this.CommentLabel.Text = "KOMENTARZ";
+            this.CommentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NoRateCheckBox
             // 
@@ -261,30 +285,6 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.richTextBox1.Location = new System.Drawing.Point(16, 290);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Horizontal;
-            this.richTextBox1.Size = new System.Drawing.Size(416, 76);
-            this.richTextBox1.TabIndex = 26;
-            this.richTextBox1.Text = "";
-            // 
-            // CommentLabel
-            // 
-            this.CommentLabel.AutoSize = true;
-            this.CommentLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CommentLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.CommentLabel.Location = new System.Drawing.Point(145, 255);
-            this.CommentLabel.Name = "CommentLabel";
-            this.CommentLabel.Size = new System.Drawing.Size(162, 32);
-            this.CommentLabel.TabIndex = 25;
-            this.CommentLabel.Text = "KOMENTARZ";
-            this.CommentLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // FinishBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -321,7 +321,7 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Label DateAlertLabel;
         private System.Windows.Forms.Label FutureDateAlertLabel;
         private System.Windows.Forms.CheckBox NoRateCheckBox;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox CommentTextBox;
         private System.Windows.Forms.Label CommentLabel;
     }
 }

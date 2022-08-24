@@ -228,11 +228,12 @@ namespace MyBook.Forms.CentrumSubForms
 			
 			if (UkonczoneRadio.Checked == true)
 			{
-				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'finish_date', 'rating', 'form') VALUES (@bookId, @startDate, @finishDate, @rating, @form)", databaseObject.dbConnection);
+				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO read_books ('book_id', 'start_date', 'finish_date', 'rating', 'form', 'comment') VALUES (@bookId, @startDate, @finishDate, @rating, @form, @comment)", databaseObject.dbConnection);
 				addBookToRead.Parameters.AddWithValue("@bookId", bookId);
 				addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("yyyy-MM-dd"));
 				addBookToRead.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("yyyy-MM-dd"));
 				addBookToRead.Parameters.AddWithValue("@rating", (double)RatingNumeric.Value);
+				addBookToRead.Parameters.AddWithValue("@comment", CommentTextBox.Text);
 				if (EbookRadio.Checked == true)
 				{
 					addBookToRead.Parameters.AddWithValue("@form", "ebook");

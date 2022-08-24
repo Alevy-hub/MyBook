@@ -46,6 +46,7 @@ namespace MyBook
 									'finish_date'	TEXT,
 									'rating'	REAL,
 									'form'	TEXT NOT NULL,
+									'comment' TEXT,
 									FOREIGN KEY('book_id') REFERENCES 'books'('id'),
 									PRIMARY KEY('id' AUTOINCREMENT)
 								);

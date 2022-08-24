@@ -77,10 +77,11 @@ namespace MyBook.Forms.CentrumSubForms
         private void UpdateBook()
         {
             Database databaseObject = new Database();
-            SQLiteCommand updateReadBook = new SQLiteCommand("UPDATE read_books SET start_date = @startDate, finish_date = @finishDate, rating = @rating WHERE id = @readBookId", databaseObject.dbConnection);
+            SQLiteCommand updateReadBook = new SQLiteCommand("UPDATE read_books SET start_date = @startDate, finish_date = @finishDate, rating = @rating, comment = @comment WHERE id = @readBookId", databaseObject.dbConnection);
             updateReadBook.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("yyyy-MM-dd"));
             updateReadBook.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("yyyy-MM-dd"));
             updateReadBook.Parameters.AddWithValue("@rating", (double)RatingNumeric.Value);
+            updateReadBook.Parameters.AddWithValue("@comment", CommentTextBox.Text);
             updateReadBook.Parameters.AddWithValue("@readBookId", CentrumScreen.readId);
             databaseObject.OpenConnection();
             updateReadBook.ExecuteNonQuery();

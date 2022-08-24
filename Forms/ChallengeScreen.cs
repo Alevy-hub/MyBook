@@ -12,6 +12,7 @@ namespace MyBook.forms
 {
 	public partial class ChallengeScreen : Form
 	{
+		public static string readBookId;
 		public ChallengeScreen()
 		{
 			InitializeComponent();
@@ -40,17 +41,17 @@ namespace MyBook.forms
 		}
 
 		private void ClearPanel()
-        {
+		{
 			int count = 1;
 
-            while (count > 0)
-            {
+			while (count > 0)
+			{
 				foreach(Control item in ChallengeBoxesContainer.Controls)
 				{
 					if(item.GetType() != typeof(Button))
-                    {
+					{
 						item.Dispose();
-                    }
+					}
 				}
 				count = 0;
 				foreach (Control item in ChallengeBoxesContainer.Controls)
@@ -61,7 +62,7 @@ namespace MyBook.forms
 					}
 				}
 			}
-        }
+		}
 
 		private bool CheckIfChallengeSet()
 		{
@@ -81,13 +82,31 @@ namespace MyBook.forms
 
 
 			if (hasRows == true)
-            {
+			{
 				return true;
-            }
-            else
-            {
+			}
+			else
+			{
 				return false;
-            }
+			}
+		}
+
+		private int CheckReadCount()
+        {
+			Database databaseObject = new Database();
+			databaseObject.OpenConnection();
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear", databaseObject.dbConnection);
+			checkCount.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
+			SQLiteDataReader result = checkCount.ExecuteReader();
+			if (result.HasRows)
+			{
+				if (result.Read())
+				{
+					return int.Parse(result[0].ToString());
+				}
+			}
+			databaseObject.CloseConnection();
+			return 0;
 		}
 
 		private void SetChallengeButton_Click(object sender, EventArgs e)
@@ -149,6 +168,8 @@ namespace MyBook.forms
 						Number.Text = countForLabel.ToString();
 						Number.TextAlign = ContentAlignment.MiddleCenter;
 						Number.Font = new Font("Segoe UI", 30, FontStyle.Bold);
+						Number.Name = "BookBoxNumber" + i.ToString();
+						Number.Click += BookBoxNumber_Click;
 
 
 						column++;
@@ -163,29 +184,51 @@ namespace MyBook.forms
 			}
 		}
 
-		private void FillReadBooks()
-        {
-			int readCount = 0;
-			if (CheckIfChallengeSet())
+		private void BookBoxNumber_Click(object sender, EventArgs e)
+		{
+            Label BookBoxNumber = sender as Label;
+			int number = int.Parse(BookBoxNumber.Text) - 1;
+			int readCount = CheckReadCount();
+
+            MessageBox.Show(BookBoxNumber.Name.ToString());
+			if (number < readCount)
             {
+				List<int> ids = new List<int>();
 				Database databaseObject = new Database();
 				databaseObject.OpenConnection();
-				SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear", databaseObject.dbConnection);
-				checkCount.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
-				SQLiteDataReader result = checkCount.ExecuteReader();
+				SQLiteCommand checkReadBookId = new SQLiteCommand("SELECT cast(rating as int), id FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear ORDER BY finish_date ASC", databaseObject.dbConnection);
+				checkReadBookId.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
+				SQLiteDataReader result = checkReadBookId.ExecuteReader();
 				if (result.HasRows)
 				{
-					if (result.Read())
+					int i = 0;
+					while (result.Read() && i < readCount)
 					{
-						readCount = int.Parse(result[0].ToString());
+						ids.Add(int.Parse(result[1].ToString()));
+						i++;
 					}
 				}
+
+				readBookId = ids[number].ToString();
+
 				databaseObject.CloseConnection();
+
+				BookInfo bookInfo = new BookInfo();
+				bookInfo.ShowDialog();
+			}
+        }
+
+		private void FillReadBooks()
+		{
+			int readCount = 0;
+			if (CheckIfChallengeSet())
+			{
+				readCount = CheckReadCount();
 			}
 
 
 			if (readCount != 0)
-            {
+			{
 				List<int> rates = new List<int>();
 				Database databaseObject = new Database();
 				databaseObject.OpenConnection();
@@ -216,7 +259,7 @@ namespace MyBook.forms
 							int rate = rates[i];
 							i++;
 							if (rate == 0)
-                            {
+							{
 								c.BackColor = Properties.Settings.Default.colorNone;
 							}
 							else if (rate == 1)
@@ -242,11 +285,11 @@ namespace MyBook.forms
 						}
 					}
 				}
-            }
+			}
 		}
 
-        private void ChangeYearButtonShow()
-        {
+		private void ChangeYearButtonShow()
+		{
 			if (int.Parse(ChallengeYearLabel.Text) > DateTime.Now.Year)
 			{
 				IncreaseYearButton.Visible = false;
@@ -265,10 +308,10 @@ namespace MyBook.forms
 			{
 				DecreaseYearButton.Visible = true;
 			}
-            else
-            {
+			else
+			{
 				DecreaseYearButton.Visible = false;
-            }
+			}
 			databaseObject.CloseConnection();
 		}
 
@@ -284,8 +327,8 @@ namespace MyBook.forms
 			FillReadBooks();
 		}
 
-        private void DecreaseYearButton_Click(object sender, EventArgs e)
-        {
+		private void DecreaseYearButton_Click(object sender, EventArgs e)
+		{
 			int year = int.Parse(ChallengeYearLabel.Text) - 1;
 			ChallengeYearLabel.Text = year.ToString();
 
@@ -295,5 +338,5 @@ namespace MyBook.forms
 			FillChallengeScreenBlank();
 			FillReadBooks();
 		}
-    }
+	}
 }
