@@ -92,19 +92,19 @@ namespace MyBook.Forms.ChallengeSubForms
             // panel9
             // 
             this.panel9.Controls.Add(this.CloseButton);
-            this.panel9.Location = new System.Drawing.Point(414, 0);
+            this.panel9.Location = new System.Drawing.Point(436, 0);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(52, 52);
+            this.panel9.Size = new System.Drawing.Size(30, 30);
             this.panel9.TabIndex = 18;
             // 
             // CloseButton
             // 
             this.CloseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CloseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             this.CloseButton.Location = new System.Drawing.Point(0, 0);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(52, 52);
+            this.CloseButton.Size = new System.Drawing.Size(30, 30);
             this.CloseButton.TabIndex = 0;
             this.CloseButton.Text = "X";
             this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,15 +119,15 @@ namespace MyBook.Forms.ChallengeSubForms
             // 
             // TitleLabel
             // 
-            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TitleLabel.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.TitleLabel.Location = new System.Drawing.Point(0, 0);
+            this.TitleLabel.Location = new System.Drawing.Point(30, 0);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(466, 70);
+            this.TitleLabel.Size = new System.Drawing.Size(406, 70);
             this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = "Title";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
             // BottomBar
             // 
@@ -335,6 +335,7 @@ namespace MyBook.Forms.ChallengeSubForms
             // 
             this.CommentBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             this.CommentBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CommentBox.DetectUrls = false;
             this.CommentBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CommentBox.Location = new System.Drawing.Point(6, 351);
             this.CommentBox.Name = "CommentBox";
@@ -342,6 +343,7 @@ namespace MyBook.Forms.ChallengeSubForms
             this.CommentBox.Size = new System.Drawing.Size(448, 128);
             this.CommentBox.TabIndex = 21;
             this.CommentBox.Text = "";
+            this.CommentBox.Enter += new System.EventHandler(this.CommentBox_Enter);
             // 
             // DatesPanel
             // 
@@ -431,11 +433,11 @@ namespace MyBook.Forms.ChallengeSubForms
             // 
             this.RateLabel.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.RateLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.RateLabel.Location = new System.Drawing.Point(0, 264);
+            this.RateLabel.Location = new System.Drawing.Point(0, 253);
             this.RateLabel.Name = "RateLabel";
-            this.RateLabel.Size = new System.Drawing.Size(460, 59);
+            this.RateLabel.Size = new System.Drawing.Size(460, 55);
             this.RateLabel.TabIndex = 15;
-            this.RateLabel.Text = "5";
+            this.RateLabel.Text = "X";
             this.RateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BookInfo

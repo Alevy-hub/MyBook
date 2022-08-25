@@ -7,15 +7,35 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using MyBook.forms;
+using System.Runtime.InteropServices;
 
 namespace MyBook.Forms.ChallengeSubForms
 {
     public partial class BookInfo : Form
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
+
         public BookInfo()
         {
             InitializeComponent();
             FillDetails();
+        }
+
+        private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
 
         private void FillDetails()
@@ -32,11 +52,19 @@ namespace MyBook.Forms.ChallengeSubForms
                 if (result.Read())
                 {
                     bookId = int.Parse(result["book_id"].ToString());
-                    StartDateLabel.Text = result["start_date"].ToString();
-                    EndDateLabel.Text = result["finish_date"].ToString();
-                    RateLabel.Text = result["rating"].ToString();
+                    StartDateLabel.Text = DateTime.Parse(result["start_date"].ToString()).ToString("dd.MM.yyyy");
+                    EndDateLabel.Text = DateTime.Parse(result["finish_date"].ToString()).ToString("dd.MM.yyyy");
                     FormLabel.Text = result["form"].ToString();
                     CommentBox.Text = result["comment"].ToString();
+                    if (result["rating"].ToString() != "0")
+                    {
+                        RateLabel.Text = result["rating"].ToString();
+                    }
+                    else
+                    {
+                        RateLabel.Font = new Font("Segoe UI", 15);
+                        RateLabel.Text = "Brak oceny";
+                    }
                 }
             }
             databaseObject.CloseConnection();
@@ -50,7 +78,20 @@ namespace MyBook.Forms.ChallengeSubForms
                 if (result.Read())
                 {
                     authorId = int.Parse(result["author_id"].ToString());
-                    TitleLabel.Text = result["name"].ToString();
+                    if (result["name"].ToString().Length < 22)
+                    {
+                        TitleLabel.Text = result["name"].ToString();
+                    }
+                    else if (result["name"].ToString().Length < 63)
+                    {
+                        TitleLabel.Font = new Font("Segoe UI", 18);
+                        TitleLabel.Text = result["name"].ToString();
+                    }
+                    else
+                    {
+                        TitleLabel.Font = new Font("Segoe UI", 14);
+                        TitleLabel.Text = result["name"].ToString();
+                    }
                     GenreLabel.Text = result["genre"].ToString();
                     PageCount.Text = result["pages"].ToString();
                 }
@@ -75,6 +116,11 @@ namespace MyBook.Forms.ChallengeSubForms
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CommentBox_Enter(object sender, EventArgs e)
+        {
+            TitleLabel.Focus();
         }
     }
 }

@@ -190,7 +190,6 @@ namespace MyBook.forms
 			int number = int.Parse(BookBoxNumber.Text) - 1;
 			int readCount = CheckReadCount();
 
-            MessageBox.Show(BookBoxNumber.Name.ToString());
 			if (number < readCount)
             {
 				List<int> ids = new List<int>();
