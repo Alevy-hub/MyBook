@@ -14,6 +14,7 @@ namespace MyBook.Forms.ChallengeSubForms
         public SetChallenge()
         {
             InitializeComponent();
+            TitleLabel.Text += forms.ChallengeScreen.choosedYear;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -23,11 +24,11 @@ namespace MyBook.Forms.ChallengeSubForms
 
         private void SetButton_Click(object sender, EventArgs e)
         {
-            if (IsYearGood() && IsCountGood())
+            if (IsCountGood())
             {
                 Database databaseObject = new Database();
                 SQLiteCommand addChallenge = new SQLiteCommand("INSERT INTO challenges VALUES (@year, @count)", databaseObject.dbConnection);
-                addChallenge.Parameters.AddWithValue("@year", YearNumeric.Value);
+                addChallenge.Parameters.AddWithValue("@year", int.Parse(forms.ChallengeScreen.choosedYear));
                 addChallenge.Parameters.AddWithValue("@count", CountNumeric.Value);
                 databaseObject.OpenConnection();
                 addChallenge.ExecuteNonQuery();
@@ -39,18 +40,6 @@ namespace MyBook.Forms.ChallengeSubForms
                 MessageBox.Show("Wprowadź poprawne wartości!");
             }
 
-        }
-
-        private bool IsYearGood()
-        {
-            if (YearNumeric.Value < 2000 || YearNumeric.Value > 3000)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
         }
 
         private bool IsCountGood()

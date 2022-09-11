@@ -13,6 +13,7 @@ namespace MyBook.forms
 	public partial class ChallengeScreen : Form
 	{
 		public static string readBookId;
+		public static string choosedYear;
 		public ChallengeScreen()
 		{
 			InitializeComponent();
@@ -26,6 +27,7 @@ namespace MyBook.forms
 			ChallengeYearLabel.Text = DateTime.Now.Year.ToString();
 			ChangeYearButtonShow();
 			FillReadBooks();
+			SetChallengeButton.Visible = true;
 		}
 
 		private void ShowSetChallengeButton()
@@ -33,10 +35,20 @@ namespace MyBook.forms
 			if (CheckIfChallengeSet())
 			{
 				SetChallengeButton.Visible = false;
+				SetChallengeButtonSmall.Visible = false;
 			}
 			else
 			{
-				SetChallengeButton.Visible = true;
+				if(CheckReadCount() > 0)
+				{
+					SetChallengeButton.Visible = false;
+					SetChallengeButtonSmall.Visible = true;
+				}
+				else
+				{
+					SetChallengeButton.Visible = true;
+					SetChallengeButtonSmall.Visible = false;
+				}
 			}
 		}
 
@@ -67,21 +79,19 @@ namespace MyBook.forms
 		private bool CheckIfChallengeSet()
 		{
 			bool hasRows = false;
-			Database databaseObject = new Database();
-			SQLiteCommand checkChallenge = new SQLiteCommand("SELECT year FROM challenges WHERE year = @challengeYear", databaseObject.dbConnection);
-			checkChallenge.Parameters.AddWithValue("@challengeYear", int.Parse(ChallengeYearLabel.Text.ToString()));
-			databaseObject.OpenConnection();
-			SQLiteDataReader result = checkChallenge.ExecuteReader();
-			if (result.HasRows)
-			{
-				hasRows = true;
-			}
+            Database databaseObject = new Database();
+            SQLiteCommand checkChallenge = new SQLiteCommand("SELECT year FROM challenges WHERE year = @challengeYear", databaseObject.dbConnection);
+            checkChallenge.Parameters.AddWithValue("@challengeYear", int.Parse(ChallengeYearLabel.Text.ToString()));
+            databaseObject.OpenConnection();
+            SQLiteDataReader result = checkChallenge.ExecuteReader();
+            if (result.HasRows)
+            {
+                hasRows = true;
+            }
 
-			databaseObject.CloseConnection();
+            databaseObject.CloseConnection();
 
-
-
-			if (hasRows == true)
+            if (hasRows == true)
 			{
 				return true;
 			}
@@ -92,25 +102,27 @@ namespace MyBook.forms
 		}
 
 		private int CheckReadCount()
-        {
-			Database databaseObject = new Database();
-			databaseObject.OpenConnection();
-			SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear", databaseObject.dbConnection);
-			checkCount.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
-			SQLiteDataReader result = checkCount.ExecuteReader();
-			if (result.HasRows)
-			{
-				if (result.Read())
-				{
-					return int.Parse(result[0].ToString());
-				}
-			}
-			databaseObject.CloseConnection();
-			return 0;
+		{
+			int count = 0;
+            Database databaseObject = new Database();
+            SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear", databaseObject.dbConnection);
+            checkCount.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
+            databaseObject.OpenConnection();
+            SQLiteDataReader result = checkCount.ExecuteReader();
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    count = int.Parse(result[0].ToString());
+                }
+            }
+            databaseObject.CloseConnection();
+            return count;
 		}
 
 		private void SetChallengeButton_Click(object sender, EventArgs e)
 		{
+			choosedYear = ChallengeYearLabel.Text;
 			SetChallenge SetChallengeForm = new SetChallenge();
 			SetChallengeForm.FormClosed += SetChallengeForm_FormClosed;
 			SetChallengeForm.ShowDialog();
@@ -143,55 +155,64 @@ namespace MyBook.forms
 
 		private void FillChallengeScreenBlank()
 		{
-			if (CheckIfChallengeSet())
-			{
-				int count = CheckChallengeCount();
-				if (count != 0)
-				{
-					int row = 0;
-					int column = 0;
-					for (int i = 0; i < count; i++)
-					{
-						Panel Book = new Panel();
-						ChallengeBoxesContainer.Controls.Add(Book);
-						Book.Top = row * 105;
-						Book.Left = column * 105 + 20;
-						Book.BorderStyle = BorderStyle.FixedSingle;
-						Book.Height = 100;
-						Book.Width = 100;
-						Book.Name = "BookBox" + i.ToString();
+            int challengeCount = CheckChallengeCount();
+            int readCount = CheckReadCount();
+            int count = 0;
 
-						Label Number = new Label();
-						Book.Controls.Add(Number);
-						Number.Dock = DockStyle.Fill;
-						int countForLabel = i + 1;
-						Number.Text = countForLabel.ToString();
-						Number.TextAlign = ContentAlignment.MiddleCenter;
-						Number.Font = new Font("Segoe UI", 30, FontStyle.Bold);
-						Number.Name = "BookBoxNumber" + i.ToString();
-						Number.Click += BookBoxNumber_Click;
+            if (challengeCount >= readCount)
+            {
+                count = challengeCount;
+            }
+            else
+            {
+                count = readCount;
+            }
+
+            if (count != 0)
+            {
+                int row = 0;
+                int column = 0;
+                for (int i = 0; i < count; i++)
+                {
+                    Panel Book = new Panel();
+                    ChallengeBoxesContainer.Controls.Add(Book);
+                    Book.Top = row * 105;
+                    Book.Left = column * 105 + 20;
+                    Book.BorderStyle = BorderStyle.FixedSingle;
+                    Book.Height = 100;
+                    Book.Width = 100;
+                    Book.Name = "BookBox" + i.ToString();
+
+                    Label Number = new Label();
+                    Book.Controls.Add(Number);
+                    Number.Dock = DockStyle.Fill;
+                    int countForLabel = i + 1;
+                    Number.Text = countForLabel.ToString();
+                    Number.TextAlign = ContentAlignment.MiddleCenter;
+                    Number.Font = new Font("Segoe UI", 30, FontStyle.Bold);
+                    Number.Name = "BookBoxNumber" + i.ToString();
+                    Number.Click += BookBoxNumber_Click;
 
 
-						column++;
-						if (column == 10)
-						{
-							column = 0;
-							row++;
-						}
-					}
-				}
-				ChallengeBoxesContainer.AutoScroll = true;
-			}
-		}
+                    column++;
+                    if (column == 10)
+                    {
+                        column = 0;
+                        row++;
+                    }
+                }
+                ChallengeBoxesContainer.AutoScroll = true;
+            }
+        }
 
 		private void BookBoxNumber_Click(object sender, EventArgs e)
 		{
-            Label BookBoxNumber = sender as Label;
+			Label BookBoxNumber = sender as Label;
 			int number = int.Parse(BookBoxNumber.Text) - 1;
 			int readCount = CheckReadCount();
 
 			if (number < readCount)
-            {
+			{
 				List<int> ids = new List<int>();
 				Database databaseObject = new Database();
 				databaseObject.OpenConnection();
@@ -207,84 +228,74 @@ namespace MyBook.forms
 						i++;
 					}
 				}
+				databaseObject.CloseConnection();
 
 				readBookId = ids[number].ToString();
-
-				databaseObject.CloseConnection();
 
 				BookInfo bookInfo = new BookInfo();
 				bookInfo.ShowDialog();
 			}
-        }
+		}
 
 		private void FillReadBooks()
 		{
-			int readCount = 0;
-			if (CheckIfChallengeSet())
-			{
-				readCount = CheckReadCount();
-			}
+            int readCount = CheckReadCount();
+            int i = 0;
+
+            if (readCount != 0)
+            {
+                List<int> rates = new List<int>();
+                Database databaseObject = new Database();
+                databaseObject.OpenConnection();
+                SQLiteCommand checkRating = new SQLiteCommand("SELECT cast(rating as int) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear ORDER BY finish_date ASC", databaseObject.dbConnection);
+                checkRating.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
+                SQLiteDataReader result = checkRating.ExecuteReader();
+                if (result.HasRows)
+                {
+                    i = 0;
+                    while (result.Read() && i < readCount)
+                    {
+                        rates.Add(int.Parse(result[0].ToString()));
+                        i++;
+                    }
+                }
+                databaseObject.CloseConnection();
 
 
-			if (readCount != 0)
-			{
-				List<int> rates = new List<int>();
-				Database databaseObject = new Database();
-				databaseObject.OpenConnection();
-				SQLiteCommand checkRating = new SQLiteCommand("SELECT cast(rating as int) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear ORDER BY finish_date ASC", databaseObject.dbConnection);
-				checkRating.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
-				SQLiteDataReader result = checkRating.ExecuteReader();
-				if (result.HasRows)
-				{
-					int i = 0;
-					while (result.Read() && i < readCount)
-					{
-						rates.Add(int.Parse(result[0].ToString()));
-						i++;
-					}
-				}
-
-				databaseObject.CloseConnection();
-
-				int challengeCount = CheckChallengeCount();
-
-				if (challengeCount >= readCount)
-				{
-					int i = 0;
-					foreach (Control c in ChallengeBoxesContainer.Controls)
-					{
-						if (c.Name == "BookBox" + i.ToString() && i < readCount)
-						{
-							int rate = rates[i];
-							i++;
-							if (rate == 0)
-							{
-								c.BackColor = Properties.Settings.Default.colorNone;
-							}
-							else if (rate == 1)
-							{
-								c.BackColor = Properties.Settings.Default.color1;
-							}
-							else if (rate == 2)
-							{
-								c.BackColor = Properties.Settings.Default.color2;
-							}
-							else if (rate == 3)
-							{
-								c.BackColor = Properties.Settings.Default.color3;
-							}
-							else if (rate == 4)
-							{
-								c.BackColor = Properties.Settings.Default.color4;
-							}
-							else if (rate == 5)
-							{
-								c.BackColor = Properties.Settings.Default.color5;
-							}
-						}
-					}
-				}
-			}
+                i = 0;
+                foreach (Control c in ChallengeBoxesContainer.Controls)
+                {
+                    if (c.Name == "BookBox" + i.ToString() && i < readCount)
+                    {
+                        int rate = rates[i];
+                        i++;
+                        if (rate == 0)
+                        {
+                            c.BackColor = Properties.Settings.Default.colorNone;
+                        }
+                        else if (rate == 1)
+                        {
+                            c.BackColor = Properties.Settings.Default.color1;
+                        }
+                        else if (rate == 2)
+                        {
+                            c.BackColor = Properties.Settings.Default.color2;
+                        }
+                        else if (rate == 3)
+                        {
+                            c.BackColor = Properties.Settings.Default.color3;
+                        }
+                        else if (rate == 4)
+                        {
+                            c.BackColor = Properties.Settings.Default.color4;
+                        }
+                        else if (rate == 5)
+                        {
+                            c.BackColor = Properties.Settings.Default.color5;
+                        }
+                    }
+                }
+            }
 		}
 
 		private void ChangeYearButtonShow()

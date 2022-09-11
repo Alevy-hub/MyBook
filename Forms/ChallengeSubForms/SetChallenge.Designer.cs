@@ -32,14 +32,11 @@ namespace MyBook.Forms.ChallengeSubForms
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.BottomBar = new System.Windows.Forms.Panel();
-            this.YearNumeric = new System.Windows.Forms.NumericUpDown();
             this.CountNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SetButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.TopBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.YearNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountNumeric)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +59,7 @@ namespace MyBook.Forms.ChallengeSubForms
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(400, 68);
             this.TitleLabel.TabIndex = 0;
-            this.TitleLabel.Text = "USTAW CHALLENGE";
+            this.TitleLabel.Text = "USTAW CHALLENGE - ";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BottomBar
@@ -74,35 +71,11 @@ namespace MyBook.Forms.ChallengeSubForms
             this.BottomBar.Size = new System.Drawing.Size(400, 20);
             this.BottomBar.TabIndex = 2;
             // 
-            // YearNumeric
-            // 
-            this.YearNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.YearNumeric.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.YearNumeric.Location = new System.Drawing.Point(50, 108);
-            this.YearNumeric.Maximum = new decimal(new int[] {
-            2999,
-            0,
-            0,
-            0});
-            this.YearNumeric.Minimum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.YearNumeric.Name = "YearNumeric";
-            this.YearNumeric.Size = new System.Drawing.Size(83, 43);
-            this.YearNumeric.TabIndex = 3;
-            this.YearNumeric.Value = new decimal(new int[] {
-            2022,
-            0,
-            0,
-            0});
-            // 
             // CountNumeric
             // 
             this.CountNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             this.CountNumeric.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CountNumeric.Location = new System.Drawing.Point(266, 108);
+            this.CountNumeric.Location = new System.Drawing.Point(159, 108);
             this.CountNumeric.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -122,23 +95,12 @@ namespace MyBook.Forms.ChallengeSubForms
             0,
             0});
             // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label1.Location = new System.Drawing.Point(50, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 25);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "ROK";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label2.Location = new System.Drawing.Point(235, 80);
+            this.label2.Location = new System.Drawing.Point(129, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 25);
             this.label2.TabIndex = 6;
@@ -182,9 +144,7 @@ namespace MyBook.Forms.ChallengeSubForms
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.SetButton);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.CountNumeric);
-            this.Controls.Add(this.YearNumeric);
             this.Controls.Add(this.BottomBar);
             this.Controls.Add(this.TopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -192,7 +152,6 @@ namespace MyBook.Forms.ChallengeSubForms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SetChallenge";
             this.TopBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.YearNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CountNumeric)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -204,9 +163,7 @@ namespace MyBook.Forms.ChallengeSubForms
         private System.Windows.Forms.Panel TopBar;
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Panel BottomBar;
-        private System.Windows.Forms.NumericUpDown YearNumeric;
         private System.Windows.Forms.NumericUpDown CountNumeric;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button SetButton;
         private System.Windows.Forms.Button CloseButton;

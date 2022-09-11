@@ -98,6 +98,7 @@ namespace MyBook.Forms.ChallengeSubForms
             }
             databaseObject.CloseConnection();
 
+
             databaseObject.OpenConnection();
             SQLiteCommand checkAuthorDetails = new SQLiteCommand("SELECT name FROM authors WHERE id = @authorId", databaseObject.dbConnection);
             checkAuthorDetails.Parameters.AddWithValue("@authorId", authorId);

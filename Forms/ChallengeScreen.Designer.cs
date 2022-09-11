@@ -35,6 +35,7 @@ namespace MyBook.forms
             this.IncreaseYearButton = new System.Windows.Forms.Button();
             this.DecreaseYearButton = new System.Windows.Forms.Button();
             this.ChallengeBoxesContainer = new System.Windows.Forms.Panel();
+            this.SetChallengeButtonSmall = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.ChallengeBoxesContainer.SuspendLayout();
             this.SuspendLayout();
@@ -112,12 +113,29 @@ namespace MyBook.forms
             this.ChallengeBoxesContainer.Size = new System.Drawing.Size(1090, 723);
             this.ChallengeBoxesContainer.TabIndex = 5;
             // 
+            // SetChallengeButtonSmall
+            // 
+            this.SetChallengeButtonSmall.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SetChallengeButtonSmall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.SetChallengeButtonSmall.FlatAppearance.BorderSize = 0;
+            this.SetChallengeButtonSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SetChallengeButtonSmall.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SetChallengeButtonSmall.Location = new System.Drawing.Point(928, 14);
+            this.SetChallengeButtonSmall.Name = "SetChallengeButtonSmall";
+            this.SetChallengeButtonSmall.Size = new System.Drawing.Size(150, 50);
+            this.SetChallengeButtonSmall.TabIndex = 2;
+            this.SetChallengeButtonSmall.Text = "UTWÓRZ CHALLENGE";
+            this.SetChallengeButtonSmall.UseVisualStyleBackColor = false;
+            this.SetChallengeButtonSmall.Visible = false;
+            this.SetChallengeButtonSmall.Click += new System.EventHandler(this.SetChallengeButton_Click);
+            // 
             // ChallengeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(1090, 800);
+            this.Controls.Add(this.SetChallengeButtonSmall);
             this.Controls.Add(this.ChallengeBoxesContainer);
             this.Controls.Add(this.DecreaseYearButton);
             this.Controls.Add(this.IncreaseYearButton);
@@ -141,5 +159,6 @@ namespace MyBook.forms
         private System.Windows.Forms.Button IncreaseYearButton;
         private System.Windows.Forms.Button DecreaseYearButton;
         private System.Windows.Forms.Panel ChallengeBoxesContainer;
+        private System.Windows.Forms.Button SetChallengeButtonSmall;
     }
 }

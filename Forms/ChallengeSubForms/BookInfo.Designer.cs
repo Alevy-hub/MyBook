@@ -30,8 +30,6 @@ namespace MyBook.Forms.ChallengeSubForms
         private void InitializeComponent()
         {
             this.TopBar = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.CloseButton = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.BottomBar = new System.Windows.Forms.Panel();
@@ -63,8 +61,8 @@ namespace MyBook.Forms.ChallengeSubForms
             this.StartDateLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.RateLabel = new System.Windows.Forms.Label();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.TopBar.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.Container.SuspendLayout();
             this.FormPagesPanel.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -80,7 +78,7 @@ namespace MyBook.Forms.ChallengeSubForms
             // TopBar
             // 
             this.TopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
-            this.TopBar.Controls.Add(this.panel9);
+            this.TopBar.Controls.Add(this.CloseButton);
             this.TopBar.Controls.Add(this.panel2);
             this.TopBar.Controls.Add(this.TitleLabel);
             this.TopBar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -88,27 +86,6 @@ namespace MyBook.Forms.ChallengeSubForms
             this.TopBar.Name = "TopBar";
             this.TopBar.Size = new System.Drawing.Size(466, 70);
             this.TopBar.TabIndex = 1;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.CloseButton);
-            this.panel9.Location = new System.Drawing.Point(436, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(30, 30);
-            this.panel9.TabIndex = 18;
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CloseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.CloseButton.Location = new System.Drawing.Point(0, 0);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(30, 30);
-            this.CloseButton.TabIndex = 0;
-            this.CloseButton.Text = "X";
-            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // panel2
             // 
@@ -440,6 +417,20 @@ namespace MyBook.Forms.ChallengeSubForms
             this.RateLabel.Text = "X";
             this.RateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // CloseButton
+            // 
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CloseButton.Location = new System.Drawing.Point(426, 0);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(40, 40);
+            this.CloseButton.TabIndex = 18;
+            this.CloseButton.Text = "X";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
             // BookInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -455,7 +446,6 @@ namespace MyBook.Forms.ChallengeSubForms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BookInfo";
             this.TopBar.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.Container.ResumeLayout(false);
             this.FormPagesPanel.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -497,8 +487,6 @@ namespace MyBook.Forms.ChallengeSubForms
         private System.Windows.Forms.Label StartDateLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label RateLabel;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
@@ -506,5 +494,6 @@ namespace MyBook.Forms.ChallengeSubForms
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label AuthorLabel;
+        private System.Windows.Forms.Button CloseButton;
     }
 }
