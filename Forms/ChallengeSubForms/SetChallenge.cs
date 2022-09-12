@@ -15,6 +15,11 @@ namespace MyBook.Forms.ChallengeSubForms
         {
             InitializeComponent();
             TitleLabel.Text += forms.ChallengeScreen.choosedYear;
+
+            if (forms.ChallengeScreen.challengeCount != 0)
+            {
+                CountNumeric.Value = forms.ChallengeScreen.challengeCount;
+            }
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
@@ -28,7 +33,7 @@ namespace MyBook.Forms.ChallengeSubForms
             {
 
                 Database databaseObject = new Database();
-                SQLiteCommand addChallenge = new SQLiteCommand("INSERT INTO challenges VALUES (@year, @count)", databaseObject.dbConnection);
+                SQLiteCommand addChallenge = new SQLiteCommand("INSERT OR REPLACE INTO challenges VALUES (@year, @count)", databaseObject.dbConnection);
                 addChallenge.Parameters.AddWithValue("@year", int.Parse(forms.ChallengeScreen.choosedYear));
                 addChallenge.Parameters.AddWithValue("@count", CountNumeric.Value);
                 databaseObject.OpenConnection();

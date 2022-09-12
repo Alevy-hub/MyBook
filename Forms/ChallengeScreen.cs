@@ -14,6 +14,7 @@ namespace MyBook.forms
 	{
 		public static string readBookId;
 		public static string choosedYear;
+		public static int challengeCount = 0;
 
 		public ChallengeScreen()
 		{
@@ -25,7 +26,8 @@ namespace MyBook.forms
 			ShowSetChallengeButton();
 			FillChallengeScreenBlank();
 			ChallengeYearLabel.Text = DateTime.Now.Year.ToString();
-			ChangeYearButtonShow();		
+			ChangeYearButtonShow();
+			EditChallengeButtonShow();
 		}
 
 		private void ShowSetChallengeButton()
@@ -151,6 +153,7 @@ namespace MyBook.forms
 		{
 			ShowSetChallengeButton();
 			FillChallengeScreenBlank();
+			EditChallengeButtonShow();
 		}
 
 		private int CheckChallengeCount()
@@ -333,23 +336,7 @@ namespace MyBook.forms
 				IncreaseYearButton.Visible = true;
 			}
 
-			Database databaseObject = new Database();
-			databaseObject.OpenConnection();
-			SQLiteCommand checkYear = new SQLiteCommand("SELECT year FROM challenges WHERE year = @challengeYear", databaseObject.dbConnection);
-			checkYear.Parameters.AddWithValue("@challengeYear", int.Parse(ChallengeYearLabel.Text) - 1);
-			SQLiteDataReader result = checkYear.ExecuteReader();
-			if (result.HasRows)
-			{
-				DecreaseYearButton.Visible = true;
-			}
-			else
-			{
-				DecreaseYearButton.Visible = false;
-			}
-			result.Close();
-			databaseObject.CloseConnection();
-
-            if (CheckIfChallengeSet(int.Parse(ChallengeYearLabel.Text) - 1) || CheckReadCount(int.Parse(ChallengeYearLabel.Text) - 1) != 0)
+            if (CheckIfChallengeSet(int.Parse(ChallengeYearLabel.Text) - 1) || CheckReadCount(int.Parse(ChallengeYearLabel.Text) - 1) != 0 || int.Parse(ChallengeYearLabel.Text) - 1 == DateTime.Now.Year)
             {
                 DecreaseYearButton.Visible = true;
             }
@@ -368,8 +355,7 @@ namespace MyBook.forms
 			ClearPanel();
 			FillChallengeScreenBlank();
 			ShowSetChallengeButton();
-
-
+			EditChallengeButtonShow();
 		}
 
 		private void DecreaseYearButton_Click(object sender, EventArgs e)
@@ -381,6 +367,38 @@ namespace MyBook.forms
 			ShowSetChallengeButton();
 			ClearPanel();
 			FillChallengeScreenBlank();
+			EditChallengeButtonShow();
 		}
+
+		private void EditChallengeButtonShow()
+        {
+			if (CheckIfChallengeSet(int.Parse(ChallengeYearLabel.Text)))
+            {
+				EditChallengeButon.Visible = true;
+            }
+            else
+            {
+				EditChallengeButon.Visible = false;
+            }
+        }
+
+        private void EditChallengeButon_Click(object sender, EventArgs e)
+        {
+			challengeCount = CheckChallengeCount();
+			choosedYear = ChallengeYearLabel.Text;
+
+			SetChallenge EditChallenge = new SetChallenge();
+			EditChallenge.FormClosed += EditChallenge_FormClosed;
+			EditChallenge.ShowDialog();
+		}
+
+		private void EditChallenge_FormClosed(object sender, EventArgs e)
+        {
+			ClearPanel();
+			ShowSetChallengeButton();
+			FillChallengeScreenBlank();
+			EditChallengeButtonShow();
+		}
+
 	}
 }

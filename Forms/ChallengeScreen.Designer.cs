@@ -36,6 +36,7 @@ namespace MyBook.forms
             this.DecreaseYearButton = new System.Windows.Forms.Button();
             this.ChallengeBoxesContainer = new System.Windows.Forms.Panel();
             this.SetChallengeButtonSmall = new System.Windows.Forms.Button();
+            this.EditChallengeButon = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.ChallengeBoxesContainer.SuspendLayout();
             this.SuspendLayout();
@@ -120,7 +121,7 @@ namespace MyBook.forms
             this.SetChallengeButtonSmall.FlatAppearance.BorderSize = 0;
             this.SetChallengeButtonSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SetChallengeButtonSmall.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SetChallengeButtonSmall.Location = new System.Drawing.Point(928, 14);
+            this.SetChallengeButtonSmall.Location = new System.Drawing.Point(928, 12);
             this.SetChallengeButtonSmall.Name = "SetChallengeButtonSmall";
             this.SetChallengeButtonSmall.Size = new System.Drawing.Size(150, 50);
             this.SetChallengeButtonSmall.TabIndex = 2;
@@ -129,12 +130,29 @@ namespace MyBook.forms
             this.SetChallengeButtonSmall.Visible = false;
             this.SetChallengeButtonSmall.Click += new System.EventHandler(this.SetChallengeButton_Click);
             // 
+            // EditChallengeButon
+            // 
+            this.EditChallengeButon.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EditChallengeButon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.EditChallengeButon.FlatAppearance.BorderSize = 0;
+            this.EditChallengeButon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditChallengeButon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.EditChallengeButon.Location = new System.Drawing.Point(12, 12);
+            this.EditChallengeButon.Name = "EditChallengeButon";
+            this.EditChallengeButon.Size = new System.Drawing.Size(150, 50);
+            this.EditChallengeButon.TabIndex = 6;
+            this.EditChallengeButon.Text = "EDYTUJ CHALLENGE";
+            this.EditChallengeButon.UseVisualStyleBackColor = false;
+            this.EditChallengeButon.Visible = false;
+            this.EditChallengeButon.Click += new System.EventHandler(this.EditChallengeButon_Click);
+            // 
             // ChallengeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(1090, 800);
+            this.Controls.Add(this.EditChallengeButon);
             this.Controls.Add(this.SetChallengeButtonSmall);
             this.Controls.Add(this.ChallengeBoxesContainer);
             this.Controls.Add(this.DecreaseYearButton);
@@ -160,5 +178,6 @@ namespace MyBook.forms
         private System.Windows.Forms.Button DecreaseYearButton;
         private System.Windows.Forms.Panel ChallengeBoxesContainer;
         private System.Windows.Forms.Button SetChallengeButtonSmall;
+        private System.Windows.Forms.Button EditChallengeButon;
     }
 }
