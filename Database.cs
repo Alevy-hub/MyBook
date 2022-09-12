@@ -79,6 +79,8 @@ namespace MyBook
 				dbConnection.Close();
 				GC.Collect();
 				GC.WaitForPendingFinalizers();
+				SQLiteConnection.ClearAllPools();
+				
 			}
 		}
 

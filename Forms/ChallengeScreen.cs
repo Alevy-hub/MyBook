@@ -14,6 +14,7 @@ namespace MyBook.forms
 	{
 		public static string readBookId;
 		public static string choosedYear;
+
 		public ChallengeScreen()
 		{
 			InitializeComponent();
@@ -23,11 +24,8 @@ namespace MyBook.forms
 		{
 			ShowSetChallengeButton();
 			FillChallengeScreenBlank();
-
 			ChallengeYearLabel.Text = DateTime.Now.Year.ToString();
-			ChangeYearButtonShow();
-			FillReadBooks();
-			SetChallengeButton.Visible = true;
+			ChangeYearButtonShow();		
 		}
 
 		private void ShowSetChallengeButton()
@@ -115,9 +113,10 @@ namespace MyBook.forms
                 {
                     count = int.Parse(result[0].ToString());
                 }
-            }
-            databaseObject.CloseConnection();
-            return count;
+			}
+			result.Close();
+			databaseObject.CloseConnection();
+			return count;
 		}
 
 		private void SetChallengeButton_Click(object sender, EventArgs e)
@@ -149,6 +148,7 @@ namespace MyBook.forms
 					count = int.Parse(result["count"].ToString());
 				}
 			}
+			result.Close();
 			databaseObject.CloseConnection();
 			return count; 
 		}
@@ -203,7 +203,12 @@ namespace MyBook.forms
                 }
                 ChallengeBoxesContainer.AutoScroll = true;
             }
-        }
+
+			if(readCount != 0)
+            {
+				FillReadBooks(readCount);
+            }
+		}
 
 		private void BookBoxNumber_Click(object sender, EventArgs e)
 		{
@@ -237,13 +242,11 @@ namespace MyBook.forms
 			}
 		}
 
-		private void FillReadBooks()
+		private void FillReadBooks(int readCount)
 		{
-            int readCount = CheckReadCount();
-            int i = 0;
-
             if (readCount != 0)
             {
+				int i = 0;
                 List<int> rates = new List<int>();
                 Database databaseObject = new Database();
                 databaseObject.OpenConnection();
@@ -322,6 +325,7 @@ namespace MyBook.forms
 			{
 				DecreaseYearButton.Visible = false;
 			}
+			result.Close();
 			databaseObject.CloseConnection();
 		}
 
@@ -334,7 +338,8 @@ namespace MyBook.forms
 			ClearPanel();
 			FillChallengeScreenBlank();
 			ShowSetChallengeButton();
-			FillReadBooks();
+
+
 		}
 
 		private void DecreaseYearButton_Click(object sender, EventArgs e)
@@ -346,7 +351,6 @@ namespace MyBook.forms
 			ShowSetChallengeButton();
 			ClearPanel();
 			FillChallengeScreenBlank();
-			FillReadBooks();
 		}
 	}
 }

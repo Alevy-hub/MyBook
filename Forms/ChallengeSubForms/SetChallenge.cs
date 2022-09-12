@@ -26,6 +26,7 @@ namespace MyBook.Forms.ChallengeSubForms
         {
             if (IsCountGood())
             {
+
                 Database databaseObject = new Database();
                 SQLiteCommand addChallenge = new SQLiteCommand("INSERT INTO challenges VALUES (@year, @count)", databaseObject.dbConnection);
                 addChallenge.Parameters.AddWithValue("@year", int.Parse(forms.ChallengeScreen.choosedYear));
