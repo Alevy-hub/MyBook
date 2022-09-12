@@ -30,7 +30,7 @@ namespace MyBook.forms
 
 		private void ShowSetChallengeButton()
 		{
-			if (CheckIfChallengeSet())
+			if (CheckIfChallengeSet(int.Parse(ChallengeYearLabel.Text.ToString())))
 			{
 				SetChallengeButton.Visible = false;
 				SetChallengeButtonSmall.Visible = false;
@@ -74,12 +74,12 @@ namespace MyBook.forms
 			}
 		}
 
-		private bool CheckIfChallengeSet()
+		private bool CheckIfChallengeSet(int year)
 		{
 			bool hasRows = false;
             Database databaseObject = new Database();
             SQLiteCommand checkChallenge = new SQLiteCommand("SELECT year FROM challenges WHERE year = @challengeYear", databaseObject.dbConnection);
-            checkChallenge.Parameters.AddWithValue("@challengeYear", int.Parse(ChallengeYearLabel.Text.ToString()));
+            checkChallenge.Parameters.AddWithValue("@challengeYear", year);
             databaseObject.OpenConnection();
             SQLiteDataReader result = checkChallenge.ExecuteReader();
             if (result.HasRows)
@@ -113,6 +113,26 @@ namespace MyBook.forms
                 {
                     count = int.Parse(result[0].ToString());
                 }
+			}
+			result.Close();
+			databaseObject.CloseConnection();
+			return count;
+		}
+
+		private int CheckReadCount(int year)
+		{
+			int count = 0;
+			Database databaseObject = new Database();
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear", databaseObject.dbConnection);
+			checkCount.Parameters.AddWithValue("@finishYear", year);
+			databaseObject.OpenConnection();
+			SQLiteDataReader result = checkCount.ExecuteReader();
+			if (result.HasRows)
+			{
+				if (result.Read())
+				{
+					count = int.Parse(result[0].ToString());
+				}
 			}
 			result.Close();
 			databaseObject.CloseConnection();
@@ -303,6 +323,7 @@ namespace MyBook.forms
 
 		private void ChangeYearButtonShow()
 		{
+
 			if (int.Parse(ChallengeYearLabel.Text) > DateTime.Now.Year)
 			{
 				IncreaseYearButton.Visible = false;
@@ -327,7 +348,16 @@ namespace MyBook.forms
 			}
 			result.Close();
 			databaseObject.CloseConnection();
-		}
+
+            if (CheckIfChallengeSet(int.Parse(ChallengeYearLabel.Text) - 1) || CheckReadCount(int.Parse(ChallengeYearLabel.Text) - 1) != 0)
+            {
+                DecreaseYearButton.Visible = true;
+            }
+            else
+            {
+                DecreaseYearButton.Visible = false;
+            }
+        }
 
 		private void IncreaseYearButton_Click(object sender, EventArgs e)
 		{
