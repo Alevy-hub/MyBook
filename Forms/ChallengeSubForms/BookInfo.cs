@@ -13,6 +13,9 @@ namespace MyBook.Forms.ChallengeSubForms
 {
     public partial class BookInfo : Form
     {
+        public static string fromWhere;
+        public static string readBookId;
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -45,7 +48,7 @@ namespace MyBook.Forms.ChallengeSubForms
             Database databaseObject = new Database();
             databaseObject.OpenConnection();
             SQLiteCommand checkReadDetails = new SQLiteCommand("SELECT book_id, start_date, finish_date, rating, form, comment FROM read_books WHERE id = @readId", databaseObject.dbConnection);
-            checkReadDetails.Parameters.AddWithValue("@readId", ChallengeScreen.readBookId);
+            checkReadDetails.Parameters.AddWithValue("@readId", readBookId);
             SQLiteDataReader result = checkReadDetails.ExecuteReader();
             if (result.HasRows)
             {

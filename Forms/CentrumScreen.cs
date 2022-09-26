@@ -34,6 +34,7 @@ namespace MyBook.forms
 
         public void FillAktualnieCzytaneGrid()
         {
+            AktualnieCzytaneGrid.Columns[1].DefaultCellStyle.Format = "dd.MM.yyyy";
             Database databaseObject = new Database();
             databaseObject.OpenConnection();
             SQLiteCommand FillGridQuery = new SQLiteCommand("SELECT b.name, rb.start_date from books b join read_books rb on b.id = rb.book_id where rb.start_date not null and rb.finish_date is null", databaseObject.dbConnection);
@@ -45,7 +46,7 @@ namespace MyBook.forms
                     AktualnieCzytaneGrid.Rows.Add(new object[]
                     {
                         result.GetValue(0),
-                        DateTime.ParseExact((string)result.GetValue(1), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture).ToString("dd.MM.yyyy"),
+                        DateTime.ParseExact((string)result.GetValue(1), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
                         "Zakończ",
                         "Usuń"
                     });
@@ -75,7 +76,8 @@ namespace MyBook.forms
                 databaseObject.OpenConnection();
                 SQLiteCommand checkReadId = new SQLiteCommand("SELECT id FROM read_books WHERE book_id = (SELECT id FROM books where name = @bookName) and start_date = @startDate", databaseObject.dbConnection);
                 checkReadId.Parameters.AddWithValue("@bookName", AktualnieCzytaneGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-                checkReadId.Parameters.AddWithValue("@startDate", DateTime.ParseExact((string)AktualnieCzytaneGrid.Rows[e.RowIndex].Cells[1].Value, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"));
+                DateTime startDate = (DateTime)AktualnieCzytaneGrid.Rows[e.RowIndex].Cells[1].Value;
+                checkReadId.Parameters.AddWithValue("@startDate", startDate.ToString("yyyy-MM-dd"));
 
                 SQLiteDataReader result = checkReadId.ExecuteReader();
                 if (result.HasRows)

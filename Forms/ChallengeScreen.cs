@@ -258,7 +258,7 @@ namespace MyBook.forms
 				}
 				databaseObject.CloseConnection();
 
-				readBookId = ids[number].ToString();
+				BookInfo.readBookId = ids[number].ToString();
 
 				BookInfo bookInfo = new BookInfo();
 				bookInfo.ShowDialog();

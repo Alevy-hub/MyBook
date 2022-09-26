@@ -29,21 +29,22 @@ namespace MyBook.forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ContainerPanel = new System.Windows.Forms.Panel();
             this.AktualnieCzytanePanel = new System.Windows.Forms.Panel();
             this.AktualnieCzytaneGrid = new System.Windows.Forms.DataGridView();
-            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Finish = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AktualnieCzytaneLabel = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.TestFillDb = new System.Windows.Forms.Button();
             this.AddBookButton = new System.Windows.Forms.Button();
+            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Finish = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ContainerPanel.SuspendLayout();
             this.AktualnieCzytanePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AktualnieCzytaneGrid)).BeginInit();
@@ -78,83 +79,51 @@ namespace MyBook.forms
             this.AktualnieCzytaneGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.AktualnieCzytaneGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.AktualnieCzytaneGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AktualnieCzytaneGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AktualnieCzytaneGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.AktualnieCzytaneGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AktualnieCzytaneGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TitleColumn,
             this.StartDateColumn,
             this.Finish,
             this.Delete});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AktualnieCzytaneGrid.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(120)))), ((int)(((byte)(83)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AktualnieCzytaneGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.AktualnieCzytaneGrid.EnableHeadersVisualStyles = false;
+            this.AktualnieCzytaneGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
             this.AktualnieCzytaneGrid.Location = new System.Drawing.Point(38, 56);
             this.AktualnieCzytaneGrid.Name = "AktualnieCzytaneGrid";
             this.AktualnieCzytaneGrid.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AktualnieCzytaneGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AktualnieCzytaneGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.AktualnieCzytaneGrid.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AktualnieCzytaneGrid.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AktualnieCzytaneGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.AktualnieCzytaneGrid.RowTemplate.Height = 50;
             this.AktualnieCzytaneGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.AktualnieCzytaneGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AktualnieCzytaneGrid.Size = new System.Drawing.Size(1011, 373);
             this.AktualnieCzytaneGrid.TabIndex = 1;
             this.AktualnieCzytaneGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AktualnieCzytaneGrid_CellClick);
-            // 
-            // TitleColumn
-            // 
-            this.TitleColumn.FillWeight = 99.49239F;
-            this.TitleColumn.HeaderText = "TYTUŁ";
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.ReadOnly = true;
-            this.TitleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TitleColumn.Width = 550;
-            // 
-            // StartDateColumn
-            // 
-            this.StartDateColumn.FillWeight = 99.49239F;
-            this.StartDateColumn.HeaderText = "DATA ROZPOCZĘCIA";
-            this.StartDateColumn.Name = "StartDateColumn";
-            this.StartDateColumn.ReadOnly = true;
-            this.StartDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.StartDateColumn.Width = 230;
-            // 
-            // Finish
-            // 
-            this.Finish.FillWeight = 99.49239F;
-            this.Finish.HeaderText = "ZAKOŃCZ";
-            this.Finish.Name = "Finish";
-            this.Finish.ReadOnly = true;
-            this.Finish.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Finish.Width = 110;
-            // 
-            // Delete
-            // 
-            this.Delete.FillWeight = 101.5228F;
-            this.Delete.HeaderText = "USUŃ";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // AktualnieCzytaneLabel
             // 
@@ -201,6 +170,46 @@ namespace MyBook.forms
             this.AddBookButton.UseVisualStyleBackColor = false;
             this.AddBookButton.Click += new System.EventHandler(this.AddBookButton_Click);
             // 
+            // TitleColumn
+            // 
+            this.TitleColumn.FillWeight = 99.49239F;
+            this.TitleColumn.HeaderText = "TYTUŁ";
+            this.TitleColumn.Name = "TitleColumn";
+            this.TitleColumn.ReadOnly = true;
+            this.TitleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TitleColumn.Width = 550;
+            // 
+            // StartDateColumn
+            // 
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.StartDateColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.StartDateColumn.FillWeight = 99.49239F;
+            this.StartDateColumn.HeaderText = "DATA ROZPOCZĘCIA";
+            this.StartDateColumn.Name = "StartDateColumn";
+            this.StartDateColumn.ReadOnly = true;
+            this.StartDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.StartDateColumn.Width = 230;
+            // 
+            // Finish
+            // 
+            this.Finish.FillWeight = 99.49239F;
+            this.Finish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Finish.HeaderText = "ZAKOŃCZ";
+            this.Finish.Name = "Finish";
+            this.Finish.ReadOnly = true;
+            this.Finish.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Finish.Width = 110;
+            // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 101.5228F;
+            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Delete.HeaderText = "USUŃ";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // CentrumScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -229,10 +238,10 @@ namespace MyBook.forms
         private System.Windows.Forms.DataGridView AktualnieCzytaneGrid;
         private System.Windows.Forms.Label AktualnieCzytaneLabel;
         private System.Windows.Forms.Button TestFillDb;
+        private System.Windows.Forms.Button AddBookButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Finish;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private System.Windows.Forms.Button AddBookButton;
     }
 }
