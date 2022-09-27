@@ -32,7 +32,7 @@ namespace MyBook.forms
             this.DecreaseYearButton = new System.Windows.Forms.Button();
             this.IncreaseYearButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ChallengeYearLabel = new System.Windows.Forms.Label();
+            this.StatisticsYear = new System.Windows.Forms.Label();
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.WholeYearButton = new System.Windows.Forms.Button();
             this.DecButton = new System.Windows.Forms.Button();
@@ -77,11 +77,12 @@ namespace MyBook.forms
             this.IncreaseYearButton.TabIndex = 6;
             this.IncreaseYearButton.Text = ">";
             this.IncreaseYearButton.UseVisualStyleBackColor = true;
+            this.IncreaseYearButton.Click += new System.EventHandler(this.IncreaseYearButton_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.panel1.Controls.Add(this.ChallengeYearLabel);
+            this.panel1.Controls.Add(this.StatisticsYear);
             this.panel1.Location = new System.Drawing.Point(470, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 50);
@@ -89,14 +90,14 @@ namespace MyBook.forms
             // 
             // ChallengeYearLabel
             // 
-            this.ChallengeYearLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChallengeYearLabel.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ChallengeYearLabel.Location = new System.Drawing.Point(0, 0);
-            this.ChallengeYearLabel.Name = "ChallengeYearLabel";
-            this.ChallengeYearLabel.Size = new System.Drawing.Size(150, 50);
-            this.ChallengeYearLabel.TabIndex = 0;
-            this.ChallengeYearLabel.Text = "2022";
-            this.ChallengeYearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.StatisticsYear.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StatisticsYear.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.StatisticsYear.Location = new System.Drawing.Point(0, 0);
+            this.StatisticsYear.Name = "ChallengeYearLabel";
+            this.StatisticsYear.Size = new System.Drawing.Size(150, 50);
+            this.StatisticsYear.TabIndex = 0;
+            this.StatisticsYear.Text = "2022";
+            this.StatisticsYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ContentPanel
             // 
@@ -299,6 +300,7 @@ namespace MyBook.forms
             this.JanButton.TabIndex = 0;
             this.JanButton.Text = "STYCZEŃ";
             this.JanButton.UseVisualStyleBackColor = false;
+            this.JanButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // StatystykiScreen
             // 
@@ -324,7 +326,7 @@ namespace MyBook.forms
         private System.Windows.Forms.Button DecreaseYearButton;
         private System.Windows.Forms.Button IncreaseYearButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label ChallengeYearLabel;
+        private System.Windows.Forms.Label StatisticsYear;
         private System.Windows.Forms.Panel ContentPanel;
         private System.Windows.Forms.Button JanButton;
         private System.Windows.Forms.Button DecButton;

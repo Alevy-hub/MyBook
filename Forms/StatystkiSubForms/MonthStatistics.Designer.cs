@@ -36,32 +36,32 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -69,13 +69,13 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.TopBar.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -111,6 +111,7 @@
             this.CloseButton.TabIndex = 18;
             this.CloseButton.Text = "X";
             this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // panel2
             // 
@@ -174,27 +175,6 @@
             this.panel1.Size = new System.Drawing.Size(854, 200);
             this.panel1.TabIndex = 6;
             // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label4.Location = new System.Drawing.Point(0, 1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(854, 33);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "JEST TO";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(0, 37);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(427, 163);
-            this.panel3.TabIndex = 8;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.label9);
@@ -204,38 +184,16 @@
             this.panel4.Size = new System.Drawing.Size(427, 163);
             this.panel4.TabIndex = 9;
             // 
-            // label5
+            // label9
             // 
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(427, 33);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "O";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label6.Location = new System.Drawing.Point(0, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(427, 42);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "XX KSIĄŻEK";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label7.Location = new System.Drawing.Point(0, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(427, 71);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "WIĘCEJ NIŻ W POPRZEDNIM MIESIĄCU";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label9.Location = new System.Drawing.Point(0, 75);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(427, 71);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "TWOJEGO CHALLENGU NA TEN ROK";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
@@ -248,16 +206,59 @@
             this.label8.Text = "XX%";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label9
+            // panel3
             // 
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label9.Location = new System.Drawing.Point(0, 75);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(427, 71);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "TWOJEGO CHALLENGU NA TEN ROK";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Location = new System.Drawing.Point(0, 37);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(427, 163);
+            this.panel3.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label7.Location = new System.Drawing.Point(0, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(427, 71);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "WIĘCEJ NIŻ W POPRZEDNIM MIESIĄCU";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label6.Location = new System.Drawing.Point(0, 33);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(427, 42);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "XX KSIĄŻEK";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(427, 33);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "O";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label4.Location = new System.Drawing.Point(0, 1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(854, 33);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "JEST TO";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
             // 
@@ -279,23 +280,16 @@
             this.panel5.Size = new System.Drawing.Size(284, 67);
             this.panel5.TabIndex = 8;
             // 
-            // panel6
+            // label14
             // 
-            this.panel6.Controls.Add(this.label15);
-            this.panel6.Controls.Add(this.label12);
-            this.panel6.Location = new System.Drawing.Point(284, 424);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(284, 67);
-            this.panel6.TabIndex = 9;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.label16);
-            this.panel7.Controls.Add(this.label13);
-            this.panel7.Location = new System.Drawing.Point(568, 424);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(286, 67);
-            this.panel7.TabIndex = 10;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label14.Location = new System.Drawing.Point(0, 34);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(284, 33);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "XX";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label11
             // 
@@ -308,38 +302,14 @@
             this.label11.Text = "KSIĄŻKI PAPIEROWE";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label12
+            // panel6
             // 
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label12.Location = new System.Drawing.Point(0, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(284, 33);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "EBOOKI";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label13
-            // 
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label13.Location = new System.Drawing.Point(-1, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(284, 33);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "AUDIOBOOKI";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label14.Location = new System.Drawing.Point(0, 34);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(284, 33);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "XX";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel6.Controls.Add(this.label15);
+            this.panel6.Controls.Add(this.label12);
+            this.panel6.Location = new System.Drawing.Point(284, 424);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(284, 67);
+            this.panel6.TabIndex = 9;
             // 
             // label15
             // 
@@ -352,6 +322,26 @@
             this.label15.Text = "XX";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label12.Location = new System.Drawing.Point(0, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(284, 33);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "EBOOKI";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.label16);
+            this.panel7.Controls.Add(this.label13);
+            this.panel7.Location = new System.Drawing.Point(568, 424);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(286, 67);
+            this.panel7.TabIndex = 10;
+            // 
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -362,6 +352,17 @@
             this.label16.TabIndex = 14;
             this.label16.Text = "XX";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label13.Location = new System.Drawing.Point(-1, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(284, 33);
+            this.label13.TabIndex = 13;
+            this.label13.Text = "AUDIOBOOKI";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel8
             // 
@@ -383,6 +384,28 @@
             this.panel9.Size = new System.Drawing.Size(427, 75);
             this.panel9.TabIndex = 9;
             // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label19.Location = new System.Drawing.Point(0, 42);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(427, 33);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "AUDIOBOOKÓW";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label18.Location = new System.Drawing.Point(0, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(427, 42);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "XXX:XX GODZIN";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.label17);
@@ -391,6 +414,17 @@
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(427, 75);
             this.panel10.TabIndex = 8;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label17.Location = new System.Drawing.Point(0, 42);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(427, 33);
+            this.label17.TabIndex = 13;
+            this.label17.Text = "KSIĄŻEK PAPIEROWYCH";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label20
             // 
@@ -413,39 +447,6 @@
             this.label22.TabIndex = 7;
             this.label22.Text = "CZYLI...";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label18.Location = new System.Drawing.Point(0, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(427, 42);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "XXX:XX GODZIN";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label17.Location = new System.Drawing.Point(0, 42);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(427, 33);
-            this.label17.TabIndex = 13;
-            this.label17.Text = "KSIĄŻEK PAPIEROWYCH";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label19
-            // 
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label19.Location = new System.Drawing.Point(0, 42);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(427, 33);
-            this.label19.TabIndex = 14;
-            this.label19.Text = "AUDIOBOOKÓW";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label21
             // 
@@ -520,6 +521,17 @@
             this.panel13.Size = new System.Drawing.Size(427, 118);
             this.panel13.TabIndex = 8;
             // 
+            // label28
+            // 
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label28.Location = new System.Drawing.Point(0, 75);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(427, 33);
+            this.label28.TabIndex = 14;
+            this.label28.Text = "WYŻSZA NIŻ W POPRZEDNIM MIESIĄCU";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label26
             // 
             this.label26.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -542,17 +554,6 @@
             this.label27.Text = "ŚREDNIA O";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label28
-            // 
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label28.Location = new System.Drawing.Point(0, 75);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(427, 33);
-            this.label28.TabIndex = 14;
-            this.label28.Text = "WYŻSZA NIŻ W POPRZEDNIM MIESIĄCU";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // MonthStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -574,11 +575,12 @@
             this.Controls.Add(this.TopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MonthStatistics";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MonthStatistics";
             this.TopBar.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
