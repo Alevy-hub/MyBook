@@ -6,18 +6,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MyBook.forms
+namespace MyBook.Forms.StatystkiSubForms
 {
-    public partial class StatystykiScreen : Form
+    public partial class MonthStatistics : Form
     {
-        public StatystykiScreen()
+        public MonthStatistics()
         {
             InitializeComponent();
-        }
-
-        private void DecreaseYearButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

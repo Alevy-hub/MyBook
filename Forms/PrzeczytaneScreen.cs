@@ -19,6 +19,7 @@ namespace MyBook.forms
 		{
 			InitializeComponent();
 			FillReadBooksGrid();
+			FillGenreSearchBox();
 		}
 
 		public void FillReadBooksGrid()
@@ -51,6 +52,26 @@ namespace MyBook.forms
 					});
 				}
 			}
+			databaseObject.CloseConnection();
+		}
+
+		private void FillGenreSearchBox()
+        {
+			Database databaseObject = new Database();
+			databaseObject.OpenConnection();
+			SQLiteCommand FillGenreSearchBox = new SQLiteCommand("SELECT DISTINCT genre from books", databaseObject.dbConnection);
+			SQLiteDataReader result = FillGenreSearchBox.ExecuteReader();
+			if (result.HasRows)
+			{
+				while (result.Read())
+				{
+					GenreSearchBox.Items.Add(
+
+						result.GetValue(0)
+					);
+				}
+			}
+
 			databaseObject.CloseConnection();
 		}
 
@@ -173,5 +194,17 @@ namespace MyBook.forms
 			}
 			databaseObject.CloseConnection();
 		}
+
+        private void ClearSearchButton_Click(object sender, EventArgs e)
+        {
+			TitleSearchBox.Clear();
+			AuthorSearchBox.Clear();
+			GenreSearchBox.Text = "";
+			RateSearchBox.Value = 0;
+			RateCheckBox.Checked = false;
+			ReadBooksGrid.Rows.Clear();
+			FillReadBooksGrid();
+
+        }
     }
 }
