@@ -41,6 +41,39 @@ namespace MyBook.forms
                 case "JanButton":
                     MonthStatistics.statMonth = "01";
                     break;
+                case "FebButton":
+                    MonthStatistics.statMonth = "02";
+                    break;
+                case "MarButton":
+                    MonthStatistics.statMonth = "03";
+                    break;
+                case "AprButton":
+                    MonthStatistics.statMonth = "04";
+                    break;
+                case "MayButton":
+                    MonthStatistics.statMonth = "05";
+                    break;
+                case "JunButton":
+                    MonthStatistics.statMonth = "06";
+                    break;
+                case "JulButton":
+                    MonthStatistics.statMonth = "07";
+                    break;
+                case "AugButton":
+                    MonthStatistics.statMonth = "08";
+                    break;
+                case "SepButton":
+                    MonthStatistics.statMonth = "09";
+                    break;
+                case "OctButton":
+                    MonthStatistics.statMonth = "10";
+                    break;
+                case "NovButton":
+                    MonthStatistics.statMonth = "11";
+                    break;
+                case "DecButton":
+                    MonthStatistics.statMonth = "12";
+                    break;
             }
 
             MonthStatistics monthStatistics = new MonthStatistics();

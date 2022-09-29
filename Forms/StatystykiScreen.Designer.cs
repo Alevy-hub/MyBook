@@ -43,7 +43,7 @@ namespace MyBook.forms
             this.JulButton = new System.Windows.Forms.Button();
             this.JunButton = new System.Windows.Forms.Button();
             this.MayButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.AprButton = new System.Windows.Forms.Button();
             this.MarButton = new System.Windows.Forms.Button();
             this.FebButton = new System.Windows.Forms.Button();
             this.JanButton = new System.Windows.Forms.Button();
@@ -88,12 +88,12 @@ namespace MyBook.forms
             this.panel1.Size = new System.Drawing.Size(150, 50);
             this.panel1.TabIndex = 5;
             // 
-            // ChallengeYearLabel
+            // StatisticsYear
             // 
             this.StatisticsYear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StatisticsYear.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.StatisticsYear.Location = new System.Drawing.Point(0, 0);
-            this.StatisticsYear.Name = "ChallengeYearLabel";
+            this.StatisticsYear.Name = "StatisticsYear";
             this.StatisticsYear.Size = new System.Drawing.Size(150, 50);
             this.StatisticsYear.TabIndex = 0;
             this.StatisticsYear.Text = "2022";
@@ -110,7 +110,7 @@ namespace MyBook.forms
             this.ContentPanel.Controls.Add(this.JulButton);
             this.ContentPanel.Controls.Add(this.JunButton);
             this.ContentPanel.Controls.Add(this.MayButton);
-            this.ContentPanel.Controls.Add(this.button4);
+            this.ContentPanel.Controls.Add(this.AprButton);
             this.ContentPanel.Controls.Add(this.MarButton);
             this.ContentPanel.Controls.Add(this.FebButton);
             this.ContentPanel.Controls.Add(this.JanButton);
@@ -146,6 +146,7 @@ namespace MyBook.forms
             this.DecButton.TabIndex = 11;
             this.DecButton.Text = "GRUDZIEŃ";
             this.DecButton.UseVisualStyleBackColor = false;
+            this.DecButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // NovButton
             // 
@@ -160,6 +161,7 @@ namespace MyBook.forms
             this.NovButton.TabIndex = 10;
             this.NovButton.Text = "LISTOPAD";
             this.NovButton.UseVisualStyleBackColor = false;
+            this.NovButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // OctButton
             // 
@@ -174,6 +176,7 @@ namespace MyBook.forms
             this.OctButton.TabIndex = 9;
             this.OctButton.Text = "PAŹDZIERNIK";
             this.OctButton.UseVisualStyleBackColor = false;
+            this.OctButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // SepButton
             // 
@@ -188,6 +191,7 @@ namespace MyBook.forms
             this.SepButton.TabIndex = 8;
             this.SepButton.Text = "WRZESIEŃ";
             this.SepButton.UseVisualStyleBackColor = false;
+            this.SepButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // AugButton
             // 
@@ -202,6 +206,7 @@ namespace MyBook.forms
             this.AugButton.TabIndex = 7;
             this.AugButton.Text = "SIERPIEŃ";
             this.AugButton.UseVisualStyleBackColor = false;
+            this.AugButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // JulButton
             // 
@@ -216,6 +221,7 @@ namespace MyBook.forms
             this.JulButton.TabIndex = 6;
             this.JulButton.Text = "LIPIEC";
             this.JulButton.UseVisualStyleBackColor = false;
+            this.JulButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // JunButton
             // 
@@ -230,6 +236,7 @@ namespace MyBook.forms
             this.JunButton.TabIndex = 5;
             this.JunButton.Text = "CZERWIEC";
             this.JunButton.UseVisualStyleBackColor = false;
+            this.JunButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // MayButton
             // 
@@ -244,20 +251,22 @@ namespace MyBook.forms
             this.MayButton.TabIndex = 4;
             this.MayButton.Text = "MAJ";
             this.MayButton.UseVisualStyleBackColor = false;
+            this.MayButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
-            // button4
+            // AprButton
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.button4.Location = new System.Drawing.Point(801, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(261, 159);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "KWIECIEŃ";
-            this.button4.UseVisualStyleBackColor = false;
+            this.AprButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
+            this.AprButton.FlatAppearance.BorderSize = 0;
+            this.AprButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AprButton.Font = new System.Drawing.Font("Segoe UI Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AprButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.AprButton.Location = new System.Drawing.Point(801, 3);
+            this.AprButton.Name = "AprButton";
+            this.AprButton.Size = new System.Drawing.Size(261, 159);
+            this.AprButton.TabIndex = 3;
+            this.AprButton.Text = "KWIECIEŃ";
+            this.AprButton.UseVisualStyleBackColor = false;
+            this.AprButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // MarButton
             // 
@@ -272,6 +281,7 @@ namespace MyBook.forms
             this.MarButton.TabIndex = 2;
             this.MarButton.Text = "MARZEC";
             this.MarButton.UseVisualStyleBackColor = false;
+            this.MarButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // FebButton
             // 
@@ -286,6 +296,7 @@ namespace MyBook.forms
             this.FebButton.TabIndex = 1;
             this.FebButton.Text = "LUTY";
             this.FebButton.UseVisualStyleBackColor = false;
+            this.FebButton.Click += new System.EventHandler(this.MonthButtonClick);
             // 
             // JanButton
             // 
@@ -337,7 +348,7 @@ namespace MyBook.forms
         private System.Windows.Forms.Button JulButton;
         private System.Windows.Forms.Button JunButton;
         private System.Windows.Forms.Button MayButton;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button AprButton;
         private System.Windows.Forms.Button MarButton;
         private System.Windows.Forms.Button FebButton;
         private System.Windows.Forms.Button WholeYearButton;
