@@ -30,7 +30,9 @@ namespace MyBook.Forms.CentrumSubForms
 			FinishDatePicker.CustomFormat = "dd.MM.yyyy";
 			NoRateCheckBox.Enabled = false;
 			NoRateCheckBox.Visible = false;
-			
+
+			dateTimePicker1.Format = DateTimePickerFormat.Custom;
+			dateTimePicker1.CustomFormat = "HH:mm";
 		}
 
 		private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
@@ -244,7 +246,7 @@ namespace MyBook.Forms.CentrumSubForms
 				}
 				else if (AudiobookRadio.Checked == true)
 				{
-					addBookToRead.Parameters.AddWithValue("@form", "AudiobookRadio");
+					addBookToRead.Parameters.AddWithValue("@form", "audiobook");
 				}
 				addBookToRead.ExecuteNonQuery();
 
@@ -264,7 +266,7 @@ namespace MyBook.Forms.CentrumSubForms
 				}
 				else if (AudiobookRadio.Checked == true)
 				{
-					addBookToRead.Parameters.AddWithValue("@form", "AudiobookRadio");
+					addBookToRead.Parameters.AddWithValue("@form", "audiobook");
 				}
 				addBookToRead.ExecuteNonQuery();
 			}

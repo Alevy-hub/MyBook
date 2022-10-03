@@ -18,10 +18,18 @@ namespace MyBook.Forms.StatystkiSubForms
 		public MonthStatistics()
         {
             InitializeComponent();
+			setHeader();
 			countRead();
 			PrevMonthCount();
+			PercentOfChallenge();
+			FormsOfBooks();
 
 		}
+
+		private void setHeader()
+        {
+			TitleLabel.Text = "STATYSTYKI " + statMonth + "/" + statYear;
+        }
 
         private void countRead()
         {
@@ -113,6 +121,65 @@ namespace MyBook.Forms.StatystkiSubForms
 
 			PrevMonthLabel.Text = prevCount.ToString();
         }
+
+		private void PercentOfChallenge()
+        {
+			double challengeCount = 0;
+			double percentOfChallenge = 0;
+			string percentOfChallengeString;
+			Database databaseObject = new Database();
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT count FROM challenges WHERE year LIKE @challengeYear", databaseObject.dbConnection);
+			checkCount.Parameters.AddWithValue("@challengeYear", statYear);
+			databaseObject.OpenConnection();
+			SQLiteDataReader result = checkCount.ExecuteReader();
+			if (result.HasRows)
+			{
+				if (result.Read())
+				{
+					challengeCount = int.Parse(result[0].ToString());
+				}
+			}
+			percentOfChallenge = Math.Round(((double)readCount / challengeCount) * 100, 2);
+			percentOfChallengeString = percentOfChallenge.ToString() + "%";
+			ChallengePercentLabel.Text = percentOfChallengeString;
+
+			result.Close();
+			databaseObject.CloseConnection();
+		}
+
+		private void FormsOfBooks()
+        {
+			PaperBooksLabel.Text = "0";
+			EbookLabel.Text = "0";
+			AudiobookLabel.Text = "0";
+
+			Database databaseObject = new Database();
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT form, COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth GROUP BY form", databaseObject.dbConnection);
+			checkCount.Parameters.AddWithValue("@finishYear", statYear);
+			checkCount.Parameters.AddWithValue("@finishMonth", statMonth);
+			databaseObject.OpenConnection();
+			SQLiteDataReader result = checkCount.ExecuteReader();
+			if (result.HasRows)
+			{
+				while (result.Read())
+				{
+					if(result[0].ToString() == "papier")
+                    {
+						PaperBooksLabel.Text = result[1].ToString();
+                    }
+					else if(result[0].ToString() == "ebook")
+                    {
+						EbookLabel.Text = result[1].ToString();
+                    }
+					else if(result[0].ToString() == "audiobook")
+                    {
+						AudiobookLabel.Text = result[1].ToString();
+                    }
+				}
+			}
+			result.Close();
+			databaseObject.CloseConnection();
+		}
 
         private void CloseButton_Click(object sender, EventArgs e)
         {

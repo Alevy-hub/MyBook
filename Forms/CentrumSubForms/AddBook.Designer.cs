@@ -30,6 +30,7 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.CommentTextBox = new System.Windows.Forms.RichTextBox();
             this.CommentLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -78,6 +79,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
+            this.Container.Controls.Add(this.dateTimePicker1);
             this.Container.Controls.Add(this.CommentTextBox);
             this.Container.Controls.Add(this.CommentLabel);
             this.Container.Controls.Add(this.panel1);
@@ -109,6 +111,17 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Size = new System.Drawing.Size(600, 825);
             this.Container.TabIndex = 0;
             this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(243, 453);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(109, 33);
+            this.dateTimePicker1.TabIndex = 25;
             // 
             // CommentTextBox
             // 
@@ -662,5 +675,6 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.RichTextBox CommentTextBox;
         private System.Windows.Forms.Label CommentLabel;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
