@@ -31,8 +31,6 @@ namespace MyBook.Forms.CentrumSubForms
 			NoRateCheckBox.Enabled = false;
 			NoRateCheckBox.Visible = false;
 
-			dateTimePicker1.Format = DateTimePickerFormat.Custom;
-			dateTimePicker1.CustomFormat = "HH:mm";
 		}
 
 		private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
@@ -121,6 +119,23 @@ namespace MyBook.Forms.CentrumSubForms
 		private void FormRadio_CheckedChanged(object sender, EventArgs e)
 		{
 			FormAlertLabel.Visible = false;
+
+			if(AudiobookRadio.Checked == true)
+            {
+				PagesCountNumeric.Visible = false;
+				HoursNumeric.Visible = true;
+				MinutesNumeric.Visible = true;
+				TimeMiddleLabel.Visible = true;
+				CountLabel.Text = "CZAS TRWANIA";
+            }
+            else
+            {
+				PagesCountNumeric.Visible = true;
+				HoursNumeric.Visible = false;
+				MinutesNumeric.Visible = false;
+				TimeMiddleLabel.Visible = false;
+				CountLabel.Text = "ILOŚĆ STRON";
+			}
 		}
 
 		private bool CheckRadioButtons()
@@ -206,11 +221,23 @@ namespace MyBook.Forms.CentrumSubForms
 					authorId = (int)(long)result["id"];
 				}
 			}
-			SQLiteCommand addBook = new SQLiteCommand("INSERT or IGNORE INTO books ('name', 'author_id', 'genre', 'pages') VALUES (@bookName, @bookAuthorId, @bookGenre, @bookPages)", databaseObject.dbConnection);
+			SQLiteCommand addBook = new SQLiteCommand("INSERT or IGNORE INTO books ('name', 'author_id', 'genre', 'pages', 'time') VALUES (@bookName, @bookAuthorId, @bookGenre, @bookPages, @time)", databaseObject.dbConnection);
 			addBook.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
 			addBook.Parameters.AddWithValue("@bookAuthorId", authorId);
 			addBook.Parameters.AddWithValue("@bookGenre", GenreComboBox.Text.ToString());
 			addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
+
+			if(HoursNumeric.Visible == true)
+            {
+				addBook.Parameters.AddWithValue("@time", (int)(HoursNumeric.Value * 60 + MinutesNumeric.Value));
+				addBook.Parameters.AddWithValue("@bookPages", null);
+			}
+            else
+            {	
+				addBook.Parameters.AddWithValue("@time", null);
+				addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
+            }
+
 			addBook.ExecuteNonQuery();
 			
 			if (CzytamRadio.Checked == true || UkonczoneRadio.Checked == true)
@@ -309,5 +336,6 @@ namespace MyBook.Forms.CentrumSubForms
 				RatingNumeric.Value = 1;
             }
         }
+
     }
 }

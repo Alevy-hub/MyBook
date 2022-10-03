@@ -30,7 +30,9 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.HoursNumeric = new System.Windows.Forms.NumericUpDown();
+            this.MinutesNumeric = new System.Windows.Forms.NumericUpDown();
+            this.TimeMiddleLabel = new System.Windows.Forms.Label();
             this.CommentTextBox = new System.Windows.Forms.RichTextBox();
             this.CommentLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -68,6 +70,8 @@ namespace MyBook.Forms.CentrumSubForms
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HoursNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinutesNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).BeginInit();
             this.StatusPanel.SuspendLayout();
@@ -79,7 +83,9 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
-            this.Container.Controls.Add(this.dateTimePicker1);
+            this.Container.Controls.Add(this.HoursNumeric);
+            this.Container.Controls.Add(this.MinutesNumeric);
+            this.Container.Controls.Add(this.TimeMiddleLabel);
             this.Container.Controls.Add(this.CommentTextBox);
             this.Container.Controls.Add(this.CommentLabel);
             this.Container.Controls.Add(this.panel1);
@@ -112,16 +118,46 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.TabIndex = 0;
             this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
             // 
-            // dateTimePicker1
+            // HoursNumeric
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(243, 453);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(109, 33);
-            this.dateTimePicker1.TabIndex = 25;
+            this.HoursNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.HoursNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.HoursNumeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HoursNumeric.Location = new System.Drawing.Point(110, 457);
+            this.HoursNumeric.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.HoursNumeric.Name = "HoursNumeric";
+            this.HoursNumeric.Size = new System.Drawing.Size(43, 29);
+            this.HoursNumeric.TabIndex = 25;
+            // 
+            // MinutesNumeric
+            // 
+            this.MinutesNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.MinutesNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MinutesNumeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MinutesNumeric.Location = new System.Drawing.Point(162, 457);
+            this.MinutesNumeric.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.MinutesNumeric.Name = "MinutesNumeric";
+            this.MinutesNumeric.Size = new System.Drawing.Size(43, 29);
+            this.MinutesNumeric.TabIndex = 26;
+            // 
+            // TimeMiddleLabel
+            // 
+            this.TimeMiddleLabel.AutoSize = true;
+            this.TimeMiddleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimeMiddleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TimeMiddleLabel.Location = new System.Drawing.Point(151, 461);
+            this.TimeMiddleLabel.Name = "TimeMiddleLabel";
+            this.TimeMiddleLabel.Size = new System.Drawing.Size(14, 21);
+            this.TimeMiddleLabel.TabIndex = 27;
+            this.TimeMiddleLabel.Text = ":";
             // 
             // CommentTextBox
             // 
@@ -624,6 +660,8 @@ namespace MyBook.Forms.CentrumSubForms
             this.Text = "AddBook";
             this.Container.ResumeLayout(false);
             this.Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HoursNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinutesNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).EndInit();
             this.StatusPanel.ResumeLayout(false);
@@ -675,6 +713,8 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.RichTextBox CommentTextBox;
         private System.Windows.Forms.Label CommentLabel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.NumericUpDown HoursNumeric;
+        private System.Windows.Forms.NumericUpDown MinutesNumeric;
+        private System.Windows.Forms.Label TimeMiddleLabel;
     }
 }

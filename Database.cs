@@ -27,6 +27,7 @@ namespace MyBook
 									'author_id'	INTEGER,
 									'genre'	TEXT NOT NULL,
 									'pages'	INTEGER,
+									'time'	INTEGER,
 									FOREIGN KEY('author_id') REFERENCES 'authors'('id'),
 									PRIMARY KEY('id' AUTOINCREMENT)
 								);
