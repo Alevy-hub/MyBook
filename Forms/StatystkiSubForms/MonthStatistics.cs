@@ -6,11 +6,21 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Runtime.InteropServices;
 
 namespace MyBook.Forms.StatystkiSubForms
 {
     public partial class MonthStatistics : Form
     {
+		public const int WM_NCLBUTTONDOWN = 0xA1;
+		public const int HT_CAPTION = 0x2;
+
+		[DllImportAttribute("user32.dll")]
+		public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+		[DllImportAttribute("user32.dll")]
+		public static extern bool ReleaseCapture();
+
+
 		public static string statYear;
 		public static string statMonth;
 		int readCount;
@@ -23,7 +33,19 @@ namespace MyBook.Forms.StatystkiSubForms
 			PrevMonthCount();
 			PercentOfChallenge();
 			FormsOfBooks();
+			PagesCount();
+			HoursCount();
+			RateAverage();
 
+		}
+
+		private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
 		}
 
 		private void setHeader()
@@ -88,9 +110,6 @@ namespace MyBook.Forms.StatystkiSubForms
 				year = helpYear.ToString();
 			}
 
-			MessageBox.Show(prevMonthText);
-
-
             Database databaseObject = new Database();
             SQLiteCommand checkCount = new SQLiteCommand("SELECT COUNT(*) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @prevMonth", databaseObject.dbConnection);
             checkCount.Parameters.AddWithValue("@finishYear", prevMonthText);
@@ -137,12 +156,16 @@ namespace MyBook.Forms.StatystkiSubForms
 				if (result.Read())
 				{
 					challengeCount = int.Parse(result[0].ToString());
+					percentOfChallenge = Math.Round(((double)readCount / challengeCount) * 100, 2);
+					percentOfChallengeString = percentOfChallenge.ToString() + "%";
+					ChallengePercentLabel.Text = percentOfChallengeString;
 				}
 			}
-			percentOfChallenge = Math.Round(((double)readCount / challengeCount) * 100, 2);
-			percentOfChallengeString = percentOfChallenge.ToString() + "%";
-			ChallengePercentLabel.Text = percentOfChallengeString;
-
+            else
+            {
+				ChallengePercentLabel.Text = "NIEDOSTĘPNE";
+				SecondChallengePercentLabel.Text = "NIE USTAWIONO CHALLENGU NA TEN ROK";
+            }
 			result.Close();
 			databaseObject.CloseConnection();
 		}
@@ -181,9 +204,99 @@ namespace MyBook.Forms.StatystkiSubForms
 			databaseObject.CloseConnection();
 		}
 
+		private void PagesCount()
+        {
+			PagesLabel.Text = "0 STRON";
+			string pagesCount = "";
+
+			Database databaseObject = new Database();
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT SUM(pages) FROM books WHERE id in (SELECT book_id FROM read_books WHERE form LIKE 'papier' OR form LIKE 'ebook' AND strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth)", databaseObject.dbConnection);
+			checkCount.Parameters.AddWithValue("@finishYear", statYear);
+			checkCount.Parameters.AddWithValue("@finishMonth", statMonth);
+			databaseObject.OpenConnection();
+			SQLiteDataReader result = checkCount.ExecuteReader();
+			if (result.HasRows)
+			{
+				if(result.Read())
+				{
+					pagesCount = result[0].ToString();
+				}
+			}
+			result.Close();
+			databaseObject.CloseConnection();
+
+			PagesLabel.Text = pagesCount + " STRON";
+		}
+
+		private void HoursCount()
+        {
+			HoursLabel.Text = "0:00 GODZIN";
+			int minutesCountInt = 0;
+			string hoursCount = "0";
+			string minutesCount = "00";
+
+			Database databaseObject = new Database();
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT SUM(time) FROM books WHERE id in (SELECT book_id FROM read_books WHERE form LIKE 'audiobook' AND strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth)", databaseObject.dbConnection);
+			checkCount.Parameters.AddWithValue("@finishYear", statYear);
+			checkCount.Parameters.AddWithValue("@finishMonth", statMonth);
+			databaseObject.OpenConnection();
+			SQLiteDataReader result = checkCount.ExecuteReader();
+			if (result.HasRows)
+			{
+				if (result.Read())
+				{
+					if(result[0].ToString() != "")
+                    {
+						minutesCountInt = int.Parse(result[0].ToString());
+
+						hoursCount = (minutesCountInt / 60).ToString();
+						minutesCount = (minutesCountInt % 60).ToString();
+
+						if(minutesCountInt % 60 < 10)
+                        {
+							minutesCount = "0" + minutesCount;
+                        }
+
+						HoursLabel.Text = hoursCount + ":" + minutesCount + " GODZIN";
+                    }
+				}
+			}
+			result.Close();
+			databaseObject.CloseConnection();
+		}
+
+		private void RateAverage()
+        {
+			AverageRateLabel.Text = "BRAK OCEN";
+
+			string averageRate = "";
+			Database databaseObject = new Database();
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT AVG(rating) FROM read_books WHERE rating NOT NULL AND strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth", databaseObject.dbConnection);
+			checkCount.Parameters.AddWithValue("@finishYear", statYear);
+			checkCount.Parameters.AddWithValue("@finishMonth", statMonth);
+			databaseObject.OpenConnection();
+			SQLiteDataReader result = checkCount.ExecuteReader();
+			if (result.HasRows)
+			{
+				if(result.Read())
+				{
+					averageRate = result[0].ToString();
+					AverageRateLabel.Text = averageRate;
+				}
+			}
+			result.Close();
+			databaseObject.CloseConnection();
+
+		}
+
         private void CloseButton_Click(object sender, EventArgs e)
         {
 			this.Close();
         }
+
+        private void MonthStatistics_Paint(object sender, PaintEventArgs e)
+        {
+			e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
+		}
     }
 }

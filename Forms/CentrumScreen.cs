@@ -24,7 +24,7 @@ namespace MyBook.forms
         {
             Database databaseObject = new Database();
             string query = @"INSERT INTO authors ('name') VALUES ('Andrzej Sapkowski'), ('Stephen King'), ('J.K Rowling'), ('Dennis Lehane'), ('Hania Czaban');
-                            INSERT INTO books ('name', 'author_id', 'genre', 'pages') VALUES ('Krew Elfów','1','Fantasy','400'), ('Podpalaczka','2','Thriller','600'), ('Harry Potter i Więzien Azkabanu','3','Fantasy','356'), ('Wyspa Tajemnic','4','Thriller','340'), ('Cały ten czas','5','Fantasy','532');
+                            INSERT INTO books ('name', 'author_id', 'genre', 'pages', 'time') VALUES ('Krew Elfów','1','Fantasy','400',null), ('Podpalaczka','2','Thriller','600','1530'), ('Harry Potter i Więzien Azkabanu','3','Fantasy','356',null), ('Wyspa Tajemnic','4','Thriller','340',null), ('Cały ten czas','5','Fantasy','532',null);
                             INSERT INTO read_books ('book_id', 'start_date', 'finish_date', 'rating', 'form') VALUES ('1','2022-01-22','2022-01-25','5','papier'), ('2','2022-03-03',NULL,NULL,'audiobook'), ('3','2022-04-14','2022-05-09','3.4','ebook'), ('4','2022-06-24',NULL,NULL,'ebook'), ('5','2022-07-04','2022-07-20','3.5','papier')";
             SQLiteCommand newQuery = new SQLiteCommand(query, databaseObject.dbConnection);
             databaseObject.OpenConnection();
