@@ -74,9 +74,9 @@
             this.FavGenreLabel = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.label28 = new System.Windows.Forms.Label();
+            this.PrevRateUnderLabel = new System.Windows.Forms.Label();
             this.PrevAverageLabel = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.PrevAverageRateTop = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.BestBookLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -585,24 +585,24 @@
             // 
             // panel13
             // 
-            this.panel13.Controls.Add(this.label28);
+            this.panel13.Controls.Add(this.PrevRateUnderLabel);
             this.panel13.Controls.Add(this.PrevAverageLabel);
-            this.panel13.Controls.Add(this.label27);
+            this.panel13.Controls.Add(this.PrevAverageRateTop);
             this.panel13.Location = new System.Drawing.Point(0, 4);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(427, 118);
             this.panel13.TabIndex = 8;
             // 
-            // label28
+            // PrevRateUnderLabel
             // 
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label28.Location = new System.Drawing.Point(0, 75);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(427, 33);
-            this.label28.TabIndex = 14;
-            this.label28.Text = "WYŻSZA NIŻ W POPRZEDNIM MIESIĄCU";
-            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PrevRateUnderLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PrevRateUnderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.PrevRateUnderLabel.Location = new System.Drawing.Point(0, 75);
+            this.PrevRateUnderLabel.Name = "PrevRateUnderLabel";
+            this.PrevRateUnderLabel.Size = new System.Drawing.Size(427, 33);
+            this.PrevRateUnderLabel.TabIndex = 14;
+            this.PrevRateUnderLabel.Text = "WYŻSZA NIŻ W POPRZEDNIM MIESIĄCU";
+            this.PrevRateUnderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PrevAverageLabel
             // 
@@ -615,16 +615,16 @@
             this.PrevAverageLabel.Text = "XX.XX";
             this.PrevAverageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label27
+            // PrevAverageRateTop
             // 
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label27.Location = new System.Drawing.Point(0, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(427, 42);
-            this.label27.TabIndex = 7;
-            this.label27.Text = "ŚREDNIA O";
-            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PrevAverageRateTop.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PrevAverageRateTop.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.PrevAverageRateTop.Location = new System.Drawing.Point(0, 0);
+            this.PrevAverageRateTop.Name = "PrevAverageRateTop";
+            this.PrevAverageRateTop.Size = new System.Drawing.Size(427, 42);
+            this.PrevAverageRateTop.TabIndex = 7;
+            this.PrevAverageRateTop.Text = "ŚREDNIA O";
+            this.PrevAverageRateTop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // splitContainer1
             // 
@@ -830,9 +830,9 @@
         private System.Windows.Forms.Label FavGenreLabel;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label PrevRateUnderLabel;
         private System.Windows.Forms.Label PrevAverageLabel;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label PrevAverageRateTop;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label BestBookLabel;
         private System.Windows.Forms.Label label2;
