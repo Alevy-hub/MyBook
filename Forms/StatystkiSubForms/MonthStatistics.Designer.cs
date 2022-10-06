@@ -87,6 +87,7 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
+            this.MoreGenreButton = new System.Windows.Forms.Button();
             this.TopBar.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -554,6 +555,7 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.MoreGenreButton);
             this.panel12.Controls.Add(this.FavGenreLabel);
             this.panel12.Controls.Add(this.label25);
             this.panel12.Location = new System.Drawing.Point(427, 4);
@@ -734,6 +736,21 @@
             this.panel22.Size = new System.Drawing.Size(848, 3);
             this.panel22.TabIndex = 23;
             // 
+            // MoreGenreButton
+            // 
+            this.MoreGenreButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.MoreGenreButton.FlatAppearance.BorderSize = 0;
+            this.MoreGenreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoreGenreButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MoreGenreButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.MoreGenreButton.Location = new System.Drawing.Point(360, 0);
+            this.MoreGenreButton.Name = "MoreGenreButton";
+            this.MoreGenreButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MoreGenreButton.Size = new System.Drawing.Size(67, 118);
+            this.MoreGenreButton.TabIndex = 15;
+            this.MoreGenreButton.Text = "WIĘCEJ";
+            this.MoreGenreButton.UseVisualStyleBackColor = true;
+            // 
             // MonthStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -848,5 +865,6 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Button MoreGenreButton;
     }
 }

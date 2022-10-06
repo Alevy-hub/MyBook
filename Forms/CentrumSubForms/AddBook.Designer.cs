@@ -123,14 +123,14 @@ namespace MyBook.Forms.CentrumSubForms
             this.HoursNumeric.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             this.HoursNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.HoursNumeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.HoursNumeric.Location = new System.Drawing.Point(110, 457);
+            this.HoursNumeric.Location = new System.Drawing.Point(103, 457);
             this.HoursNumeric.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
             this.HoursNumeric.Name = "HoursNumeric";
-            this.HoursNumeric.Size = new System.Drawing.Size(43, 29);
+            this.HoursNumeric.Size = new System.Drawing.Size(50, 29);
             this.HoursNumeric.TabIndex = 25;
             // 
             // MinutesNumeric
@@ -140,12 +140,12 @@ namespace MyBook.Forms.CentrumSubForms
             this.MinutesNumeric.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MinutesNumeric.Location = new System.Drawing.Point(162, 457);
             this.MinutesNumeric.Maximum = new decimal(new int[] {
-            9999,
+            60,
             0,
             0,
             0});
             this.MinutesNumeric.Name = "MinutesNumeric";
-            this.MinutesNumeric.Size = new System.Drawing.Size(43, 29);
+            this.MinutesNumeric.Size = new System.Drawing.Size(50, 29);
             this.MinutesNumeric.TabIndex = 26;
             // 
             // TimeMiddleLabel

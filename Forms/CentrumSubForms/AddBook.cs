@@ -30,6 +30,9 @@ namespace MyBook.Forms.CentrumSubForms
 			FinishDatePicker.CustomFormat = "dd.MM.yyyy";
 			NoRateCheckBox.Enabled = false;
 			NoRateCheckBox.Visible = false;
+			HoursNumeric.Visible = false;
+			MinutesNumeric.Visible = false;
+			TimeMiddleLabel.Visible = false;
 
 		}
 
@@ -336,6 +339,5 @@ namespace MyBook.Forms.CentrumSubForms
 				RatingNumeric.Value = 1;
             }
         }
-
     }
 }
