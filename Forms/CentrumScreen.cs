@@ -14,6 +14,8 @@ namespace MyBook.forms
     {
 
         public static string readId;
+        ConsoleLog ConsoleLog = new ConsoleLog();
+
         public CentrumScreen()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace MyBook.forms
 
         public void FillAktualnieCzytaneGrid()
         {
+            ConsoleLog.Log("Trying to fill AktualnieCzytaneGrid");
             AktualnieCzytaneGrid.Columns[1].DefaultCellStyle.Format = "dd.MM.yyyy";
             Database databaseObject = new Database();
             databaseObject.OpenConnection();
@@ -50,6 +53,7 @@ namespace MyBook.forms
                         "Zakończ",
                         "Usuń"
                     });
+                    ConsoleLog.Log("Read: " + result[0].ToString() + ", " + result[1].ToString());
                 }
             }
             databaseObject.CloseConnection();
@@ -70,6 +74,7 @@ namespace MyBook.forms
 
         private void AktualnieCzytaneGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            ConsoleLog.Log("Clicked cell " + e.ColumnIndex.ToString() + ", " + e.RowIndex.ToString());
             if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
             {
                 Database databaseObject = new Database();

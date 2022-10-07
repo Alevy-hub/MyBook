@@ -37,14 +37,15 @@ namespace MyBook.forms
             this.ContainerPanel = new System.Windows.Forms.Panel();
             this.AktualnieCzytanePanel = new System.Windows.Forms.Panel();
             this.AktualnieCzytaneGrid = new System.Windows.Forms.DataGridView();
-            this.AktualnieCzytaneLabel = new System.Windows.Forms.Label();
-            this.TopPanel = new System.Windows.Forms.Panel();
-            this.TestFillDb = new System.Windows.Forms.Button();
-            this.AddBookButton = new System.Windows.Forms.Button();
             this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Finish = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AktualnieCzytaneLabel = new System.Windows.Forms.Label();
+            this.TopPanel = new System.Windows.Forms.Panel();
+            this.TestFillDb = new System.Windows.Forms.Button();
+            this.AddBookButton = new System.Windows.Forms.Button();
+            this.CloseMonthButton = new System.Windows.Forms.Button();
             this.ContainerPanel.SuspendLayout();
             this.AktualnieCzytanePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AktualnieCzytaneGrid)).BeginInit();
@@ -53,6 +54,7 @@ namespace MyBook.forms
             // 
             // ContainerPanel
             // 
+            this.ContainerPanel.Controls.Add(this.CloseMonthButton);
             this.ContainerPanel.Controls.Add(this.AktualnieCzytanePanel);
             this.ContainerPanel.Controls.Add(this.TopPanel);
             this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -125,6 +127,46 @@ namespace MyBook.forms
             this.AktualnieCzytaneGrid.TabIndex = 1;
             this.AktualnieCzytaneGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AktualnieCzytaneGrid_CellClick);
             // 
+            // TitleColumn
+            // 
+            this.TitleColumn.FillWeight = 99.49239F;
+            this.TitleColumn.HeaderText = "TYTUŁ";
+            this.TitleColumn.Name = "TitleColumn";
+            this.TitleColumn.ReadOnly = true;
+            this.TitleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TitleColumn.Width = 550;
+            // 
+            // StartDateColumn
+            // 
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.StartDateColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.StartDateColumn.FillWeight = 99.49239F;
+            this.StartDateColumn.HeaderText = "DATA ROZPOCZĘCIA";
+            this.StartDateColumn.Name = "StartDateColumn";
+            this.StartDateColumn.ReadOnly = true;
+            this.StartDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.StartDateColumn.Width = 230;
+            // 
+            // Finish
+            // 
+            this.Finish.FillWeight = 99.49239F;
+            this.Finish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Finish.HeaderText = "ZAKOŃCZ";
+            this.Finish.Name = "Finish";
+            this.Finish.ReadOnly = true;
+            this.Finish.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Finish.Width = 110;
+            // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 101.5228F;
+            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Delete.HeaderText = "USUŃ";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // AktualnieCzytaneLabel
             // 
             this.AktualnieCzytaneLabel.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -170,45 +212,19 @@ namespace MyBook.forms
             this.AddBookButton.UseVisualStyleBackColor = false;
             this.AddBookButton.Click += new System.EventHandler(this.AddBookButton_Click);
             // 
-            // TitleColumn
+            // CloseMonthButton
             // 
-            this.TitleColumn.FillWeight = 99.49239F;
-            this.TitleColumn.HeaderText = "TYTUŁ";
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.ReadOnly = true;
-            this.TitleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TitleColumn.Width = 550;
-            // 
-            // StartDateColumn
-            // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.StartDateColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.StartDateColumn.FillWeight = 99.49239F;
-            this.StartDateColumn.HeaderText = "DATA ROZPOCZĘCIA";
-            this.StartDateColumn.Name = "StartDateColumn";
-            this.StartDateColumn.ReadOnly = true;
-            this.StartDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.StartDateColumn.Width = 230;
-            // 
-            // Finish
-            // 
-            this.Finish.FillWeight = 99.49239F;
-            this.Finish.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Finish.HeaderText = "ZAKOŃCZ";
-            this.Finish.Name = "Finish";
-            this.Finish.ReadOnly = true;
-            this.Finish.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Finish.Width = 110;
-            // 
-            // Delete
-            // 
-            this.Delete.FillWeight = 101.5228F;
-            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Delete.HeaderText = "USUŃ";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CloseMonthButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CloseMonthButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CloseMonthButton.FlatAppearance.BorderSize = 0;
+            this.CloseMonthButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseMonthButton.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseMonthButton.Location = new System.Drawing.Point(60, 555);
+            this.CloseMonthButton.Name = "CloseMonthButton";
+            this.CloseMonthButton.Size = new System.Drawing.Size(300, 100);
+            this.CloseMonthButton.TabIndex = 2;
+            this.CloseMonthButton.Text = "ZAMKNIJ MIESIĄC";
+            this.CloseMonthButton.UseVisualStyleBackColor = false;
             // 
             // CentrumScreen
             // 
@@ -243,5 +259,6 @@ namespace MyBook.forms
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Finish;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Button CloseMonthButton;
     }
 }

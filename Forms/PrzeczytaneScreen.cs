@@ -123,7 +123,7 @@ namespace MyBook.forms
 
         private void ReadBooksGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-			if(e.ColumnIndex != 6)
+			if(e.ColumnIndex != 6 && e.RowIndex != -1)
             {			
 				Database databaseObject = new Database();
 				databaseObject.OpenConnection();
