@@ -69,6 +69,9 @@ namespace MyBook.Forms.CentrumSubForms
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesNumeric)).BeginInit();
@@ -114,7 +117,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Container.Location = new System.Drawing.Point(0, 0);
             this.Container.Name = "Container";
-            this.Container.Size = new System.Drawing.Size(600, 825);
+            this.Container.Size = new System.Drawing.Size(600, 798);
             this.Container.TabIndex = 0;
             this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
             // 
@@ -185,20 +188,20 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 730);
+            this.panel1.Size = new System.Drawing.Size(3, 725);
             this.panel1.TabIndex = 22;
             // 
             // SidePanel
             // 
-            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
+            this.SidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
             this.SidePanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.SidePanel.Location = new System.Drawing.Point(597, 70);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(3, 730);
+            this.SidePanel.Size = new System.Drawing.Size(3, 725);
             this.SidePanel.TabIndex = 21;
             // 
             // NoRateCheckBox
@@ -428,7 +431,6 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.UkonczoneRadio.AutoSize = true;
             this.UkonczoneRadio.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.UkonczoneRadio.Cursor = System.Windows.Forms.Cursors.Default;
             this.UkonczoneRadio.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             this.UkonczoneRadio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UkonczoneRadio.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -618,16 +620,19 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             // BottomBar
             // 
-            this.BottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
+            this.BottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
             this.BottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomBar.Location = new System.Drawing.Point(0, 800);
+            this.BottomBar.Location = new System.Drawing.Point(0, 795);
             this.BottomBar.Name = "BottomBar";
-            this.BottomBar.Size = new System.Drawing.Size(600, 25);
+            this.BottomBar.Size = new System.Drawing.Size(600, 3);
             this.BottomBar.TabIndex = 1;
             // 
             // TopBar
             // 
             this.TopBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
+            this.TopBar.Controls.Add(this.panel4);
+            this.TopBar.Controls.Add(this.panel3);
+            this.TopBar.Controls.Add(this.panel2);
             this.TopBar.Controls.Add(this.TitleLabel);
             this.TopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopBar.Location = new System.Drawing.Point(0, 0);
@@ -648,11 +653,38 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(597, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(3, 70);
+            this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(3, 70);
+            this.panel3.TabIndex = 2;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(594, 3);
+            this.panel4.TabIndex = 3;
+            // 
             // AddBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 825);
+            this.ClientSize = new System.Drawing.Size(600, 798);
             this.Controls.Add(this.Container);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddBook";
@@ -716,5 +748,8 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.NumericUpDown HoursNumeric;
         private System.Windows.Forms.NumericUpDown MinutesNumeric;
         private System.Windows.Forms.Label TimeMiddleLabel;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

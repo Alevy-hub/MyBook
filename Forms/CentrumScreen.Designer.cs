@@ -43,9 +43,9 @@ namespace MyBook.forms
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AktualnieCzytaneLabel = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.CloseMonthButton = new System.Windows.Forms.Button();
             this.TestFillDb = new System.Windows.Forms.Button();
             this.AddBookButton = new System.Windows.Forms.Button();
-            this.CloseMonthButton = new System.Windows.Forms.Button();
             this.ContainerPanel.SuspendLayout();
             this.AktualnieCzytanePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AktualnieCzytaneGrid)).BeginInit();
@@ -54,7 +54,6 @@ namespace MyBook.forms
             // 
             // ContainerPanel
             // 
-            this.ContainerPanel.Controls.Add(this.CloseMonthButton);
             this.ContainerPanel.Controls.Add(this.AktualnieCzytanePanel);
             this.ContainerPanel.Controls.Add(this.TopPanel);
             this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -179,6 +178,7 @@ namespace MyBook.forms
             // 
             // TopPanel
             // 
+            this.TopPanel.Controls.Add(this.CloseMonthButton);
             this.TopPanel.Controls.Add(this.TestFillDb);
             this.TopPanel.Controls.Add(this.AddBookButton);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -186,6 +186,21 @@ namespace MyBook.forms
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(1090, 120);
             this.TopPanel.TabIndex = 0;
+            // 
+            // CloseMonthButton
+            // 
+            this.CloseMonthButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CloseMonthButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CloseMonthButton.FlatAppearance.BorderSize = 0;
+            this.CloseMonthButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseMonthButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseMonthButton.Location = new System.Drawing.Point(122, 37);
+            this.CloseMonthButton.Name = "CloseMonthButton";
+            this.CloseMonthButton.Size = new System.Drawing.Size(150, 50);
+            this.CloseMonthButton.TabIndex = 2;
+            this.CloseMonthButton.Text = "ZAMKNIJ MIESIĄC";
+            this.CloseMonthButton.UseVisualStyleBackColor = false;
+            this.CloseMonthButton.Click += new System.EventHandler(this.CloseMonthButton_Click);
             // 
             // TestFillDb
             // 
@@ -211,20 +226,6 @@ namespace MyBook.forms
             this.AddBookButton.Text = "DODAJ KSIĄŻKĘ";
             this.AddBookButton.UseVisualStyleBackColor = false;
             this.AddBookButton.Click += new System.EventHandler(this.AddBookButton_Click);
-            // 
-            // CloseMonthButton
-            // 
-            this.CloseMonthButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CloseMonthButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.CloseMonthButton.FlatAppearance.BorderSize = 0;
-            this.CloseMonthButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseMonthButton.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CloseMonthButton.Location = new System.Drawing.Point(60, 555);
-            this.CloseMonthButton.Name = "CloseMonthButton";
-            this.CloseMonthButton.Size = new System.Drawing.Size(300, 100);
-            this.CloseMonthButton.TabIndex = 2;
-            this.CloseMonthButton.Text = "ZAMKNIJ MIESIĄC";
-            this.CloseMonthButton.UseVisualStyleBackColor = false;
             // 
             // CentrumScreen
             // 

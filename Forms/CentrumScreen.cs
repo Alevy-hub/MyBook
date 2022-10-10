@@ -124,5 +124,12 @@ namespace MyBook.forms
                 }
             }
         }
+
+        private void CloseMonthButton_Click(object sender, EventArgs e)
+        {
+            CloseMonth CloseMonthForm = new CloseMonth();
+            //CloseMonthForm.FormClosed += CloseMonthForm_FormClosed;
+            CloseMonthForm.ShowDialog();
+        }
     }
 }
