@@ -31,27 +31,30 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TopBar = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.BestBooksGrid = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Choose = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.BestBooksLabel = new System.Windows.Forms.Label();
+            this.WorstBooksLabel = new System.Windows.Forms.Label();
             this.CancelButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BottomBar = new System.Windows.Forms.Panel();
-            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Choose = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.WorstBooksGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.TopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BestBooksGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorstBooksGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // TopBar
@@ -117,92 +120,89 @@
             this.BestBooksGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.BestBooksGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.BestBooksGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BestBooksGrid.ColumnHeadersHeight = 40;
+            this.BestBooksGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.BestBooksGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bookId,
             this.TitleColumn,
             this.Choose});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.BestBooksGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.BestBooksGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.BestBooksGrid.EnableHeadersVisualStyles = false;
             this.BestBooksGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
             this.BestBooksGrid.Location = new System.Drawing.Point(24, 109);
+            this.BestBooksGrid.MultiSelect = false;
             this.BestBooksGrid.Name = "BestBooksGrid";
+            this.BestBooksGrid.ReadOnly = true;
+            this.BestBooksGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.BestBooksGrid.RowHeadersVisible = false;
-            this.BestBooksGrid.RowTemplate.Height = 25;
+            this.BestBooksGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.BestBooksGrid.RowTemplate.Height = 35;
+            this.BestBooksGrid.RowTemplate.ReadOnly = true;
+            this.BestBooksGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.BestBooksGrid.ShowCellErrors = false;
+            this.BestBooksGrid.ShowCellToolTips = false;
+            this.BestBooksGrid.ShowEditingIcon = false;
+            this.BestBooksGrid.ShowRowErrors = false;
             this.BestBooksGrid.Size = new System.Drawing.Size(470, 220);
             this.BestBooksGrid.TabIndex = 2;
+            this.BestBooksGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BooksGrid_CellClick);
             // 
-            // label1
+            // bookId
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(0, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(494, 33);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "NAJLEPSZE KSIĄŻKI";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bookId.HeaderText = "bookId";
+            this.bookId.Name = "bookId";
+            this.bookId.ReadOnly = true;
+            this.bookId.Visible = false;
             // 
-            // label3
+            // TitleColumn
             // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(0, 332);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(494, 33);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "NAJGORSZE KSIĄŻKI";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TitleColumn.HeaderText = "Tytuł";
+            this.TitleColumn.Name = "TitleColumn";
+            this.TitleColumn.ReadOnly = true;
+            this.TitleColumn.Width = 344;
             // 
-            // dataGridViewTextBoxColumn2
+            // Choose
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Ocena";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.Choose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Choose.HeaderText = "Wybierz";
+            this.Choose.Name = "Choose";
+            this.Choose.ReadOnly = true;
+            this.Choose.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Choose.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // dataGridViewTextBoxColumn1
+            // BestBooksLabel
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tytuł";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 344;
+            this.BestBooksLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BestBooksLabel.Location = new System.Drawing.Point(0, 73);
+            this.BestBooksLabel.Name = "BestBooksLabel";
+            this.BestBooksLabel.Size = new System.Drawing.Size(494, 33);
+            this.BestBooksLabel.TabIndex = 7;
+            this.BestBooksLabel.Text = "NAJLEPSZE KSIĄŻKI";
+            this.BestBooksLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // WorstBooksLabel
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
-            this.dataGridView1.Location = new System.Drawing.Point(21, 368);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(470, 220);
-            this.dataGridView1.TabIndex = 5;
+            this.WorstBooksLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.WorstBooksLabel.Location = new System.Drawing.Point(0, 332);
+            this.WorstBooksLabel.Name = "WorstBooksLabel";
+            this.WorstBooksLabel.Size = new System.Drawing.Size(494, 33);
+            this.WorstBooksLabel.TabIndex = 9;
+            this.WorstBooksLabel.Text = "NAJGORSZE KSIĄŻKI";
+            this.WorstBooksLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CancelButton
             // 
@@ -230,6 +230,7 @@
             this.AddButton.TabIndex = 15;
             this.AddButton.Text = "ZAPISZ";
             this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // SidePanel
             // 
@@ -258,19 +259,80 @@
             this.BottomBar.Size = new System.Drawing.Size(488, 3);
             this.BottomBar.TabIndex = 24;
             // 
-            // TitleColumn
+            // WorstBooksGrid
             // 
-            this.TitleColumn.HeaderText = "Tytuł";
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.Width = 344;
+            this.WorstBooksGrid.AllowUserToAddRows = false;
+            this.WorstBooksGrid.AllowUserToDeleteRows = false;
+            this.WorstBooksGrid.AllowUserToResizeColumns = false;
+            this.WorstBooksGrid.AllowUserToResizeRows = false;
+            this.WorstBooksGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
+            this.WorstBooksGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WorstBooksGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.WorstBooksGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.WorstBooksGrid.ColumnHeadersHeight = 40;
+            this.WorstBooksGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.WorstBooksGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewButtonColumn1});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.WorstBooksGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            this.WorstBooksGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.WorstBooksGrid.EnableHeadersVisualStyles = false;
+            this.WorstBooksGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
+            this.WorstBooksGrid.Location = new System.Drawing.Point(21, 368);
+            this.WorstBooksGrid.MultiSelect = false;
+            this.WorstBooksGrid.Name = "WorstBooksGrid";
+            this.WorstBooksGrid.ReadOnly = true;
+            this.WorstBooksGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.WorstBooksGrid.RowHeadersVisible = false;
+            this.WorstBooksGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.WorstBooksGrid.RowTemplate.Height = 35;
+            this.WorstBooksGrid.RowTemplate.ReadOnly = true;
+            this.WorstBooksGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.WorstBooksGrid.ShowCellErrors = false;
+            this.WorstBooksGrid.ShowCellToolTips = false;
+            this.WorstBooksGrid.ShowEditingIcon = false;
+            this.WorstBooksGrid.ShowRowErrors = false;
+            this.WorstBooksGrid.Size = new System.Drawing.Size(470, 220);
+            this.WorstBooksGrid.TabIndex = 25;
+            this.WorstBooksGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BooksGrid_CellClick);
             // 
-            // Choose
+            // dataGridViewTextBoxColumn1
             // 
-            this.Choose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Choose.HeaderText = "Wybierz";
-            this.Choose.Name = "Choose";
-            this.Choose.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Choose.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewTextBoxColumn1.HeaderText = "bookId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tytuł";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 344;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dataGridViewButtonColumn1.HeaderText = "Wybierz";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.ReadOnly = true;
+            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // CloseMonth
             // 
@@ -278,14 +340,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(494, 645);
+            this.Controls.Add(this.WorstBooksGrid);
             this.Controls.Add(this.BottomBar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SidePanel);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.WorstBooksLabel);
+            this.Controls.Add(this.BestBooksLabel);
             this.Controls.Add(this.BestBooksGrid);
             this.Controls.Add(this.TopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -293,7 +355,7 @@
             this.Text = "CloseMonth";
             this.TopBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BestBooksGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WorstBooksGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -306,17 +368,19 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.DataGridView BestBooksGrid;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label BestBooksLabel;
+        private System.Windows.Forms.Label WorstBooksLabel;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel BottomBar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookId;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Choose;
+        private System.Windows.Forms.DataGridView WorstBooksGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
     }
 }
