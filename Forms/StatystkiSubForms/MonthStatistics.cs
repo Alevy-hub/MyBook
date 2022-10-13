@@ -20,8 +20,9 @@ namespace MyBook.Forms.StatystkiSubForms
 		[DllImportAttribute("user32.dll")]
 		public static extern bool ReleaseCapture();
 
+        ConsoleLog ConsoleLog = new ConsoleLog();
 
-		public static string statYear;
+        public static string statYear;
 		public static string statMonth;
 		int readCount;
 		double averageRateDouble = 0;
@@ -39,6 +40,7 @@ namespace MyBook.Forms.StatystkiSubForms
 			RateAverage();
 			PrevRateAverage();
 			FavouriteGenre();
+			BestWorstBook();
 
 		}
 
@@ -379,6 +381,43 @@ namespace MyBook.Forms.StatystkiSubForms
 
 			FavGenreLabel.Text = favouriteGenre;
 		}
+
+		private void BestWorstBook()
+		{
+			string month = int.Parse(statMonth).ToString();
+            Database databaseObject = new Database();
+            SQLiteCommand bestBook = new SQLiteCommand("SELECT name FROM month_statistics LEFT JOIN books on best_id = id WHERE year LIKE @year AND month LIKE @month", databaseObject.dbConnection);
+            bestBook.Parameters.AddWithValue("@year", statYear);
+            bestBook.Parameters.AddWithValue("@month", month);
+            databaseObject.OpenConnection();
+            SQLiteDataReader result = bestBook.ExecuteReader();
+			ConsoleLog.Log(month);
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    BestBookLabel.Text = result[0].ToString();
+                }
+            }
+            result.Close();
+            databaseObject.CloseConnection();
+
+            SQLiteCommand worstBook = new SQLiteCommand("SELECT name FROM month_statistics LEFT JOIN books on worst_id = id WHERE year LIKE @year AND month LIKE @month", databaseObject.dbConnection);
+            worstBook.Parameters.AddWithValue("@year", statYear);
+            worstBook.Parameters.AddWithValue("@month", month);
+            databaseObject.OpenConnection();
+            result = worstBook.ExecuteReader();
+            ConsoleLog.Log(month);
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    WorstBookLabel.Text = result[0].ToString();
+                }
+            }
+            result.Close();
+            databaseObject.CloseConnection();
+        }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {

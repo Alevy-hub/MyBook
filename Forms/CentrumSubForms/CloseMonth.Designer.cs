@@ -108,6 +108,7 @@
             this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = "ZAKOŃCZ MIESIĄC";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
             // 
             // BestBooksGrid
             // 
@@ -352,6 +353,7 @@
             this.Controls.Add(this.TopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CloseMonth";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CloseMonth";
             this.TopBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BestBooksGrid)).EndInit();

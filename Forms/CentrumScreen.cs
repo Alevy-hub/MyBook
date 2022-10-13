@@ -20,6 +20,7 @@ namespace MyBook.forms
         {
             InitializeComponent();
             FillAktualnieCzytaneGrid();
+            ShowCloseMonthButton();
         }
 
         private void TestFillDb_Click(object sender, EventArgs e)
@@ -70,6 +71,7 @@ namespace MyBook.forms
         {
             AktualnieCzytaneGrid.Rows.Clear();
             FillAktualnieCzytaneGrid();
+            ShowCloseMonthButton();
         }
 
         private void AktualnieCzytaneGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -125,11 +127,57 @@ namespace MyBook.forms
             }
         }
 
+        private void ShowCloseMonthButton()
+        {
+            string year = "";
+            Database databaseObject = new Database();
+            SQLiteCommand checkYear = new SQLiteCommand("SELECT DISTINCT strftime('%Y', finish_date) AS year FROM read_books WHERE year NOT IN (SELECT DISTINCT year FROM year_statistics) ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
+            databaseObject.OpenConnection();
+            SQLiteDataReader result = checkYear.ExecuteReader();
+            if (result.HasRows)
+            {
+                while (result.Read())
+                {
+                    year = result[0].ToString();
+                    ConsoleLog.Log(year);
+                }
+            }
+            result.Close();
+            databaseObject.CloseConnection();
+
+            if(year != "")
+            {
+                SQLiteCommand checkMonth = new SQLiteCommand("SELECT DISTINCT strftime('%m', finish_date) AS month FROM read_books WHERE month NOT IN (SELECT DISTINCT month FROM month_statistics WHERE year LIKE @year) AND strftime('%Y', finish_date) like @year ORDER BY month ASC LIMIT 1", databaseObject.dbConnection);
+                checkMonth.Parameters.AddWithValue("@year", year);
+                databaseObject.OpenConnection();
+                result = checkMonth.ExecuteReader();
+                if (result.HasRows)
+                {
+                    CloseMonthButton.Visible = true;
+                }
+                else
+                {
+                    CloseMonthButton.Visible = false;
+                }
+                result.Close();
+                databaseObject.CloseConnection();
+            }
+            else
+            {
+                CloseMonthButton.Visible = false;
+            }
+        }
+
         private void CloseMonthButton_Click(object sender, EventArgs e)
         {
             CloseMonth CloseMonthForm = new CloseMonth();
-            //CloseMonthForm.FormClosed += CloseMonthForm_FormClosed;
+            CloseMonthForm.FormClosed += CloseMonthForm_FormClosed;
             CloseMonthForm.ShowDialog();
+        }
+
+        private void CloseMonthForm_FormClosed(object sender, EventArgs e)
+        {
+            ShowCloseMonthButton();
         }
     }
 }

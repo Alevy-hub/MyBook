@@ -71,6 +71,7 @@
             this.AverageRateLabel = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.MoreGenreButton = new System.Windows.Forms.Button();
             this.FavGenreLabel = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
@@ -80,14 +81,13 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.BestBookLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.WorstBookLabel = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
-            this.MoreGenreButton = new System.Windows.Forms.Button();
             this.TopBar.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel16.SuspendLayout();
@@ -563,6 +563,21 @@
             this.panel12.Size = new System.Drawing.Size(427, 118);
             this.panel12.TabIndex = 9;
             // 
+            // MoreGenreButton
+            // 
+            this.MoreGenreButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.MoreGenreButton.FlatAppearance.BorderSize = 0;
+            this.MoreGenreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoreGenreButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.MoreGenreButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.MoreGenreButton.Location = new System.Drawing.Point(360, 0);
+            this.MoreGenreButton.Name = "MoreGenreButton";
+            this.MoreGenreButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.MoreGenreButton.Size = new System.Drawing.Size(67, 118);
+            this.MoreGenreButton.TabIndex = 15;
+            this.MoreGenreButton.Text = "WIĘCEJ";
+            this.MoreGenreButton.UseVisualStyleBackColor = true;
+            // 
             // FavGenreLabel
             // 
             this.FavGenreLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -640,8 +655,8 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.WorstBookLabel);
+            this.splitContainer1.Panel2.Controls.Add(this.label);
             this.splitContainer1.Size = new System.Drawing.Size(854, 87);
             this.splitContainer1.SplitterDistance = 427;
             this.splitContainer1.SplitterWidth = 1;
@@ -669,27 +684,27 @@
             this.label2.Text = "NAJLEPSZA KSIĄŻKA";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.label6.Location = new System.Drawing.Point(-1, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(427, 54);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "xxxxxxxxx";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // WorstBookLabel
             // 
-            this.WorstBookLabel.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.WorstBookLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.WorstBookLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.WorstBookLabel.Location = new System.Drawing.Point(-1, 0);
+            this.WorstBookLabel.Location = new System.Drawing.Point(-1, 33);
             this.WorstBookLabel.Name = "WorstBookLabel";
-            this.WorstBookLabel.Size = new System.Drawing.Size(427, 33);
-            this.WorstBookLabel.TabIndex = 13;
-            this.WorstBookLabel.Text = "NAJGORSZA KSIĄŻKA";
+            this.WorstBookLabel.Size = new System.Drawing.Size(427, 54);
+            this.WorstBookLabel.TabIndex = 16;
+            this.WorstBookLabel.Text = "xxxxxxxxx";
             this.WorstBookLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label
+            // 
+            this.label.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label.Location = new System.Drawing.Point(-1, 0);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(427, 33);
+            this.label.TabIndex = 13;
+            this.label.Text = "NAJGORSZA KSIĄŻKA";
+            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // SidePanel
             // 
@@ -735,21 +750,6 @@
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(848, 3);
             this.panel22.TabIndex = 23;
-            // 
-            // MoreGenreButton
-            // 
-            this.MoreGenreButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MoreGenreButton.FlatAppearance.BorderSize = 0;
-            this.MoreGenreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MoreGenreButton.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.MoreGenreButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.MoreGenreButton.Location = new System.Drawing.Point(360, 0);
-            this.MoreGenreButton.Name = "MoreGenreButton";
-            this.MoreGenreButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.MoreGenreButton.Size = new System.Drawing.Size(67, 118);
-            this.MoreGenreButton.TabIndex = 15;
-            this.MoreGenreButton.Text = "WIĘCEJ";
-            this.MoreGenreButton.UseVisualStyleBackColor = true;
             // 
             // MonthStatistics
             // 
@@ -853,8 +853,8 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label BestBookLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label WorstBookLabel;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel20;

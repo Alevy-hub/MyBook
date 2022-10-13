@@ -6,11 +6,20 @@ using System.Drawing;
 using System.Text;
 using System.Data.SQLite;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace MyBook.Forms.CentrumSubForms
 {
     public partial class CloseMonth : Form
     {
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
         string monthToClose;
         string year;
         bool bestChosed = false;
@@ -26,8 +35,23 @@ namespace MyBook.Forms.CentrumSubForms
         {
             InitializeComponent();
             ChooseMonthToClose();
+            SetTitle();
             FillBestBooksGrid();
             FillWorstBooksGrid();
+        }
+
+        private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void SetTitle()
+        {
+            TitleLabel.Text = "ZAKOŃCZ MIESIĄC " + monthToClose + "/" + year; 
         }
 
         private void ChooseMonthToClose()
@@ -188,6 +212,10 @@ namespace MyBook.Forms.CentrumSubForms
         {
             if(bestChosed == true && worstChosed == true && warningShowed == true)
             {
+                if (int.Parse(monthToClose) < 10)
+                {
+                    monthToClose = "0" + monthToClose;
+                }
                 Database databaseObject = new Database();
                 SQLiteCommand addBestWorstBooks = new SQLiteCommand("INSERT INTO month_statistics ('month', 'year', 'best_id', 'worst_id') VALUES (@month, @year, @best_id, @worst_id)", databaseObject.dbConnection);
                 addBestWorstBooks.Parameters.AddWithValue("@month", monthToClose);
