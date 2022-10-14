@@ -16,18 +16,134 @@ namespace MyBook.forms
         public StatystykiScreen()
         {
             InitializeComponent();
+            EnableMonths();
+        }
+
+        private void EnableMonths()
+        {
+            string year = StatisticsYear.Text;
+            List<string> months = new List<string>();
+
+            Database databaseObject = new Database();
+            SQLiteCommand checkMonth = new SQLiteCommand("SELECT strftime('%m', finish_date) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear", databaseObject.dbConnection);
+            checkMonth.Parameters.AddWithValue("@finishYear", year);
+            databaseObject.OpenConnection();
+            SQLiteDataReader result = checkMonth.ExecuteReader();
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    months.Add(result[0].ToString());
+                }
+                WholeYearButton.Enabled = true;
+            }
+            else
+            {
+                WholeYearButton.Enabled = false;
+            }
+            result.Close();
+            databaseObject.CloseConnection();
+
+
+            if(months.Contains("01")){
+                JanButton.Enabled = true;
+            }
+            else
+            {
+                JanButton.Enabled = false;
+            }
+            if(months.Contains("02")){
+                FebButton.Enabled = true;
+            }
+            else
+            {
+                FebButton.Enabled = false;
+            }
+            if(months.Contains("03")){
+                MarButton.Enabled = true;
+            }
+            else
+            {
+                MarButton.Enabled = false;
+            }
+            if(months.Contains("04")){
+                AprButton.Enabled = true;
+            }
+            else
+            {
+                AprButton.Enabled = false;
+            }
+            if(months.Contains("05")){
+                MayButton.Enabled = true;
+            }
+            else
+            {
+                MayButton.Enabled = false;
+            }
+            if(months.Contains("06")){
+                JunButton.Enabled = true;
+            }
+            else
+            {
+                JunButton.Enabled = false;
+            }
+            if(months.Contains("07")){
+                JulButton.Enabled = true;
+            }
+            else
+            {
+                JulButton.Enabled = false;
+            }
+            if(months.Contains("08")){
+                AugButton.Enabled = true;
+            }
+            else
+            {
+                AugButton.Enabled = false;
+            }
+            if(months.Contains("09")){
+                SepButton.Enabled = true;
+            }
+            else
+            {
+                SepButton.Enabled = false;
+            }
+            if(months.Contains("10")){
+                OctButton.Enabled = true;
+            }
+            else
+            {
+                OctButton.Enabled = false;
+            }
+            if(months.Contains("11")){
+                NovButton.Enabled = true;
+            }
+            else
+            {
+                NovButton.Enabled = false;
+            }
+            if(months.Contains("12")){
+                DecButton.Enabled = true;
+            }
+            else
+            {
+                DecButton.Enabled = false;
+            }
+
         }
 
         private void DecreaseYearButton_Click(object sender, EventArgs e)
         {
             int year = int.Parse(StatisticsYear.Text) - 1;
             StatisticsYear.Text = year.ToString();
+            EnableMonths();
         }
 
         private void IncreaseYearButton_Click(object sender, EventArgs e)
         {
             int year = int.Parse(StatisticsYear.Text) + 1;
             StatisticsYear.Text = year.ToString();
+            EnableMonths();
         }
 
         private void MonthButtonClick(object sender, EventArgs e)
