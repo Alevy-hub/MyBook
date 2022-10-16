@@ -68,10 +68,10 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleComboBox = new System.Windows.Forms.ComboBox();
             this.BottomBar = new System.Windows.Forms.Panel();
             this.TopBar = new System.Windows.Forms.Panel();
-            this.TitleLabel = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesNumeric)).BeginInit();
@@ -640,6 +640,33 @@ namespace MyBook.Forms.CentrumSubForms
             this.TopBar.Size = new System.Drawing.Size(600, 70);
             this.TopBar.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(594, 3);
+            this.panel4.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(3, 70);
+            this.panel3.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(597, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(3, 70);
+            this.panel2.TabIndex = 1;
+            // 
             // TitleLabel
             // 
             this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -652,33 +679,6 @@ namespace MyBook.Forms.CentrumSubForms
             this.TitleLabel.Text = "DODAJ KSIĄŻKĘ";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.TitleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TitleLabel_MouseDown);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(597, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(3, 70);
-            this.panel2.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(3, 70);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(3, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(594, 3);
-            this.panel4.TabIndex = 3;
             // 
             // AddBook
             // 

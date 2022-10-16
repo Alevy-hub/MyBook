@@ -78,12 +78,7 @@ namespace MyBook
 
         private void OpenChildForm(Form childForm, object btnSender)
         {
-            if (ActiveForm != null)
-            {
-                //ActiveForm.Close();
-            }
             SelectedButton(btnSender);
-            activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;

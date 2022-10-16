@@ -33,7 +33,6 @@ namespace MyBook.Forms.CentrumSubForms
 			HoursNumeric.Visible = false;
 			MinutesNumeric.Visible = false;
 			TimeMiddleLabel.Visible = false;
-
 		}
 
 		private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
@@ -99,14 +98,15 @@ namespace MyBook.Forms.CentrumSubForms
 				RatingNumeric.Enabled = false;
 				NoRateCheckBox.Enabled = false;
 				NoRateCheckBox.Visible = false;
-			}
+                PagesCountNumeric.Enabled = true;
+            }
 			else if (TBRRadio.Checked == true)
 			{
 				StartDatePicker.Enabled = false;
 				FinishDatePicker.Enabled = false;
 				RatingNumeric.Enabled = false;
-				NoRateCheckBox.Enabled = false;
 				NoRateCheckBox.Visible = false;
+				PagesCountNumeric.Enabled = false;
 			}
 			else if (UkonczoneRadio.Checked)
 			{
@@ -115,7 +115,8 @@ namespace MyBook.Forms.CentrumSubForms
 				RatingNumeric.Enabled = true;
 				NoRateCheckBox.Enabled = true;
 				NoRateCheckBox.Visible = true;
-			}
+                PagesCountNumeric.Enabled = true;
+            }
 			StatusAlertLabel.Visible = false;
 		}
 
@@ -243,17 +244,15 @@ namespace MyBook.Forms.CentrumSubForms
 
 			addBook.ExecuteNonQuery();
 			
-			if (CzytamRadio.Checked == true || UkonczoneRadio.Checked == true)
+
+			SQLiteCommand checkBookId = new SQLiteCommand("SELECT id FROM books WHERE name = @bookName", databaseObject.dbConnection);
+			checkBookId.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
+			result = checkBookId.ExecuteReader();
+			if (result.HasRows)
 			{
-				SQLiteCommand checkBookId = new SQLiteCommand("SELECT id FROM books WHERE name = @bookName", databaseObject.dbConnection);
-				checkBookId.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
-				result = checkBookId.ExecuteReader();
-				if (result.HasRows)
+				while (result.Read())
 				{
-					while (result.Read())
-					{
-						bookId = (int)(long)result["id"];
-					}
+					bookId = (int)(long)result["id"];
 				}
 			}
 
@@ -300,6 +299,13 @@ namespace MyBook.Forms.CentrumSubForms
 				}
 				addBookToRead.ExecuteNonQuery();
 			}
+			else if (TBRRadio.Checked == true)
+			{
+                SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO tbr ('year', 'book_id') VALUES (@year, @bookId)", databaseObject.dbConnection);
+                addBookToRead.Parameters.AddWithValue("@year", DateTime.Now.Year);
+                addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+                addBookToRead.ExecuteNonQuery();
+            }
 			
 			databaseObject.CloseConnection();
 		}

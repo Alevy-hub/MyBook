@@ -64,7 +64,12 @@ namespace MyBook
 									'year'	INTEGER NOT NULL,
 									'count' INTEGER NOT NULL,
 									PRIMARY KEY('year')
-								); 
+								);
+								CREATE TABLE 'tbr'(
+									'year' INTEGER NOT NULL,
+									'book_id' INTEGER NOT NULL,
+									PRIMARY KEY('year','book_id')
+								);
 								";
 
 				SQLiteCommand createDB = new SQLiteCommand(query, databaseObject.dbConnection);
