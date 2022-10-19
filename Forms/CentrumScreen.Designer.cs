@@ -210,6 +210,7 @@ namespace MyBook.forms
             this.TestFillDb.TabIndex = 1;
             this.TestFillDb.Text = "Test Fill DB";
             this.TestFillDb.UseVisualStyleBackColor = true;
+            this.TestFillDb.Visible = false;
             this.TestFillDb.Click += new System.EventHandler(this.TestFillDb_Click);
             // 
             // AddBookButton
