@@ -41,6 +41,8 @@ namespace MyBook
             this.LogoPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.TopBarPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.LeftPanel.SuspendLayout();
@@ -184,12 +186,39 @@ namespace MyBook
             // TopBarPanel
             // 
             this.TopBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
+            this.TopBarPanel.Controls.Add(this.label1);
+            this.TopBarPanel.Controls.Add(this.ExitButton);
             this.TopBarPanel.Controls.Add(this.TitleLabel);
             this.TopBarPanel.Location = new System.Drawing.Point(350, 0);
             this.TopBarPanel.Name = "TopBarPanel";
             this.TopBarPanel.Size = new System.Drawing.Size(1090, 100);
             this.TopBarPanel.TabIndex = 1;
             this.TopBarPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopBarPanel_MouseDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.label1.Location = new System.Drawing.Point(949, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 15);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "MyBook PreAlpha 0.0.1";
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.FlatAppearance.BorderSize = 0;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ExitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.ExitButton.Location = new System.Drawing.Point(1057, 0);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(33, 42);
+            this.ExitButton.TabIndex = 2;
+            this.ExitButton.Text = "X";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // TitleLabel
             // 
@@ -228,6 +257,7 @@ namespace MyBook
             this.LogoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.TopBarPanel.ResumeLayout(false);
+            this.TopBarPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -247,5 +277,7 @@ namespace MyBook
         private System.Windows.Forms.Button PrzeczytaneButton;
         private System.Windows.Forms.Button ChallengeButton;
         private System.Windows.Forms.Button CentrumButton;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -54,6 +54,7 @@ namespace MyBook.forms
             this.DecreaseYearButton.TabIndex = 7;
             this.DecreaseYearButton.Text = "<";
             this.DecreaseYearButton.UseVisualStyleBackColor = true;
+            this.DecreaseYearButton.Click += new System.EventHandler(this.DecreaseYearButton_Click);
             // 
             // IncreaseYearButton
             // 
@@ -67,6 +68,7 @@ namespace MyBook.forms
             this.IncreaseYearButton.TabIndex = 6;
             this.IncreaseYearButton.Text = ">";
             this.IncreaseYearButton.UseVisualStyleBackColor = true;
+            this.IncreaseYearButton.Click += new System.EventHandler(this.IncreaseYearButton_Click);
             // 
             // panel1
             // 
@@ -90,6 +92,10 @@ namespace MyBook.forms
             // 
             // TBRGrid
             // 
+            this.TBRGrid.AllowUserToAddRows = false;
+            this.TBRGrid.AllowUserToDeleteRows = false;
+            this.TBRGrid.AllowUserToResizeColumns = false;
+            this.TBRGrid.AllowUserToResizeRows = false;
             this.TBRGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.TBRGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -107,7 +113,7 @@ namespace MyBook.forms
             this.Title});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -121,7 +127,7 @@ namespace MyBook.forms
             this.TBRGrid.ReadOnly = true;
             this.TBRGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.TBRGrid.RowHeadersVisible = false;
-            this.TBRGrid.RowTemplate.Height = 100;
+            this.TBRGrid.RowTemplate.Height = 80;
             this.TBRGrid.RowTemplate.ReadOnly = true;
             this.TBRGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.TBRGrid.ShowCellErrors = false;
@@ -136,13 +142,14 @@ namespace MyBook.forms
             this.isRead.HeaderText = "";
             this.isRead.Name = "isRead";
             this.isRead.ReadOnly = true;
+            this.isRead.Width = 80;
             // 
             // Title
             // 
             this.Title.HeaderText = "Tytuł";
             this.Title.Name = "Title";
             this.Title.ReadOnly = true;
-            this.Title.Width = 798;
+            this.Title.Width = 818;
             // 
             // TBRScreen
             // 

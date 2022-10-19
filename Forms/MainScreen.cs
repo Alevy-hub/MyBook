@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace MyBook
 {
@@ -119,6 +120,14 @@ namespace MyBook
         private void UstawieniaButton_Click(object sender, EventArgs e)
         {
             OpenChildForm(new forms.UstawieniaScreen(), sender);
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            string time = DateTime.Now.ToString("dd.MM.yyyy.HH.mm.ss");
+            Directory.CreateDirectory(@"./databaseBackup");
+            File.Copy(@".\database.db", @".\databaseBackup\database" + time + ".db", true);
+            this.Close();
         }
     }
 }
