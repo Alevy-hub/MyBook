@@ -41,6 +41,7 @@ namespace MyBook.forms
             this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Finish = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AktualnieCzytaneLabel = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
             this.CloseMonthButton = new System.Windows.Forms.Button();
@@ -93,7 +94,8 @@ namespace MyBook.forms
             this.TitleColumn,
             this.StartDateColumn,
             this.Finish,
-            this.Delete});
+            this.Delete,
+            this.id});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -125,6 +127,7 @@ namespace MyBook.forms
             this.AktualnieCzytaneGrid.Size = new System.Drawing.Size(1011, 373);
             this.AktualnieCzytaneGrid.TabIndex = 1;
             this.AktualnieCzytaneGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AktualnieCzytaneGrid_CellClick);
+            this.AktualnieCzytaneGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AktualnieCzytaneGrid_CellDoubleClick);
             // 
             // TitleColumn
             // 
@@ -165,6 +168,13 @@ namespace MyBook.forms
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // AktualnieCzytaneLabel
             // 
@@ -257,10 +267,11 @@ namespace MyBook.forms
         private System.Windows.Forms.Label AktualnieCzytaneLabel;
         private System.Windows.Forms.Button TestFillDb;
         private System.Windows.Forms.Button AddBookButton;
+        private System.Windows.Forms.Button CloseMonthButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Finish;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private System.Windows.Forms.Button CloseMonthButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }

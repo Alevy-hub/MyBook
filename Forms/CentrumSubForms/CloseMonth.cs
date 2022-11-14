@@ -27,6 +27,8 @@ namespace MyBook.Forms.CentrumSubForms
         Book bestBook;
         Book worstBook;
         bool warningShowed = false;
+        bool allBestShowed = true;
+        bool allWorstShowed = true;
         
 
         ConsoleLog ConsoleLog = new ConsoleLog();
@@ -57,7 +59,7 @@ namespace MyBook.Forms.CentrumSubForms
         private void ChooseMonthToClose()
         {
             Database databaseObject = new Database();
-            SQLiteCommand checkYear = new SQLiteCommand("SELECT DISTINCT strftime('%Y', finish_date) AS year FROM read_books WHERE year NOT IN (SELECT DISTINCT year FROM year_statistics) ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
+            SQLiteCommand checkYear = new SQLiteCommand("SELECT DISTINCT strftime('%Y', finish_date) AS year FROM read_books WHERE year NOT IN (SELECT DISTINCT year FROM year_statistics) AND year NOT NULL ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
             databaseObject.OpenConnection();
             SQLiteDataReader result = checkYear.ExecuteReader();
             if (result.HasRows)
@@ -89,8 +91,16 @@ namespace MyBook.Forms.CentrumSubForms
 
         private void FillBestBooksGrid()
         {
+            SQLiteCommand selectBestBooks;
             Database databaseObject = new Database();
-            SQLiteCommand selectBestBooks = new SQLiteCommand("SELECT id, name FROM books WHERE id IN (SELECT book_id FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month AND rating LIKE (SELECT MAX(rating) FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month))", databaseObject.dbConnection);
+            if(allBestShowed == true)
+            {
+                selectBestBooks = new SQLiteCommand("SELECT id, name FROM books WHERE id IN (SELECT book_id FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month AND rating LIKE (SELECT MAX(rating) FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month))", databaseObject.dbConnection);
+            }
+            else
+            {
+                selectBestBooks = new SQLiteCommand("SELECT id, name FROM books WHERE id IN (SELECT book_id FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month)", databaseObject.dbConnection);
+            }
             selectBestBooks.Parameters.AddWithValue("@year", year);
             selectBestBooks.Parameters.AddWithValue("@month", monthToClose);
             databaseObject.OpenConnection();
@@ -114,8 +124,17 @@ namespace MyBook.Forms.CentrumSubForms
 
         private void FillWorstBooksGrid()
         {
+            SQLiteCommand worstBestBooks;
             Database databaseObject = new Database();
-            SQLiteCommand worstBestBooks = new SQLiteCommand("SELECT id, name FROM books WHERE id IN (SELECT book_id FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month AND rating LIKE (SELECT MIN(rating) FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month))", databaseObject.dbConnection);
+            if(allWorstShowed == true)
+            {
+                worstBestBooks = new SQLiteCommand("SELECT id, name FROM books WHERE id IN (SELECT book_id FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month AND rating LIKE (SELECT MIN(rating) FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month))", databaseObject.dbConnection);
+            }
+            else
+            {
+                worstBestBooks = new SQLiteCommand("SELECT id, name FROM books WHERE id IN (SELECT book_id FROM read_books WHERE strftime('%Y', finish_date) LIKE @year AND strftime('%m', finish_date) like @month)", databaseObject.dbConnection);
+
+            }
             worstBestBooks.Parameters.AddWithValue("@year", year);
             worstBestBooks.Parameters.AddWithValue("@month", monthToClose);
             databaseObject.OpenConnection();
@@ -235,6 +254,40 @@ namespace MyBook.Forms.CentrumSubForms
             {
                 MessageBox.Show("Musisz wybrać najlepszą oraz najgorszą książkę w miesiącu!");
             }
+        }
+
+        private void ShowAllBestButton_Click(object sender, EventArgs e)
+        {
+            if(allBestShowed == true)
+            {
+                allBestShowed = false;
+                ShowAllBestButton.Text = "POKAŻ NAJLEPSZE";
+            }
+            else
+            {
+                allBestShowed = true;
+                ShowAllBestButton.Text = "POKAŻ WSZYSTKIE";
+            }
+            
+            BestBooksGrid.Rows.Clear();
+            FillBestBooksGrid();
+        }
+
+        private void ShowAllWorstButton_Click(object sender, EventArgs e)
+        {
+            if (allWorstShowed == true)
+            {
+                allWorstShowed = false;
+                ShowAllWorstButton.Text = "POKAŻ NAJGORSZE";
+            }
+            else
+            {
+                allWorstShowed = true;
+                ShowAllWorstButton.Text = "POKAŻ WSZYSTKIE";
+            }
+
+            WorstBooksGrid.Rows.Clear();
+            FillWorstBooksGrid();
         }
     }
 }

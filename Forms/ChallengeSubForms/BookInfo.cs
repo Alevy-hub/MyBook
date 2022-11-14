@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using MyBook.forms;
 using System.Runtime.InteropServices;
+using System.Net;
 
 namespace MyBook.Forms.ChallengeSubForms
 {
@@ -29,6 +30,7 @@ namespace MyBook.Forms.ChallengeSubForms
         public BookInfo()
         {
             InitializeComponent();
+            SetSize();
             FillDetails();
         }
 
@@ -38,6 +40,18 @@ namespace MyBook.Forms.ChallengeSubForms
             {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+
+        private void SetSize()
+        {
+            if(fromWhere == "CentrumEdycja")
+            {
+                this.Height = 635;
+            }
+            else
+            {
+                this.Height = 582;
             }
         }
 
@@ -56,7 +70,15 @@ namespace MyBook.Forms.ChallengeSubForms
                 {
                     bookId = int.Parse(result["book_id"].ToString());
                     StartDateLabel.Text = DateTime.Parse(result["start_date"].ToString()).ToString("dd.MM.yyyy");
-                    EndDateLabel.Text = DateTime.Parse(result["finish_date"].ToString()).ToString("dd.MM.yyyy");
+                    if(fromWhere == "CentrumEdycja")
+                    {
+                        EndDateLabel.Text = "Nie zakończono";
+                    }
+                    else
+                    {
+                        EndDateLabel.Text = DateTime.Parse(result["finish_date"].ToString()).ToString("dd.MM.yyyy");
+                    }
+
                     FormLabel.Text = result["form"].ToString();
                     CommentBox.Text = result["comment"].ToString();
                     if (result["rating"].ToString() != "0")
@@ -119,12 +141,51 @@ namespace MyBook.Forms.ChallengeSubForms
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            fromWhere = "";
             this.Close();
         }
 
         private void CommentBox_Enter(object sender, EventArgs e)
         {
-            TitleLabel.Focus();
+            if(fromWhere != "CentrumEdycja")
+            {
+                TitleLabel.Focus();
+            }
+            CommentBox.ReadOnly = false;
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            fromWhere = "";
+            this.Close();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            string comment = "";
+            Database databaseObject = new Database();
+            databaseObject.OpenConnection();
+            SQLiteCommand getComment = new SQLiteCommand("SELECT comment FROM read_books WHERE id = @readId", databaseObject.dbConnection);
+            getComment.Parameters.AddWithValue("@readId", readBookId);
+            SQLiteDataReader result = getComment.ExecuteReader();
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    comment = result[0].ToString();
+                }
+            }
+            result.Close();
+            databaseObject.CloseConnection();
+            comment = CommentBox.Text;
+
+            databaseObject.OpenConnection();
+            SQLiteCommand saveComment = new SQLiteCommand("UPDATE read_books SET comment = @updatedComment WHERE id = @readId", databaseObject.dbConnection);
+            saveComment.Parameters.AddWithValue("@updatedComment", comment);
+            saveComment.Parameters.AddWithValue("@readId", readBookId);
+            saveComment.ExecuteNonQuery();
+            databaseObject.CloseConnection();
+            MessageBox.Show("Zapisano");
         }
     }
 }

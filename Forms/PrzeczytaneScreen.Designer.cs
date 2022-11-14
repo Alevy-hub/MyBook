@@ -34,13 +34,6 @@ namespace MyBook.forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ReadBooksGrid = new System.Windows.Forms.DataGridView();
-            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AuthorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FinishDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.TitleSearchBox = new System.Windows.Forms.TextBox();
             this.AuthorSearchBox = new System.Windows.Forms.TextBox();
             this.GenreSearchBox = new System.Windows.Forms.ComboBox();
@@ -52,6 +45,13 @@ namespace MyBook.forms
             this.RateCheckBox = new System.Windows.Forms.CheckBox();
             this.ClearSearchButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FinishDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ReadBooksGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RateSearchBox)).BeginInit();
             this.SuspendLayout();
@@ -114,61 +114,6 @@ namespace MyBook.forms
             this.ReadBooksGrid.TabIndex = 2;
             this.ReadBooksGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReadBooksGrid_CellClick);
             this.ReadBooksGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReadBooksGrid_CellDoubleClick);
-            // 
-            // TitleColumn
-            // 
-            this.TitleColumn.FillWeight = 99.49239F;
-            this.TitleColumn.HeaderText = "TYTUŁ";
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.ReadOnly = true;
-            this.TitleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TitleColumn.Width = 300;
-            // 
-            // AuthorColumn
-            // 
-            this.AuthorColumn.HeaderText = "AUTOR";
-            this.AuthorColumn.Name = "AuthorColumn";
-            this.AuthorColumn.ReadOnly = true;
-            this.AuthorColumn.Width = 290;
-            // 
-            // GenreColumn
-            // 
-            this.GenreColumn.HeaderText = "GATUNEK";
-            this.GenreColumn.Name = "GenreColumn";
-            this.GenreColumn.ReadOnly = true;
-            // 
-            // StartDateColumn
-            // 
-            this.StartDateColumn.FillWeight = 99.49239F;
-            this.StartDateColumn.HeaderText = "DATA ROZPOCZĘCIA";
-            this.StartDateColumn.Name = "StartDateColumn";
-            this.StartDateColumn.ReadOnly = true;
-            this.StartDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.StartDateColumn.Width = 120;
-            // 
-            // FinishDateColumn
-            // 
-            this.FinishDateColumn.HeaderText = "DATA ZAKOŃCZENIA";
-            this.FinishDateColumn.Name = "FinishDateColumn";
-            this.FinishDateColumn.ReadOnly = true;
-            this.FinishDateColumn.Width = 120;
-            // 
-            // RateColumn
-            // 
-            this.RateColumn.HeaderText = "OCENA";
-            this.RateColumn.Name = "RateColumn";
-            this.RateColumn.ReadOnly = true;
-            this.RateColumn.Width = 80;
-            // 
-            // Delete
-            // 
-            this.Delete.FillWeight = 101.5228F;
-            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Delete.HeaderText = "USUŃ";
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Delete.Width = 70;
             // 
             // TitleSearchBox
             // 
@@ -301,6 +246,61 @@ namespace MyBook.forms
             this.label4.Text = "Anuluj wyszukiwanie";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // TitleColumn
+            // 
+            this.TitleColumn.FillWeight = 99.49239F;
+            this.TitleColumn.HeaderText = "TYTUŁ";
+            this.TitleColumn.Name = "TitleColumn";
+            this.TitleColumn.ReadOnly = true;
+            this.TitleColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TitleColumn.Width = 300;
+            // 
+            // AuthorColumn
+            // 
+            this.AuthorColumn.HeaderText = "AUTOR";
+            this.AuthorColumn.Name = "AuthorColumn";
+            this.AuthorColumn.ReadOnly = true;
+            this.AuthorColumn.Width = 280;
+            // 
+            // GenreColumn
+            // 
+            this.GenreColumn.HeaderText = "GATUNEK";
+            this.GenreColumn.Name = "GenreColumn";
+            this.GenreColumn.ReadOnly = true;
+            // 
+            // StartDateColumn
+            // 
+            this.StartDateColumn.FillWeight = 99.49239F;
+            this.StartDateColumn.HeaderText = "DATA ROZPOCZĘCIA";
+            this.StartDateColumn.Name = "StartDateColumn";
+            this.StartDateColumn.ReadOnly = true;
+            this.StartDateColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.StartDateColumn.Width = 120;
+            // 
+            // FinishDateColumn
+            // 
+            this.FinishDateColumn.HeaderText = "DATA ZAKOŃCZENIA";
+            this.FinishDateColumn.Name = "FinishDateColumn";
+            this.FinishDateColumn.ReadOnly = true;
+            this.FinishDateColumn.Width = 120;
+            // 
+            // RateColumn
+            // 
+            this.RateColumn.HeaderText = "OCENA";
+            this.RateColumn.Name = "RateColumn";
+            this.RateColumn.ReadOnly = true;
+            this.RateColumn.Width = 80;
+            // 
+            // Delete
+            // 
+            this.Delete.FillWeight = 101.5228F;
+            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Delete.HeaderText = "USUŃ";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Delete.Width = 70;
+            // 
             // PrzeczytaneScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -332,13 +332,6 @@ namespace MyBook.forms
         #endregion
 
         private System.Windows.Forms.DataGridView ReadBooksGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AuthorColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GenreColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FinishDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RateColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.TextBox TitleSearchBox;
         private System.Windows.Forms.TextBox AuthorSearchBox;
         private System.Windows.Forms.ComboBox GenreSearchBox;
@@ -350,5 +343,12 @@ namespace MyBook.forms
         private System.Windows.Forms.CheckBox RateCheckBox;
         private System.Windows.Forms.Button ClearSearchButton;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AuthorColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenreColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FinishDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RateColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

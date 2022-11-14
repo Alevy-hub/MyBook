@@ -202,9 +202,9 @@ namespace MyBook
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
             this.label1.Location = new System.Drawing.Point(949, 80);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 15);
+            this.label1.Size = new System.Drawing.Size(132, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "MyBook PreAlpha 0.0.1";
+            this.label1.Text = "MyBook PreAlpha 0.0.3";
             // 
             // ExitButton
             // 

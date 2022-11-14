@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using MyBook.Forms.CentrumSubForms;
+using MyBook.Forms.ChallengeSubForms;
 
 namespace MyBook.forms
 {
@@ -41,7 +42,7 @@ namespace MyBook.forms
 			AktualnieCzytaneGrid.Columns[1].DefaultCellStyle.Format = "dd.MM.yyyy";
 			Database databaseObject = new Database();
 			databaseObject.OpenConnection();
-			SQLiteCommand FillGridQuery = new SQLiteCommand("SELECT b.name, rb.start_date from books b join read_books rb on b.id = rb.book_id where rb.start_date not null and rb.finish_date is null", databaseObject.dbConnection);
+			SQLiteCommand FillGridQuery = new SQLiteCommand("SELECT b.name, rb.start_date, rb.id from books b join read_books rb on b.id = rb.book_id where rb.start_date not null and rb.finish_date is null", databaseObject.dbConnection);
 			SQLiteDataReader result = FillGridQuery.ExecuteReader();
 			if (result.HasRows)
 			{
@@ -52,7 +53,8 @@ namespace MyBook.forms
 						result.GetValue(0),
 						DateTime.ParseExact((string)result.GetValue(1), "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
 						"Zakończ",
-						"Usuń"
+						"Usuń",
+						result.GetValue(2)
 					});
 					ConsoleLog.Log("Read: " + result[0].ToString() + ", " + result[1].ToString());
 				}
@@ -79,22 +81,7 @@ namespace MyBook.forms
 			ConsoleLog.Log("Clicked cell " + e.ColumnIndex.ToString() + ", " + e.RowIndex.ToString());
 			if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
 			{
-				Database databaseObject = new Database();
-				databaseObject.OpenConnection();
-				SQLiteCommand checkReadId = new SQLiteCommand("SELECT id FROM read_books WHERE book_id = (SELECT id FROM books where name = @bookName) and start_date = @startDate", databaseObject.dbConnection);
-				checkReadId.Parameters.AddWithValue("@bookName", AktualnieCzytaneGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-				DateTime startDate = (DateTime)AktualnieCzytaneGrid.Rows[e.RowIndex].Cells[1].Value;
-				checkReadId.Parameters.AddWithValue("@startDate", startDate.ToString("yyyy-MM-dd"));
-
-				SQLiteDataReader result = checkReadId.ExecuteReader();
-				if (result.HasRows)
-				{
-					while (result.Read())
-					{
-						readId = result.GetValue("id").ToString();
-					}
-				}
-				databaseObject.CloseConnection();
+				readId = AktualnieCzytaneGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
 			}
 
 			if (e.ColumnIndex == 2)
@@ -131,7 +118,7 @@ namespace MyBook.forms
 		{
 			string year = "";
 			Database databaseObject = new Database();
-			SQLiteCommand checkYear = new SQLiteCommand("SELECT DISTINCT strftime('%Y', finish_date) AS year FROM read_books WHERE year NOT IN (SELECT DISTINCT year FROM year_statistics) ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
+			SQLiteCommand checkYear = new SQLiteCommand("SELECT DISTINCT strftime('%Y', finish_date) AS year FROM read_books WHERE year NOT IN (SELECT DISTINCT year FROM year_statistics) AND year NOT NULL ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
 			databaseObject.OpenConnection();
 			SQLiteDataReader result = checkYear.ExecuteReader();
 			if (result.HasRows)
@@ -140,9 +127,9 @@ namespace MyBook.forms
 				{
 					year = result[0].ToString();
 					ConsoleLog.Log(year);
-				}
+                }
 			}
-			result.Close();
+            result.Close();
 			databaseObject.CloseConnection();
 
 			if(year != "")
@@ -178,6 +165,17 @@ namespace MyBook.forms
 		private void CloseMonthForm_FormClosed(object sender, EventArgs e)
 		{
 			ShowCloseMonthButton();
+		}
+
+		private void AktualnieCzytaneGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if(e.ColumnIndex != 2 && e.ColumnIndex != 3)
+			{
+				BookInfo.readBookId = AktualnieCzytaneGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                BookInfo.fromWhere = "CentrumEdycja";
+                BookInfo BookInfoForm = new BookInfo();
+                BookInfoForm.ShowDialog();
+            }
 		}
 	}
 }

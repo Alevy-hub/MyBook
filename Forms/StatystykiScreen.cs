@@ -31,7 +31,7 @@ namespace MyBook.forms
             SQLiteDataReader result = checkMonth.ExecuteReader();
             if (result.HasRows)
             {
-                if (result.Read())
+                while(result.Read())
                 {
                     months.Add(result[0].ToString());
                 }

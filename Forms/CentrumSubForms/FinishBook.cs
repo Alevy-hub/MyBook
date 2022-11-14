@@ -29,6 +29,7 @@ namespace MyBook.Forms.CentrumSubForms
             FinishDatePicker.Format = DateTimePickerFormat.Custom;
             FinishDatePicker.CustomFormat = "dd.MM.yyyy";
             FillStartDate();
+            FillCommentBox();
         }
 
         private void FillStartDate()
@@ -43,6 +44,24 @@ namespace MyBook.Forms.CentrumSubForms
                 while (result.Read())
                 {
                     StartDatePicker.Value = DateTime.ParseExact((string)result["start_date"], "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+                }
+
+            }
+            databaseObject.CloseConnection();
+        }
+
+        private void FillCommentBox()
+        {
+            Database databaseObject = new Database();
+            databaseObject.OpenConnection();
+            SQLiteCommand getComment = new SQLiteCommand("SELECT comment FROM read_books WHERE id = @readBookId", databaseObject.dbConnection);
+            getComment.Parameters.AddWithValue("@readBookId", CentrumScreen.readId);
+            SQLiteDataReader result = getComment.ExecuteReader();
+            if (result.HasRows)
+            {
+                if(result.Read())
+                {
+                    CommentTextBox.Text = result[0].ToString();
                 }
 
             }

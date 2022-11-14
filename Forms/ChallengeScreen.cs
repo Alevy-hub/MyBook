@@ -270,10 +270,10 @@ namespace MyBook.forms
             if (readCount != 0)
             {
 				int i = 0;
-                List<int> rates = new List<int>();
+                List<double> rates = new List<double>();
                 Database databaseObject = new Database();
                 databaseObject.OpenConnection();
-                SQLiteCommand checkRating = new SQLiteCommand("SELECT cast(rating as int) FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear ORDER BY finish_date ASC", databaseObject.dbConnection);
+                SQLiteCommand checkRating = new SQLiteCommand("SELECT rating FROM read_books WHERE strftime('%Y', finish_date) LIKE @finishYear ORDER BY finish_date ASC", databaseObject.dbConnection);
                 checkRating.Parameters.AddWithValue("@finishYear", int.Parse(ChallengeYearLabel.Text.ToString()));
                 SQLiteDataReader result = checkRating.ExecuteReader();
                 if (result.HasRows)
@@ -281,7 +281,7 @@ namespace MyBook.forms
                     i = 0;
                     while (result.Read() && i < readCount)
                     {
-                        rates.Add(int.Parse(result[0].ToString()));
+                        rates.Add(double.Parse(result[0].ToString()));
                         i++;
                     }
                 }
@@ -293,7 +293,16 @@ namespace MyBook.forms
                 {
                     if (c.Name == "BookBox" + i.ToString() && i < readCount)
                     {
-                        int rate = rates[i];
+                        int rate;
+						if (rates[i] - Math.Truncate(rates[i]) == 0.5)
+						{
+							rate = (int)rates[i];
+						}
+						else
+						{
+							rate = (int)Math.Round(rates[i]);
+						}
+
                         i++;
                         if (rate == 0)
                         {

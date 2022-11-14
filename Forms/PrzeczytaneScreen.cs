@@ -78,6 +78,8 @@ namespace MyBook.forms
 		private void ReadBooksGrid_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			string readId = "";
+			string monthStatistics = "";
+			string yearStatistics = "";
 			if (e.ColumnIndex == 6)
 			{
 				Database databaseObject = new Database();
@@ -99,9 +101,40 @@ namespace MyBook.forms
 				}
 				databaseObject.CloseConnection();
 
+
 				if (readId != "")
 				{
-					DialogResult dr = MessageBox.Show("Czy na pewno chcesz usunąć książkę?", "Usuń książkę", MessageBoxButtons.YesNo);
+					databaseObject.OpenConnection();
+					SQLiteCommand checkBestWorstMonth = new SQLiteCommand("SELECT count(*) FROM month_statistics WHERE best_id = @bookId OR worst_id = @bookId", databaseObject.dbConnection);
+					checkBestWorstMonth.Parameters.AddWithValue("@bookId", readId);
+					result = checkBestWorstMonth.ExecuteReader();
+					if (result.HasRows)
+					{
+						if (result.Read())
+						{
+							monthStatistics = result[0].ToString();
+						}
+					}
+
+                    databaseObject.OpenConnection();
+                    SQLiteCommand checkBestWorstYear = new SQLiteCommand("SELECT count(*) FROM year_statistics WHERE best_id = @bookId OR worst_id = @bookId", databaseObject.dbConnection);
+                    checkBestWorstYear.Parameters.AddWithValue("@bookId", readId);
+                    result = checkBestWorstYear.ExecuteReader();
+                    if (result.HasRows)
+                    {
+                        if (result.Read())
+                        {
+                            yearStatistics = result[0].ToString();
+                        }
+                    }
+
+					if(monthStatistics != "0" || yearStatistics != "0")
+					{
+						MessageBox.Show("Nie można usunąć książki, która została wybrana najlepszą lub najgorszą!");
+						return;
+					}
+
+                    DialogResult dr = MessageBox.Show("Czy na pewno chcesz usunąć książkę?", "Usuń książkę", MessageBoxButtons.YesNo);
 					switch (dr)
 					{
 						case DialogResult.Yes:

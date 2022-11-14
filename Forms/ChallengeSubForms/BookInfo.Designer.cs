@@ -30,12 +30,15 @@ namespace MyBook.Forms.ChallengeSubForms
         private void InitializeComponent()
         {
             this.TopBar = new System.Windows.Forms.Panel();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.BottomBar = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Container = new System.Windows.Forms.Panel();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.FormPagesPanel = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,7 +64,6 @@ namespace MyBook.Forms.ChallengeSubForms
             this.StartDateLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.RateLabel = new System.Windows.Forms.Label();
-            this.CloseButton = new System.Windows.Forms.Button();
             this.TopBar.SuspendLayout();
             this.Container.SuspendLayout();
             this.FormPagesPanel.SuspendLayout();
@@ -87,6 +89,20 @@ namespace MyBook.Forms.ChallengeSubForms
             this.TopBar.Size = new System.Drawing.Size(466, 70);
             this.TopBar.TabIndex = 1;
             // 
+            // CloseButton
+            // 
+            this.CloseButton.FlatAppearance.BorderSize = 0;
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CloseButton.Location = new System.Drawing.Point(426, 0);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(40, 40);
+            this.CloseButton.TabIndex = 18;
+            this.CloseButton.Text = "X";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
             // panel2
             // 
             this.panel2.Location = new System.Drawing.Point(3, 70);
@@ -110,7 +126,7 @@ namespace MyBook.Forms.ChallengeSubForms
             // 
             this.BottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
             this.BottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomBar.Location = new System.Drawing.Point(0, 564);
+            this.BottomBar.Location = new System.Drawing.Point(0, 610);
             this.BottomBar.Name = "BottomBar";
             this.BottomBar.Size = new System.Drawing.Size(466, 25);
             this.BottomBar.TabIndex = 2;
@@ -121,7 +137,7 @@ namespace MyBook.Forms.ChallengeSubForms
             this.SidePanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.SidePanel.Location = new System.Drawing.Point(463, 70);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(3, 494);
+            this.SidePanel.Size = new System.Drawing.Size(3, 540);
             this.SidePanel.TabIndex = 22;
             // 
             // panel1
@@ -130,12 +146,14 @@ namespace MyBook.Forms.ChallengeSubForms
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 494);
+            this.panel1.Size = new System.Drawing.Size(3, 540);
             this.panel1.TabIndex = 23;
             // 
             // Container
             // 
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
+            this.Container.Controls.Add(this.CancelButton);
+            this.Container.Controls.Add(this.SaveButton);
             this.Container.Controls.Add(this.FormPagesPanel);
             this.Container.Controls.Add(this.panel4);
             this.Container.Controls.Add(this.label8);
@@ -146,8 +164,36 @@ namespace MyBook.Forms.ChallengeSubForms
             this.Container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Container.Location = new System.Drawing.Point(3, 70);
             this.Container.Name = "Container";
-            this.Container.Size = new System.Drawing.Size(460, 494);
+            this.Container.Size = new System.Drawing.Size(460, 540);
             this.Container.TabIndex = 24;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CancelButton.FlatAppearance.BorderSize = 0;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CancelButton.Location = new System.Drawing.Point(233, 494);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(150, 40);
+            this.CancelButton.TabIndex = 26;
+            this.CancelButton.Text = "ANULUJ";
+            this.CancelButton.UseVisualStyleBackColor = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SaveButton.Location = new System.Drawing.Point(77, 494);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(150, 40);
+            this.SaveButton.TabIndex = 25;
+            this.SaveButton.Text = "ZAPISZ";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // FormPagesPanel
             // 
@@ -417,25 +463,11 @@ namespace MyBook.Forms.ChallengeSubForms
             this.RateLabel.Text = "X";
             this.RateLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CloseButton
-            // 
-            this.CloseButton.FlatAppearance.BorderSize = 0;
-            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CloseButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.CloseButton.Location = new System.Drawing.Point(426, 0);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(40, 40);
-            this.CloseButton.TabIndex = 18;
-            this.CloseButton.Text = "X";
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
-            // 
             // BookInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 589);
+            this.ClientSize = new System.Drawing.Size(466, 635);
             this.Controls.Add(this.Container);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SidePanel);
@@ -495,5 +527,7 @@ namespace MyBook.Forms.ChallengeSubForms
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label AuthorLabel;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button SaveButton;
     }
 }

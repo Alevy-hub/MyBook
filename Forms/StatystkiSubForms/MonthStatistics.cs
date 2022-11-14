@@ -215,14 +215,14 @@ namespace MyBook.Forms.StatystkiSubForms
 			string pagesCount = "";
 
 			Database databaseObject = new Database();
-			SQLiteCommand checkCount = new SQLiteCommand("SELECT SUM(pages) FROM books WHERE id in (SELECT book_id FROM read_books WHERE form LIKE 'papier' OR form LIKE 'ebook' AND strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth)", databaseObject.dbConnection);
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT SUM(pages) FROM books WHERE id in (SELECT book_id FROM read_books WHERE (form LIKE 'papier' OR form LIKE 'ebook') AND strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth)", databaseObject.dbConnection);
 			checkCount.Parameters.AddWithValue("@finishYear", statYear);
 			checkCount.Parameters.AddWithValue("@finishMonth", statMonth);
 			databaseObject.OpenConnection();
 			SQLiteDataReader result = checkCount.ExecuteReader();
 			if (result.HasRows)
 			{
-				if(result.Read())
+				while(result.Read())
 				{
 					pagesCount = result[0].ToString();
 				}
@@ -276,7 +276,7 @@ namespace MyBook.Forms.StatystkiSubForms
 
 			string averageRate = "";
 			Database databaseObject = new Database();
-			SQLiteCommand checkCount = new SQLiteCommand("SELECT AVG(rating) FROM read_books WHERE rating NOT NULL AND strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth", databaseObject.dbConnection);
+			SQLiteCommand checkCount = new SQLiteCommand("SELECT ROUND(AVG(rating), 2) FROM read_books WHERE rating NOT NULL AND strftime('%Y', finish_date) LIKE @finishYear AND strftime('%m', finish_date) LIKE @finishMonth", databaseObject.dbConnection);
 			checkCount.Parameters.AddWithValue("@finishYear", statYear);
 			checkCount.Parameters.AddWithValue("@finishMonth", statMonth);
 			databaseObject.OpenConnection();
@@ -337,7 +337,6 @@ namespace MyBook.Forms.StatystkiSubForms
                     {
 						diffAverage = double.Parse(prevAverageRate) - averageRateDouble;
 						diffAverage = Math.Round(diffAverage, 2);
-						PrevAverageLabel.Text = diffAverage.ToString();
 
 						if(diffAverage > 0)
 						{
@@ -345,8 +344,10 @@ namespace MyBook.Forms.StatystkiSubForms
 						}
                         else
                         {
+							diffAverage = diffAverage * -1;
 							PrevRateUnderLabel.Text = "WYŻSZA NIŻ W POPRZEDNIM MIESIĄCU";
                         }
+						PrevAverageLabel.Text = diffAverage.ToString();
                     }
                     else
                     {
@@ -399,6 +400,10 @@ namespace MyBook.Forms.StatystkiSubForms
                     BestBookLabel.Text = result[0].ToString();
                 }
             }
+            else
+            {
+                BestBookLabel.Text = "Nie wybrano";
+            }
             result.Close();
             databaseObject.CloseConnection();
 
@@ -415,6 +420,10 @@ namespace MyBook.Forms.StatystkiSubForms
                     WorstBookLabel.Text = result[0].ToString();
                 }
             }
+			else
+			{
+				WorstBookLabel.Text = "Nie wybrano";
+			}
             result.Close();
             databaseObject.CloseConnection();
         }

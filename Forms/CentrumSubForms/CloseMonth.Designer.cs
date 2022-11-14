@@ -52,6 +52,8 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ShowAllBestButton = new System.Windows.Forms.Button();
+            this.ShowAllWorstButton = new System.Windows.Forms.Button();
             this.TopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BestBooksGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WorstBooksGrid)).BeginInit();
@@ -158,7 +160,7 @@
             this.BestBooksGrid.ShowCellToolTips = false;
             this.BestBooksGrid.ShowEditingIcon = false;
             this.BestBooksGrid.ShowRowErrors = false;
-            this.BestBooksGrid.Size = new System.Drawing.Size(470, 220);
+            this.BestBooksGrid.Size = new System.Drawing.Size(470, 145);
             this.BestBooksGrid.TabIndex = 2;
             this.BestBooksGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BooksGrid_CellClick);
             // 
@@ -308,7 +310,7 @@
             this.WorstBooksGrid.ShowCellToolTips = false;
             this.WorstBooksGrid.ShowEditingIcon = false;
             this.WorstBooksGrid.ShowRowErrors = false;
-            this.WorstBooksGrid.Size = new System.Drawing.Size(470, 220);
+            this.WorstBooksGrid.Size = new System.Drawing.Size(470, 145);
             this.WorstBooksGrid.TabIndex = 25;
             this.WorstBooksGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BooksGrid_CellClick);
             // 
@@ -335,12 +337,42 @@
             this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // ShowAllBestButton
+            // 
+            this.ShowAllBestButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.ShowAllBestButton.FlatAppearance.BorderSize = 0;
+            this.ShowAllBestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowAllBestButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ShowAllBestButton.Location = new System.Drawing.Point(158, 275);
+            this.ShowAllBestButton.Name = "ShowAllBestButton";
+            this.ShowAllBestButton.Size = new System.Drawing.Size(178, 40);
+            this.ShowAllBestButton.TabIndex = 26;
+            this.ShowAllBestButton.Text = "POKAŻ WSZYSTKIE";
+            this.ShowAllBestButton.UseVisualStyleBackColor = false;
+            this.ShowAllBestButton.Click += new System.EventHandler(this.ShowAllBestButton_Click);
+            // 
+            // ShowAllWorstButton
+            // 
+            this.ShowAllWorstButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.ShowAllWorstButton.FlatAppearance.BorderSize = 0;
+            this.ShowAllWorstButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowAllWorstButton.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ShowAllWorstButton.Location = new System.Drawing.Point(158, 534);
+            this.ShowAllWorstButton.Name = "ShowAllWorstButton";
+            this.ShowAllWorstButton.Size = new System.Drawing.Size(178, 40);
+            this.ShowAllWorstButton.TabIndex = 27;
+            this.ShowAllWorstButton.Text = "POKAŻ WSZYSTKIE";
+            this.ShowAllWorstButton.UseVisualStyleBackColor = false;
+            this.ShowAllWorstButton.Click += new System.EventHandler(this.ShowAllWorstButton_Click);
+            // 
             // CloseMonth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(494, 645);
+            this.Controls.Add(this.ShowAllWorstButton);
+            this.Controls.Add(this.ShowAllBestButton);
             this.Controls.Add(this.WorstBooksGrid);
             this.Controls.Add(this.BottomBar);
             this.Controls.Add(this.panel1);
@@ -384,5 +416,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.Button ShowAllBestButton;
+        private System.Windows.Forms.Button ShowAllWorstButton;
     }
 }
