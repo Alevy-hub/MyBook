@@ -119,7 +119,6 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Name = "Container";
             this.Container.Size = new System.Drawing.Size(600, 798);
             this.Container.TabIndex = 0;
-            this.Container.Paint += new System.Windows.Forms.PaintEventHandler(this.Container_Paint);
             // 
             // HoursNumeric
             // 

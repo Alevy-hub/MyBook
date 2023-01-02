@@ -204,7 +204,7 @@ namespace MyBook
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(132, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "MyBook PreAlpha 0.0.3";
+            this.label1.Text = "MyBook PreAlpha 0.0.4";
             // 
             // ExitButton
             // 

@@ -44,6 +44,7 @@ namespace MyBook.forms
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AktualnieCzytaneLabel = new System.Windows.Forms.Label();
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.CloseYearButton = new System.Windows.Forms.Button();
             this.CloseMonthButton = new System.Windows.Forms.Button();
             this.TestFillDb = new System.Windows.Forms.Button();
             this.AddBookButton = new System.Windows.Forms.Button();
@@ -188,6 +189,7 @@ namespace MyBook.forms
             // 
             // TopPanel
             // 
+            this.TopPanel.Controls.Add(this.CloseYearButton);
             this.TopPanel.Controls.Add(this.CloseMonthButton);
             this.TopPanel.Controls.Add(this.TestFillDb);
             this.TopPanel.Controls.Add(this.AddBookButton);
@@ -196,6 +198,21 @@ namespace MyBook.forms
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(1090, 120);
             this.TopPanel.TabIndex = 0;
+            // 
+            // CloseYearButton
+            // 
+            this.CloseYearButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CloseYearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.CloseYearButton.FlatAppearance.BorderSize = 0;
+            this.CloseYearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseYearButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CloseYearButton.Location = new System.Drawing.Point(122, 37);
+            this.CloseYearButton.Name = "CloseYearButton";
+            this.CloseYearButton.Size = new System.Drawing.Size(150, 50);
+            this.CloseYearButton.TabIndex = 3;
+            this.CloseYearButton.Text = "ZAMKNIJ ROK";
+            this.CloseYearButton.UseVisualStyleBackColor = false;
+            this.CloseYearButton.Click += new System.EventHandler(this.CloseYearButton_Click);
             // 
             // CloseMonthButton
             // 
@@ -273,5 +290,6 @@ namespace MyBook.forms
         private System.Windows.Forms.DataGridViewButtonColumn Finish;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.Button CloseYearButton;
     }
 }

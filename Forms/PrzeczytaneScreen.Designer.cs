@@ -45,13 +45,15 @@ namespace MyBook.forms
             this.RateCheckBox = new System.Windows.Forms.CheckBox();
             this.ClearSearchButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuthorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GenreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinishDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.EditColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ReadBooksGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RateSearchBox)).BeginInit();
             this.SuspendLayout();
@@ -74,12 +76,14 @@ namespace MyBook.forms
             this.ReadBooksGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ReadBooksGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReadBooksGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.TitleColumn,
             this.AuthorColumn,
             this.GenreColumn,
             this.StartDateColumn,
             this.FinishDateColumn,
             this.RateColumn,
+            this.EditColumn,
             this.Delete});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
@@ -246,6 +250,13 @@ namespace MyBook.forms
             this.label4.Text = "Anuluj wyszukiwanie";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // id
+            // 
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
             // TitleColumn
             // 
             this.TitleColumn.FillWeight = 99.49239F;
@@ -291,15 +302,25 @@ namespace MyBook.forms
             this.RateColumn.ReadOnly = true;
             this.RateColumn.Width = 80;
             // 
+            // EditColumn
+            // 
+            this.EditColumn.HeaderText = "";
+            this.EditColumn.Image = global::MyBook.Properties.Resources.editing;
+            this.EditColumn.Name = "EditColumn";
+            this.EditColumn.ReadOnly = true;
+            this.EditColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EditColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EditColumn.Width = 35;
+            // 
             // Delete
             // 
             this.Delete.FillWeight = 101.5228F;
-            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Delete.HeaderText = "USUŃ";
+            this.Delete.HeaderText = "";
+            this.Delete.Image = global::MyBook.Properties.Resources.delete;
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Delete.Width = 70;
+            this.Delete.Width = 35;
             // 
             // PrzeczytaneScreen
             // 
@@ -343,12 +364,14 @@ namespace MyBook.forms
         private System.Windows.Forms.CheckBox RateCheckBox;
         private System.Windows.Forms.Button ClearSearchButton;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn AuthorColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn GenreColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FinishDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RateColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.DataGridViewImageColumn EditColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Delete;
     }
 }

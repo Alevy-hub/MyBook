@@ -20,6 +20,9 @@ namespace MyBook.Forms.CentrumSubForms
 		[DllImportAttribute("user32.dll")]
 		public static extern bool ReleaseCapture();
 
+		public static string fromWhere;
+		public static string readId;
+
 		public AddBook()
 		{
 			InitializeComponent();
@@ -28,11 +31,80 @@ namespace MyBook.Forms.CentrumSubForms
 			StartDatePicker.CustomFormat = "dd.MM.yyyy";
 			FinishDatePicker.Format = DateTimePickerFormat.Custom;
 			FinishDatePicker.CustomFormat = "dd.MM.yyyy";
-			NoRateCheckBox.Enabled = false;
-			NoRateCheckBox.Visible = false;
-			HoursNumeric.Visible = false;
-			MinutesNumeric.Visible = false;
-			TimeMiddleLabel.Visible = false;
+			SetControlsStatus();
+			LoadData();
+		}
+
+		private void SetControlsStatus()
+		{
+			if(fromWhere == "edit")
+			{
+				TitleLabel.Text = "EDYTUJ KSIĄŻKĘ";
+				AddButton.Text = "ZAPISZ";
+			}
+			else
+			{
+				TitleLabel.Text = "DODAJ KSIĄŻKĘ";
+				NoRateCheckBox.Enabled = false;
+				NoRateCheckBox.Visible = false;
+				HoursNumeric.Visible = false;
+				MinutesNumeric.Visible = false;
+				TimeMiddleLabel.Visible = false;
+				AddButton.Text = "DODAJ";
+			}
+        }
+
+		private void LoadData()
+		{
+			if(fromWhere == "edit")
+			{
+                Database databaseObject = new Database();
+                databaseObject.OpenConnection();
+                SQLiteCommand LoadData = new SQLiteCommand("SELECT b.name, rb.start_date, rb.finish_date, rb.rating, rb.form, rb.comment, COALESCE(b.pages, 0), COALESCE(b.time, 0) FROM books b JOIN read_books rb ON rb.book_id = b.id WHERE rb.id LIKE @readId", databaseObject.dbConnection);
+				LoadData.Parameters.AddWithValue("readId", readId);
+                SQLiteDataReader result = LoadData.ExecuteReader();
+                if (result.HasRows)
+                {
+                    if(result.Read())
+                    {
+						TitleComboBox.Text = result[0].ToString();
+						StartDatePicker.Value = DateTime.Parse(result[1].ToString());
+						FinishDatePicker.Value = DateTime.Parse(result[2].ToString());
+						CommentTextBox.Text = result[5].ToString();
+
+						if(result[3].ToString() == "0")
+						{
+							NoRateCheckBox.Checked = true;
+						}
+						else
+						{
+							NoRateCheckBox.Checked = false;
+							RatingNumeric.Value = decimal.Parse(result[3].ToString());
+						}
+
+						if(result[4].ToString() == "papier")
+						{
+							PapierRadio.Checked = true;
+							PagesCountNumeric.Value = int.Parse(result[6].ToString());
+						}
+						else if (result[4].ToString() == "ebook")
+						{
+							EbookRadio.Checked = true;
+							PagesCountNumeric.Value = int.Parse(result[6].ToString());
+						}
+						else if (result[4].ToString() == "audiobook")
+						{
+							AudiobookRadio.Checked = true;
+							HoursNumeric.Value = int.Parse(result[7].ToString()) / 60;
+							MinutesNumeric.Value = int.Parse(result[7].ToString()) % 60;
+						}
+
+						
+                    }
+                }
+				result.Close();
+				databaseObject.CloseConnection();
+            }
 		}
 
 		private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
@@ -316,18 +388,15 @@ namespace MyBook.Forms.CentrumSubForms
 			if (CheckComboBoxes() && CheckRadioButtons() && CheckDates())
 			{
 				AddBookToDb();
-				this.Close();
+                fromWhere = "";
+                this.Close();
 			}			
 		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
-			this.Close();
-		}
-
-		private void Container_Paint(object sender, PaintEventArgs e)
-		{
-
+            fromWhere = "";
+            this.Close();
 		}
 
         private void NoRateCheckBox_CheckedChanged(object sender, EventArgs e)

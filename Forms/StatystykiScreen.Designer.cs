@@ -132,6 +132,7 @@ namespace MyBook.forms
             this.WholeYearButton.TabIndex = 12;
             this.WholeYearButton.Text = "CAŁY ROK";
             this.WholeYearButton.UseVisualStyleBackColor = false;
+            this.WholeYearButton.Click += new System.EventHandler(this.WholeYearButton_Click);
             // 
             // DecButton
             // 

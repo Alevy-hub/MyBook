@@ -195,5 +195,12 @@ namespace MyBook.forms
             MonthStatistics monthStatistics = new MonthStatistics();
             monthStatistics.ShowDialog();
         }
+
+        private void WholeYearButton_Click(object sender, EventArgs e)
+        {
+            YearStatistics.statYear = StatisticsYear.Text;
+            YearStatistics yearStatistics = new YearStatistics();
+            yearStatistics.ShowDialog();
+        }
     }
 }

@@ -295,7 +295,6 @@ namespace MyBook.Forms.StatystkiSubForms
 			}
 			result.Close();
 			databaseObject.CloseConnection();
-
 		}
 
 		private void PrevRateAverage()

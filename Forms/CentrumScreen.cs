@@ -22,6 +22,8 @@ namespace MyBook.forms
 			InitializeComponent();
 			FillAktualnieCzytaneGrid();
 			ShowCloseMonthButton();
+			//ShowCloseYearButton();
+			CloseYearButton.Visible = false;
 		}
 
 		private void TestFillDb_Click(object sender, EventArgs e)
@@ -155,6 +157,36 @@ namespace MyBook.forms
 			}
 		}
 
+		private void ShowCloseYearButton()
+		{
+			if(CloseMonthButton.Visible == false)
+			{
+                Database databaseObject = new Database();
+                SQLiteCommand checkYear = new SQLiteCommand("SELECT COUNT(year), year FROM month_statistics WHERE year NOT IN (SELECT year FROM year_statistics) AND year NOT NULL GROUP BY year HAVING COUNT(year) > 3 ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
+                databaseObject.OpenConnection();
+                SQLiteDataReader result = checkYear.ExecuteReader();
+                if (result.HasRows)
+                {
+                    while (result.Read())
+                    {
+                        CloseYear.yearToClose = result[1].ToString();
+                    }
+                }
+                result.Close();
+                databaseObject.CloseConnection();
+
+
+                if (DateTime.Now.Year > int.Parse(CloseYear.yearToClose) && int.Parse(CloseYear.yearToClose) != 0)
+				{
+					CloseYearButton.Visible = true;
+				}
+				else
+				{
+					CloseYearButton.Visible = false;
+				}
+			}
+		}
+
 		private void CloseMonthButton_Click(object sender, EventArgs e)
 		{
 			CloseMonth CloseMonthForm = new CloseMonth();
@@ -177,5 +209,12 @@ namespace MyBook.forms
                 BookInfoForm.ShowDialog();
             }
 		}
+
+		private void CloseYearButton_Click(object sender, EventArgs e)
+		{
+            CloseYear CloseYearForm = new CloseYear();
+            //CloseYearForm.FormClosed += CloseYearForm_FormClosed;
+            CloseYearForm.ShowDialog();
+        }
 	}
 }
