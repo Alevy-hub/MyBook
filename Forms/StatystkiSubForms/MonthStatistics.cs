@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Runtime.InteropServices;
+using MyBook.Forms.CentrumSubForms;
 
 namespace MyBook.Forms.StatystkiSubForms
 {
@@ -436,5 +437,15 @@ namespace MyBook.Forms.StatystkiSubForms
         {
 			e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
 		}
-    }
+
+		private void MoreGenreButton_Click(object sender, EventArgs e)
+		{
+			MoreGenres.genreMonth = statMonth;
+			MoreGenres.genreYear = statYear;
+			MoreGenres.fromWhere = "month";
+
+            MoreGenres MoreGenresForm = new MoreGenres();
+            MoreGenresForm.ShowDialog();
+        }
+	}
 }

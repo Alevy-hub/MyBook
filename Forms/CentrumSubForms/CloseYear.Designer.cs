@@ -40,6 +40,7 @@
             this.TitleLabel = new System.Windows.Forms.Label();
             this.Book1Button = new System.Windows.Forms.Button();
             this.Book2Button = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.TopBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             // 
             this.BottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
             this.BottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomBar.Location = new System.Drawing.Point(3, 402);
+            this.BottomBar.Location = new System.Drawing.Point(3, 474);
             this.BottomBar.Name = "BottomBar";
             this.BottomBar.Size = new System.Drawing.Size(488, 3);
             this.BottomBar.TabIndex = 36;
@@ -58,7 +59,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 335);
+            this.panel1.Size = new System.Drawing.Size(3, 407);
             this.panel1.TabIndex = 35;
             // 
             // SidePanel
@@ -67,7 +68,7 @@
             this.SidePanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.SidePanel.Location = new System.Drawing.Point(491, 70);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(3, 335);
+            this.SidePanel.Size = new System.Drawing.Size(3, 407);
             this.SidePanel.TabIndex = 34;
             // 
             // CancelButton
@@ -76,12 +77,13 @@
             this.CancelButton.FlatAppearance.BorderSize = 0;
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CancelButton.Location = new System.Drawing.Point(250, 355);
+            this.CancelButton.Location = new System.Drawing.Point(176, 430);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(150, 40);
             this.CancelButton.TabIndex = 33;
-            this.CancelButton.Text = "ANULUJ";
+            this.CancelButton.Text = "WYJDŹ";
             this.CancelButton.UseVisualStyleBackColor = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // AddButton
             // 
@@ -89,11 +91,11 @@
             this.AddButton.FlatAppearance.BorderSize = 0;
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddButton.Location = new System.Drawing.Point(94, 355);
+            this.AddButton.Location = new System.Drawing.Point(176, 384);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(150, 40);
             this.AddButton.TabIndex = 32;
-            this.AddButton.Text = "ZAPISZ";
+            this.AddButton.Text = "DALEJ";
             this.AddButton.UseVisualStyleBackColor = false;
             // 
             // panel4
@@ -154,7 +156,7 @@
             this.Book1Button.FlatAppearance.BorderSize = 0;
             this.Book1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Book1Button.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Book1Button.Location = new System.Drawing.Point(9, 76);
+            this.Book1Button.Location = new System.Drawing.Point(9, 106);
             this.Book1Button.Name = "Book1Button";
             this.Book1Button.Size = new System.Drawing.Size(476, 131);
             this.Book1Button.TabIndex = 37;
@@ -167,19 +169,30 @@
             this.Book2Button.FlatAppearance.BorderSize = 0;
             this.Book2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Book2Button.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Book2Button.Location = new System.Drawing.Point(9, 213);
+            this.Book2Button.Location = new System.Drawing.Point(9, 243);
             this.Book2Button.Name = "Book2Button";
             this.Book2Button.Size = new System.Drawing.Size(476, 131);
             this.Book2Button.TabIndex = 38;
             this.Book2Button.Text = "BOOK 2";
             this.Book2Button.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(3, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(488, 30);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "WYBIERZ LEPSZĄ KSIĄŻKĘ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CloseYear
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
-            this.ClientSize = new System.Drawing.Size(494, 405);
+            this.ClientSize = new System.Drawing.Size(494, 477);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Book2Button);
             this.Controls.Add(this.Book1Button);
             this.Controls.Add(this.BottomBar);
@@ -192,6 +205,7 @@
             this.Name = "CloseYear";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CloseYear";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.CloseYear_Paint);
             this.TopBar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -211,5 +225,6 @@
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Button Book1Button;
         private System.Windows.Forms.Button Book2Button;
+        private System.Windows.Forms.Label label1;
     }
 }

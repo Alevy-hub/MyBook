@@ -376,6 +376,7 @@
             this.MoreGenreButton.TabIndex = 15;
             this.MoreGenreButton.Text = "WIĘCEJ";
             this.MoreGenreButton.UseVisualStyleBackColor = true;
+            this.MoreGenreButton.Click += new System.EventHandler(this.MoreGenreButton_Click);
             // 
             // FavGenreLabel
             // 

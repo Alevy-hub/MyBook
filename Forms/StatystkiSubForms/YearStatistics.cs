@@ -339,5 +339,14 @@ namespace MyBook.Forms.StatystkiSubForms
         {
             this.Close();
         }
+
+        private void MoreGenreButton_Click(object sender, EventArgs e)
+        {
+            MoreGenres.genreYear = statYear;
+            MoreGenres.fromWhere = "year";
+
+            MoreGenres MoreGenresForm = new MoreGenres();
+            MoreGenresForm.ShowDialog();
+        }
     }
 }

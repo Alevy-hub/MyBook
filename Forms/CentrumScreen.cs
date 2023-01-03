@@ -15,15 +15,16 @@ namespace MyBook.forms
 	{
 
 		public static string readId;
+		bool isMonthToClose = false;
 		ConsoleLog ConsoleLog = new ConsoleLog();
 
 		public CentrumScreen()
 		{
 			InitializeComponent();
+			CloseYearButton.Visible = false;
 			FillAktualnieCzytaneGrid();
 			ShowCloseMonthButton();
-			//ShowCloseYearButton();
-			CloseYearButton.Visible = false;
+			ShowCloseYearButton();
 		}
 
 		private void TestFillDb_Click(object sender, EventArgs e)
@@ -118,32 +119,34 @@ namespace MyBook.forms
 
 		private void ShowCloseMonthButton()
 		{
-			string year = "";
-			Database databaseObject = new Database();
-			SQLiteCommand checkYear = new SQLiteCommand("SELECT DISTINCT strftime('%Y', finish_date) AS year FROM read_books WHERE year NOT IN (SELECT DISTINCT year FROM year_statistics) AND year NOT NULL ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
+			string notClosedYear = null;
+			string notClosedMonth;
+
+            Database databaseObject = new Database();
+			SQLiteCommand checkYears = new SQLiteCommand("SELECT DISTINCT strftime('%Y', finish_date) AS year FROM read_books WHERE year NOT IN (SELECT DISTINCT year FROM year_statistics) AND year NOT NULL ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
 			databaseObject.OpenConnection();
-			SQLiteDataReader result = checkYear.ExecuteReader();
+			SQLiteDataReader result = checkYears.ExecuteReader();
 			if (result.HasRows)
 			{
 				while (result.Read())
 				{
-					year = result[0].ToString();
-					ConsoleLog.Log(year);
-                }
+					notClosedYear = result[0].ToString();
+				}
 			}
-            result.Close();
+			result.Close();
 			databaseObject.CloseConnection();
 
-			if(year != "")
+			if (notClosedYear != null)
 			{
-				SQLiteCommand checkMonth = new SQLiteCommand("SELECT DISTINCT strftime('%m', finish_date) AS month FROM read_books WHERE month NOT IN (SELECT DISTINCT month FROM month_statistics WHERE year LIKE @year) AND strftime('%Y', finish_date) like @year ORDER BY month ASC LIMIT 1", databaseObject.dbConnection);
-				checkMonth.Parameters.AddWithValue("@year", year);
+				SQLiteCommand checkMonth = new SQLiteCommand("SELECT DISTINCT strftime('%m', finish_date) AS month FROM read_books WHERE strftime('%Y', finish_date) like @year AND month NOT IN (SELECT DISTINCT month FROM month_statistics WHERE year LIKE @year) ORDER BY month ASC LIMIT 1", databaseObject.dbConnection);
+				checkMonth.Parameters.AddWithValue("@year", notClosedYear);
 				databaseObject.OpenConnection();
 				result = checkMonth.ExecuteReader();
 				if (result.HasRows)
 				{
 					CloseMonthButton.Visible = true;
-				}
+					isMonthToClose = true;
+                }
 				else
 				{
 					CloseMonthButton.Visible = false;
@@ -157,9 +160,9 @@ namespace MyBook.forms
 			}
 		}
 
-		private void ShowCloseYearButton()
+        private void ShowCloseYearButton()
 		{
-			if(CloseMonthButton.Visible == false)
+			if(isMonthToClose == false)
 			{
                 Database databaseObject = new Database();
                 SQLiteCommand checkYear = new SQLiteCommand("SELECT COUNT(year), year FROM month_statistics WHERE year NOT IN (SELECT year FROM year_statistics) AND year NOT NULL GROUP BY year HAVING COUNT(year) > 3 ORDER BY year ASC LIMIT 1", databaseObject.dbConnection);
@@ -184,6 +187,10 @@ namespace MyBook.forms
 				{
 					CloseYearButton.Visible = false;
 				}
+			}
+			else
+			{
+				CloseYearButton.Visible = false;
 			}
 		}
 

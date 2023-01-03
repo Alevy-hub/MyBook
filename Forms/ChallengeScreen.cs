@@ -24,8 +24,8 @@ namespace MyBook.forms
 		private void ChallengeScreen_Load(object sender, EventArgs e)
 		{
 			ShowSetChallengeButton();
-			FillChallengeScreenBlank();
 			ChallengeYearLabel.Text = DateTime.Now.Year.ToString();
+			FillChallengeScreenBlank();
 			ChangeYearButtonShow();
 			EditChallengeButtonShow();
 		}
