@@ -179,7 +179,7 @@ namespace MyBook.forms
                 databaseObject.CloseConnection();
 
 
-                if (DateTime.Now.Year > int.Parse(CloseYear.yearToClose) && int.Parse(CloseYear.yearToClose) != 0)
+                if (CloseYear.yearToClose != null && DateTime.Now.Year > int.Parse(CloseYear.yearToClose) && int.Parse(CloseYear.yearToClose) != 0)
 				{
 					CloseYearButton.Visible = true;
 				}

@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.SidePanel = new System.Windows.Forms.Panel();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
+            this.NextButton = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -85,18 +85,19 @@
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // AddButton
+            // NextButton
             // 
-            this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.AddButton.FlatAppearance.BorderSize = 0;
-            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddButton.Location = new System.Drawing.Point(176, 384);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(150, 40);
-            this.AddButton.TabIndex = 32;
-            this.AddButton.Text = "DALEJ";
-            this.AddButton.UseVisualStyleBackColor = false;
+            this.NextButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.NextButton.FlatAppearance.BorderSize = 0;
+            this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextButton.Location = new System.Drawing.Point(176, 384);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(150, 40);
+            this.NextButton.TabIndex = 32;
+            this.NextButton.Text = "DALEJ";
+            this.NextButton.UseVisualStyleBackColor = false;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // panel4
             // 
@@ -162,6 +163,7 @@
             this.Book1Button.TabIndex = 37;
             this.Book1Button.Text = "BOOK 1";
             this.Book1Button.UseVisualStyleBackColor = false;
+            this.Book1Button.Click += new System.EventHandler(this.BookButton_Clicked);
             // 
             // Book2Button
             // 
@@ -175,6 +177,7 @@
             this.Book2Button.TabIndex = 38;
             this.Book2Button.Text = "BOOK 2";
             this.Book2Button.UseVisualStyleBackColor = false;
+            this.Book2Button.Click += new System.EventHandler(this.BookButton_Clicked);
             // 
             // label1
             // 
@@ -199,7 +202,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SidePanel);
             this.Controls.Add(this.CancelButton);
-            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.NextButton);
             this.Controls.Add(this.TopBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CloseYear";
@@ -217,7 +220,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel SidePanel;
         private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button NextButton;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;

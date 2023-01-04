@@ -14,6 +14,7 @@ namespace MyBook.Forms.CentrumSubForms
         bool worstChosed = false;
         Book worstBook;
 
+
         public TheWorstOfTheBest()
         {
             InitializeComponent();
@@ -24,26 +25,36 @@ namespace MyBook.Forms.CentrumSubForms
 
         private void FillBestBooksGrid()
         {
-            Database databaseObject = new Database();
-            SQLiteCommand GetBooks = new SQLiteCommand("SELECT ms.best_id, b.name FROM month_statistics ms LEFT JOIN books b ON ms.best_id = b.id WHERE ms.year LIKE @yearToClose", databaseObject.dbConnection);
-            GetBooks.Parameters.AddWithValue("@yearToClose", CloseYear.yearToClose);
-            databaseObject.OpenConnection();
-            SQLiteDataReader result = GetBooks.ExecuteReader();
-            if (result.HasRows)
-            {
-                while (result.Read())
-                {
-                    BestBooksGrid.Rows.Add(new object[]
-                    {
-                        result.GetValue(0),
-                        result.GetValue(1),
-                        "Wybierz"
-                    });
+            //Database databaseObject = new Database();
+            //SQLiteCommand GetBooks = new SQLiteCommand("SELECT ms.best_id, b.name FROM month_statistics ms LEFT JOIN books b ON ms.best_id = b.id WHERE ms.year LIKE @yearToClose", databaseObject.dbConnection);
+            //GetBooks.Parameters.AddWithValue("@yearToClose", CloseYear.yearToClose);
+            //databaseObject.OpenConnection();
+            //SQLiteDataReader result = GetBooks.ExecuteReader();
+            //if (result.HasRows)
+            //{
+            //    while (result.Read())
+            //    {
+            //        BestBooksGrid.Rows.Add(new object[]
+            //        {
+            //            result.GetValue(0),
+            //            result.GetValue(1),
+            //            "Wybierz"
+            //        });
 
-                }
+            //    }
+            //}
+            //result.Close();
+            //databaseObject.CloseConnection();
+
+            foreach(Book book in CloseYear.books)
+            {
+                BestBooksGrid.Rows.Add(new object[]
+                {
+                    book.id,
+                    book.name,
+                    "Wybierz"
+                });
             }
-            result.Close();
-            databaseObject.CloseConnection();
         }
 
         private void BestBooksGrid_CellClick(object sender, DataGridViewCellEventArgs e)

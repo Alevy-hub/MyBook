@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyBook
 {
-    class Book
+    public class Book
     {
         public string name;
         public string id;

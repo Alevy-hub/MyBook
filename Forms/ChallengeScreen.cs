@@ -23,8 +23,8 @@ namespace MyBook.forms
 
 		private void ChallengeScreen_Load(object sender, EventArgs e)
 		{
-			ShowSetChallengeButton();
 			ChallengeYearLabel.Text = DateTime.Now.Year.ToString();
+			ShowSetChallengeButton();
 			FillChallengeScreenBlank();
 			ChangeYearButtonShow();
 			EditChallengeButtonShow();
