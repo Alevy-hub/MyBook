@@ -40,8 +40,17 @@
             this.TitleLabel = new System.Windows.Forms.Label();
             this.Book1Button = new System.Windows.Forms.Button();
             this.Book2Button = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TopLabel = new System.Windows.Forms.Label();
+            this.PanelForBestBook = new System.Windows.Forms.Panel();
+            this.BookGenreLabel = new System.Windows.Forms.Label();
+            this.EndGenreLabel = new System.Windows.Forms.Label();
+            this.BookAuthorLabel = new System.Windows.Forms.Label();
+            this.EndAuthorLabel = new System.Windows.Forms.Label();
+            this.BookTitleLabel = new System.Windows.Forms.Label();
+            this.EndTitleLabel = new System.Windows.Forms.Label();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.TopBar.SuspendLayout();
+            this.PanelForBestBook.SuspendLayout();
             this.SuspendLayout();
             // 
             // BottomBar
@@ -179,15 +188,110 @@
             this.Book2Button.UseVisualStyleBackColor = false;
             this.Book2Button.Click += new System.EventHandler(this.BookButton_Clicked);
             // 
-            // label1
+            // TopLabel
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(488, 30);
-            this.label1.TabIndex = 39;
-            this.label1.Text = "WYBIERZ LEPSZĄ KSIĄŻKĘ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TopLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TopLabel.Location = new System.Drawing.Point(3, 72);
+            this.TopLabel.Name = "TopLabel";
+            this.TopLabel.Size = new System.Drawing.Size(488, 30);
+            this.TopLabel.TabIndex = 39;
+            this.TopLabel.Text = "WYBIERZ LEPSZĄ KSIĄŻKĘ";
+            this.TopLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PanelForBestBook
+            // 
+            this.PanelForBestBook.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.PanelForBestBook.Controls.Add(this.BookGenreLabel);
+            this.PanelForBestBook.Controls.Add(this.EndGenreLabel);
+            this.PanelForBestBook.Controls.Add(this.BookAuthorLabel);
+            this.PanelForBestBook.Controls.Add(this.EndAuthorLabel);
+            this.PanelForBestBook.Controls.Add(this.BookTitleLabel);
+            this.PanelForBestBook.Controls.Add(this.EndTitleLabel);
+            this.PanelForBestBook.Location = new System.Drawing.Point(9, 106);
+            this.PanelForBestBook.Name = "PanelForBestBook";
+            this.PanelForBestBook.Size = new System.Drawing.Size(476, 268);
+            this.PanelForBestBook.TabIndex = 40;
+            this.PanelForBestBook.Visible = false;
+            // 
+            // BookGenreLabel
+            // 
+            this.BookGenreLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BookGenreLabel.Location = new System.Drawing.Point(3, 209);
+            this.BookGenreLabel.Name = "BookGenreLabel";
+            this.BookGenreLabel.Size = new System.Drawing.Size(470, 30);
+            this.BookGenreLabel.TabIndex = 46;
+            this.BookGenreLabel.Text = "GENRE";
+            this.BookGenreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BookGenreLabel.Visible = false;
+            // 
+            // EndGenreLabel
+            // 
+            this.EndGenreLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EndGenreLabel.Location = new System.Drawing.Point(3, 172);
+            this.EndGenreLabel.Name = "EndGenreLabel";
+            this.EndGenreLabel.Size = new System.Drawing.Size(470, 37);
+            this.EndGenreLabel.TabIndex = 45;
+            this.EndGenreLabel.Text = "GATUNEK";
+            this.EndGenreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EndGenreLabel.Visible = false;
+            // 
+            // BookAuthorLabel
+            // 
+            this.BookAuthorLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BookAuthorLabel.Location = new System.Drawing.Point(3, 138);
+            this.BookAuthorLabel.Name = "BookAuthorLabel";
+            this.BookAuthorLabel.Size = new System.Drawing.Size(470, 30);
+            this.BookAuthorLabel.TabIndex = 44;
+            this.BookAuthorLabel.Text = "AUTHOR";
+            this.BookAuthorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BookAuthorLabel.Visible = false;
+            // 
+            // EndAuthorLabel
+            // 
+            this.EndAuthorLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EndAuthorLabel.Location = new System.Drawing.Point(3, 101);
+            this.EndAuthorLabel.Name = "EndAuthorLabel";
+            this.EndAuthorLabel.Size = new System.Drawing.Size(470, 37);
+            this.EndAuthorLabel.TabIndex = 43;
+            this.EndAuthorLabel.Text = "AUTOR";
+            this.EndAuthorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EndAuthorLabel.Visible = false;
+            // 
+            // BookTitleLabel
+            // 
+            this.BookTitleLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BookTitleLabel.Location = new System.Drawing.Point(3, 67);
+            this.BookTitleLabel.Name = "BookTitleLabel";
+            this.BookTitleLabel.Size = new System.Drawing.Size(470, 30);
+            this.BookTitleLabel.TabIndex = 42;
+            this.BookTitleLabel.Text = "TITLE";
+            this.BookTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BookTitleLabel.Visible = false;
+            // 
+            // EndTitleLabel
+            // 
+            this.EndTitleLabel.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EndTitleLabel.Location = new System.Drawing.Point(3, 30);
+            this.EndTitleLabel.Name = "EndTitleLabel";
+            this.EndTitleLabel.Size = new System.Drawing.Size(470, 37);
+            this.EndTitleLabel.TabIndex = 41;
+            this.EndTitleLabel.Text = "TYTUŁ";
+            this.EndTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EndTitleLabel.Visible = false;
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SaveButton.Location = new System.Drawing.Point(176, 384);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(150, 40);
+            this.SaveButton.TabIndex = 41;
+            this.SaveButton.Text = "ZAPISZ";
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Visible = false;
             // 
             // CloseYear
             // 
@@ -195,7 +299,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.ClientSize = new System.Drawing.Size(494, 477);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.PanelForBestBook);
+            this.Controls.Add(this.TopLabel);
             this.Controls.Add(this.Book2Button);
             this.Controls.Add(this.Book1Button);
             this.Controls.Add(this.BottomBar);
@@ -210,6 +316,7 @@
             this.Text = "CloseYear";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.CloseYear_Paint);
             this.TopBar.ResumeLayout(false);
+            this.PanelForBestBook.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -228,6 +335,14 @@
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.Button Book1Button;
         private System.Windows.Forms.Button Book2Button;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TopLabel;
+        private System.Windows.Forms.Panel PanelForBestBook;
+        private System.Windows.Forms.Label BookGenreLabel;
+        private System.Windows.Forms.Label EndGenreLabel;
+        private System.Windows.Forms.Label BookAuthorLabel;
+        private System.Windows.Forms.Label EndAuthorLabel;
+        private System.Windows.Forms.Label BookTitleLabel;
+        private System.Windows.Forms.Label EndTitleLabel;
+        private System.Windows.Forms.Button SaveButton;
     }
 }

@@ -34,6 +34,12 @@ namespace MyBook.Forms.CentrumSubForms
             GetBestBooks();
         }
 
+        private void CloseYear_Paint(object sender, PaintEventArgs e)
+        {
+            CheckForOdd();
+        }
+
+
         private void GetBestBooks()
         {
             Database databaseObject = new Database();
@@ -72,6 +78,8 @@ namespace MyBook.Forms.CentrumSubForms
             Book theWorstBook = new Book(theWorstBookId, theWorstBookName);
             if(theWorstBookId == null)
             {
+                books.Clear();
+                books2.Clear();
                 this.Close();
             }
             else
@@ -133,15 +141,48 @@ namespace MyBook.Forms.CentrumSubForms
                 books2.Clear();
                 PerformTournament();
             }
-        }
+            else if(books.Count == 1)
+            {
+                Database databaseObject = new Database();
+                SQLiteCommand GetBooks = new SQLiteCommand("SELECT b.name, a.name, b.genre FROM books b JOIN authors a on b.author_id = a.id WHERE b.id = @id", databaseObject.dbConnection);
+                GetBooks.Parameters.AddWithValue("@id", books[0].id);
+                databaseObject.OpenConnection();
+                SQLiteDataReader result = GetBooks.ExecuteReader();
+                if (result.HasRows)
+                {
+                    if (result.Read())
+                    {
+                        BookTitleLabel.Text = result[0].ToString();
+                        BookAuthorLabel.Text = result[1].ToString();
+                        BookGenreLabel.Text = result[2].ToString();
+                    }
+                }
+                result.Close();
+                databaseObject.CloseConnection();
 
-        private void CloseYear_Paint(object sender, PaintEventArgs e)
-        {
-            CheckForOdd();
+                TopLabel.Text = "NAJLEPSZA KSIĄŻKA ROKU " + yearToClose;
+                PanelForBestBook.Visible = true;
+                EndTitleLabel.Visible = true;
+                EndAuthorLabel.Visible = true;
+                EndGenreLabel.Visible = true;
+
+                BookTitleLabel.Visible = true;
+                BookAuthorLabel.Visible = true;
+                BookGenreLabel.Visible = true;
+
+                SaveButton.Visible = true;
+                NextButton.Visible = false;
+            }
+            else
+            {
+                CheckForOdd();
+            }
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            books.Clear();
+            books2.Clear();
             this.Close();
         }
 
