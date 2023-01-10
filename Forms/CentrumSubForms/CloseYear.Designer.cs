@@ -57,7 +57,7 @@
             // 
             this.BottomBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(198)))), ((int)(((byte)(177)))));
             this.BottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomBar.Location = new System.Drawing.Point(3, 474);
+            this.BottomBar.Location = new System.Drawing.Point(3, 501);
             this.BottomBar.Name = "BottomBar";
             this.BottomBar.Size = new System.Drawing.Size(488, 3);
             this.BottomBar.TabIndex = 36;
@@ -68,7 +68,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(3, 407);
+            this.panel1.Size = new System.Drawing.Size(3, 434);
             this.panel1.TabIndex = 35;
             // 
             // SidePanel
@@ -77,7 +77,7 @@
             this.SidePanel.Dock = System.Windows.Forms.DockStyle.Right;
             this.SidePanel.Location = new System.Drawing.Point(491, 70);
             this.SidePanel.Name = "SidePanel";
-            this.SidePanel.Size = new System.Drawing.Size(3, 407);
+            this.SidePanel.Size = new System.Drawing.Size(3, 434);
             this.SidePanel.TabIndex = 34;
             // 
             // CancelButton
@@ -292,6 +292,7 @@
             this.SaveButton.Text = "ZAPISZ";
             this.SaveButton.UseVisualStyleBackColor = false;
             this.SaveButton.Visible = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CloseYear
             // 

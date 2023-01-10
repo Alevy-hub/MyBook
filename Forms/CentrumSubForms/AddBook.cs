@@ -22,6 +22,8 @@ namespace MyBook.Forms.CentrumSubForms
 
 		public static string fromWhere;
 		public static string readId;
+		string startingAutor;
+		int authorSupport;
 
 		public AddBook()
 		{
@@ -52,25 +54,26 @@ namespace MyBook.Forms.CentrumSubForms
 				TimeMiddleLabel.Visible = false;
 				AddButton.Text = "DODAJ";
 			}
-        }
+		}
 
 		private void LoadData()
 		{
 			if(fromWhere == "edit")
 			{
-                Database databaseObject = new Database();
-                databaseObject.OpenConnection();
-                SQLiteCommand LoadData = new SQLiteCommand("SELECT b.name, rb.start_date, rb.finish_date, rb.rating, rb.form, rb.comment, COALESCE(b.pages, 0), COALESCE(b.time, 0) FROM books b JOIN read_books rb ON rb.book_id = b.id WHERE rb.id LIKE @readId", databaseObject.dbConnection);
+				Database databaseObject = new Database();
+				databaseObject.OpenConnection();
+				SQLiteCommand LoadData = new SQLiteCommand("SELECT b.name, rb.start_date, rb.finish_date, rb.rating, rb.form, rb.comment, COALESCE(b.pages, 0), COALESCE(b.time, 0) FROM books b JOIN read_books rb ON rb.book_id = b.id WHERE rb.id LIKE @readId", databaseObject.dbConnection);
 				LoadData.Parameters.AddWithValue("readId", readId);
-                SQLiteDataReader result = LoadData.ExecuteReader();
-                if (result.HasRows)
-                {
-                    if(result.Read())
-                    {
+				SQLiteDataReader result = LoadData.ExecuteReader();
+				if (result.HasRows)
+				{
+					if(result.Read())
+					{
 						TitleComboBox.Text = result[0].ToString();
 						StartDatePicker.Value = DateTime.Parse(result[1].ToString());
 						FinishDatePicker.Value = DateTime.Parse(result[2].ToString());
 						CommentTextBox.Text = result[5].ToString();
+						UkonczoneRadio.Checked = true;
 
 						if(result[3].ToString() == "0")
 						{
@@ -99,12 +102,13 @@ namespace MyBook.Forms.CentrumSubForms
 							MinutesNumeric.Value = int.Parse(result[7].ToString()) % 60;
 						}
 
-						
-                    }
-                }
+
+						startingAutor = AuthorComboBox.Text;		
+					}
+				}
 				result.Close();
 				databaseObject.CloseConnection();
-            }
+			}
 		}
 
 		private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
@@ -170,8 +174,8 @@ namespace MyBook.Forms.CentrumSubForms
 				RatingNumeric.Enabled = false;
 				NoRateCheckBox.Enabled = false;
 				NoRateCheckBox.Visible = false;
-                PagesCountNumeric.Enabled = true;
-            }
+				PagesCountNumeric.Enabled = true;
+			}
 			else if (TBRRadio.Checked == true)
 			{
 				StartDatePicker.Enabled = false;
@@ -187,8 +191,8 @@ namespace MyBook.Forms.CentrumSubForms
 				RatingNumeric.Enabled = true;
 				NoRateCheckBox.Enabled = true;
 				NoRateCheckBox.Visible = true;
-                PagesCountNumeric.Enabled = true;
-            }
+				PagesCountNumeric.Enabled = true;
+			}
 			StatusAlertLabel.Visible = false;
 		}
 
@@ -197,15 +201,15 @@ namespace MyBook.Forms.CentrumSubForms
 			FormAlertLabel.Visible = false;
 
 			if(AudiobookRadio.Checked == true)
-            {
+			{
 				PagesCountNumeric.Visible = false;
 				HoursNumeric.Visible = true;
 				MinutesNumeric.Visible = true;
 				TimeMiddleLabel.Visible = true;
 				CountLabel.Text = "CZAS TRWANIA";
-            }
-            else
-            {
+			}
+			else
+			{
 				PagesCountNumeric.Visible = true;
 				HoursNumeric.Visible = false;
 				MinutesNumeric.Visible = false;
@@ -229,6 +233,19 @@ namespace MyBook.Forms.CentrumSubForms
 			}
 			return true;
 		}
+
+		private bool CheckEditRadioButtons()
+		{
+            if (EditRadioButton.Visible == true && EditRadioButton.Checked != true && ChangeRadioButton.Checked != true)
+            {
+                MessageBox.Show("Musisz wybrać tryb edycji autora. Jeśli nie wiesz co to oznacza naciśnij przycisk info");
+				return false;
+            }
+			else
+			{
+				return true;
+			}
+        }
 
 		private bool CheckDates()
 		{
@@ -304,15 +321,15 @@ namespace MyBook.Forms.CentrumSubForms
 			addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
 
 			if(HoursNumeric.Visible == true)
-            {
+			{
 				addBook.Parameters.AddWithValue("@time", (int)(HoursNumeric.Value * 60 + MinutesNumeric.Value));
 				addBook.Parameters.AddWithValue("@bookPages", null);
 			}
-            else
-            {	
+			else
+			{	
 				addBook.Parameters.AddWithValue("@time", null);
 				addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
-            }
+			}
 
 			addBook.ExecuteNonQuery();
 			
@@ -373,46 +390,213 @@ namespace MyBook.Forms.CentrumSubForms
 			}
 			else if (TBRRadio.Checked == true)
 			{
-                SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO tbr ('year', 'book_id') VALUES (@year, @bookId)", databaseObject.dbConnection);
-                addBookToRead.Parameters.AddWithValue("@year", DateTime.Now.Year);
-                addBookToRead.Parameters.AddWithValue("@bookId", bookId);
-                addBookToRead.ExecuteNonQuery();
-            }
+				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO tbr ('year', 'book_id') VALUES (@year, @bookId)", databaseObject.dbConnection);
+				addBookToRead.Parameters.AddWithValue("@year", DateTime.Now.Year);
+				addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+				addBookToRead.ExecuteNonQuery();
+			}
 			
 			databaseObject.CloseConnection();
 		}
 
+		private void EditBook()
+		{
+            string authorId = null;
+            string bookId = null;
+            Database databaseObject = new Database();
+
+			databaseObject.OpenConnection();
+            SQLiteCommand checkAuthorId = new SQLiteCommand("SELECT id FROM authors WHERE name = @oldAuthorName", databaseObject.dbConnection);
+            checkAuthorId.Parameters.AddWithValue("@oldAuthorName", startingAutor);
+            SQLiteDataReader result = checkAuthorId.ExecuteReader();
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    authorId = result["id"].ToString();
+                }
+            }
+
+            SQLiteCommand addAuthor;
+			databaseObject.OpenConnection();
+			if(ChangeRadioButton.Checked == true)
+			{
+                addAuthor = new SQLiteCommand("INSERT or IGNORE INTO authors ('name') VALUES (@authorName)", databaseObject.dbConnection);
+				addAuthor.Parameters.AddWithValue("@authorName", AuthorComboBox.Text.ToString());
+				addAuthor.ExecuteNonQuery();
+            }
+			else if(EditRadioButton.Checked == true)
+			{
+                addAuthor = new SQLiteCommand("UPDATE authors SET name = @authorName WHERE id = @oldAuthorId", databaseObject.dbConnection);
+				addAuthor.Parameters.AddWithValue("@authorName", AuthorComboBox.Text.ToString());
+				addAuthor.Parameters.AddWithValue("@oldAuthorId", authorId);
+				int i = addAuthor.ExecuteNonQuery();
+			} 
+            databaseObject.OpenConnection();
+
+            checkAuthorId = new SQLiteCommand("SELECT id FROM authors WHERE name = @authorName", databaseObject.dbConnection);
+            checkAuthorId.Parameters.AddWithValue("@authorName", AuthorComboBox.Text.ToString());
+            result = checkAuthorId.ExecuteReader();
+            if (result.HasRows)
+            {
+                if(result.Read())
+                {
+                    authorId = result["id"].ToString();
+                }
+            }
+
+			//Books
+
+            SQLiteCommand addBook = new SQLiteCommand("UPDATE books SET 'name' = @bookName, 'author_id' = @bookAuthorId, 'genre' = @bookGenre, 'pages' = @bookPages, 'time' = @time WHERE id = @rbId", databaseObject.dbConnection);
+            addBook.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
+            addBook.Parameters.AddWithValue("@bookAuthorId", authorId);
+            addBook.Parameters.AddWithValue("@bookGenre", GenreComboBox.Text.ToString());
+            addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
+            addBook.Parameters.AddWithValue("@rbId", readId);
+
+            if (HoursNumeric.Visible == true)
+            {
+                addBook.Parameters.AddWithValue("@time", (int)(HoursNumeric.Value * 60 + MinutesNumeric.Value));
+                addBook.Parameters.AddWithValue("@bookPages", null);
+            }
+            else
+            {
+                addBook.Parameters.AddWithValue("@time", null);
+                addBook.Parameters.AddWithValue("@bookPages", (int)PagesCountNumeric.Value);
+            }
+            addBook.ExecuteNonQuery();
+
+            SQLiteCommand checkBookId = new SQLiteCommand("SELECT id FROM books WHERE name = @bookName", databaseObject.dbConnection);
+            checkBookId.Parameters.AddWithValue("@bookName", TitleComboBox.Text.ToString());
+            result = checkBookId.ExecuteReader();
+            if (result.HasRows)
+            {
+                while (result.Read())
+                {
+                    bookId = result["id"].ToString();
+                }
+            }
+
+            //Read Books
+
+            if (UkonczoneRadio.Checked == true)
+            {
+                SQLiteCommand addBookToRead = new SQLiteCommand("UPDATE read_books SET 'book_id' = @bookId, 'start_date' = @startDate, 'finish_date' = @finishDate, 'rating' = @rating, 'form' = @form, 'comment' = @comment WHERE id = @rbId", databaseObject.dbConnection);
+                addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+                addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("yyyy-MM-dd"));
+                addBookToRead.Parameters.AddWithValue("@finishDate", FinishDatePicker.Value.ToString("yyyy-MM-dd"));
+                addBookToRead.Parameters.AddWithValue("@rating", (double)RatingNumeric.Value);
+                addBookToRead.Parameters.AddWithValue("@comment", CommentTextBox.Text);
+                addBookToRead.Parameters.AddWithValue("@rbId", readId);
+                if (EbookRadio.Checked == true)
+                {
+                    addBookToRead.Parameters.AddWithValue("@form", "ebook");
+                }
+                else if (PapierRadio.Checked == true)
+                {
+                    addBookToRead.Parameters.AddWithValue("@form", "papier");
+                }
+                else if (AudiobookRadio.Checked == true)
+                {
+                    addBookToRead.Parameters.AddWithValue("@form", "audiobook");
+                }
+                addBookToRead.ExecuteNonQuery();
+
+            }
+            else if (CzytamRadio.Checked == true)
+            {
+                SQLiteCommand addBookToRead = new SQLiteCommand("UPDATE read_books SET 'book_id' = @bookId, 'start_date' = @startDate, 'finish_date' = @finishDate, 'form' = @form WHERE id = @rbId", databaseObject.dbConnection);
+                addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+                addBookToRead.Parameters.AddWithValue("@startDate", StartDatePicker.Value.ToString("yyyy-MM-dd"));
+                addBookToRead.Parameters.AddWithValue("@finishDate", null);
+                addBookToRead.Parameters.AddWithValue("@rbId", readId);
+                if (EbookRadio.Checked == true)
+                {
+                    addBookToRead.Parameters.AddWithValue("@form", "ebook");
+                }
+                else if (PapierRadio.Checked == true)
+                {
+                    addBookToRead.Parameters.AddWithValue("@form", "papier");
+                }
+                else if (AudiobookRadio.Checked == true)
+                {
+                    addBookToRead.Parameters.AddWithValue("@form", "audiobook");
+                }
+                addBookToRead.ExecuteNonQuery();
+            }
+            //else if (TBRRadio.Checked == true)
+            //{
+            //    SQLiteCommand addBookToRead = new SQLiteCommand("UPDATE tbr SET 'year' = @year, 'book_id' = @bookId ", databaseObject.dbConnection);
+            //    addBookToRead.Parameters.AddWithValue("@year", DateTime.Now.Year);
+            //    addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+            //    addBookToRead.ExecuteNonQuery();
+            //}
+
+            databaseObject.CloseConnection();
+
+        }
 
 		private void AddButton_Click(object sender, EventArgs e)
 		{
-			if (CheckComboBoxes() && CheckRadioButtons() && CheckDates())
+			if (fromWhere != "edit" && CheckComboBoxes() && CheckRadioButtons() && CheckDates())
 			{
 				AddBookToDb();
-                fromWhere = "";
-                this.Close();
-			}			
+				fromWhere = "";
+				this.Close();
+			}
+			else if(fromWhere == "edit" && CheckComboBoxes() && CheckRadioButtons() && CheckDates() && CheckEditRadioButtons())
+			{
+				EditBook();
+				fromWhere = "";
+				this.Close();
+			}
 		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
 		{
-            fromWhere = "";
-            this.Close();
+			fromWhere = "";
+			this.Close();
 		}
 
-        private void NoRateCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (NoRateCheckBox.Checked)
-            {
+		private void NoRateCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (NoRateCheckBox.Checked)
+			{
 				RatingNumeric.Enabled = false;
 				RatingNumeric.Minimum = 0;
 				RatingNumeric.Value = 0;
-            }
-            else
-            {
+			}
+			else
+			{
 				RatingNumeric.Enabled = true;
 				RatingNumeric.Minimum = 1;
 				RatingNumeric.Value = 1;
-            }
-        }
-    }
+			}
+		}
+
+		private void InfoButton_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Wybierając opcję 'Zmiana', dokonasz zmiany autora dla tej książki.\nWybierając opcję 'Edycja' zmienisz nazwę autora dla wszystkich książek, do których został przypisany.");
+		}
+
+		private void AuthorComboBox_TextChanged(object sender, EventArgs e)
+		{
+			if(authorSupport > 0)
+			{
+				if(AuthorComboBox.Text != startingAutor)
+				{
+					InfoButton.Visible = true;
+					EditRadioButton.Visible = true;
+					ChangeRadioButton.Visible = true;
+				}
+				else
+				{
+					InfoButton.Visible = false;
+					EditRadioButton.Visible = false;
+					ChangeRadioButton.Visible = false;
+				}
+			}
+			authorSupport++;
+		}
+	}
 }

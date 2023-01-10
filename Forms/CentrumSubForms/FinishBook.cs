@@ -47,6 +47,7 @@ namespace MyBook.Forms.CentrumSubForms
                 }
 
             }
+            result.Close();
             databaseObject.CloseConnection();
         }
 
@@ -65,6 +66,7 @@ namespace MyBook.Forms.CentrumSubForms
                 }
 
             }
+            result.Close();
             databaseObject.CloseConnection();
         }
 

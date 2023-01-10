@@ -36,9 +36,9 @@ namespace MyBook.Forms.StatystkiSubForms
             HoursCount();
             RateAverage();
             PrevRateAverage();
-            FavouriteGenre(); 
-            BestBookLabel.Text = "NIE ZAIMPLEMENTOWANO";
-            WorstBookLabel.Text = "NIE ZAIMPLEMENTOWANO";
+            FavouriteGenre();
+            BestWorstBook();
+
         }
 
         private void TitleLabel_MouseDown(object sender, MouseEventArgs e)
@@ -333,6 +333,46 @@ namespace MyBook.Forms.StatystkiSubForms
             databaseObject.CloseConnection();
 
             FavGenreLabel.Text = favouriteGenre;
+        }
+
+        private void BestWorstBook()
+        {
+            Database databaseObject = new Database();
+            SQLiteCommand bestBook = new SQLiteCommand("SELECT name FROM year_statistics LEFT JOIN books on best_id = id WHERE year LIKE @year", databaseObject.dbConnection);
+            bestBook.Parameters.AddWithValue("@year", statYear);
+            databaseObject.OpenConnection();
+            SQLiteDataReader result = bestBook.ExecuteReader();
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    BestBookLabel.Text = result[0].ToString();
+                }
+            }
+            else
+            {
+                BestBookLabel.Text = "Nie wybrano";
+            }
+            result.Close();
+            databaseObject.CloseConnection();
+
+            SQLiteCommand worstBook = new SQLiteCommand("SELECT name FROM year_statistics LEFT JOIN books on worst_id = id WHERE year LIKE @year", databaseObject.dbConnection);
+            worstBook.Parameters.AddWithValue("@year", statYear);
+            databaseObject.OpenConnection();
+            result = worstBook.ExecuteReader();
+            if (result.HasRows)
+            {
+                if (result.Read())
+                {
+                    WorstBookLabel.Text = result[0].ToString();
+                }
+            }
+            else
+            {
+                WorstBookLabel.Text = "Nie wybrano";
+            }
+            result.Close();
+            databaseObject.CloseConnection();
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

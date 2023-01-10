@@ -13,39 +13,39 @@ namespace MyBook.Forms.CentrumSubForms
     {
         bool worstChosed = false;
         Book worstBook;
+        string choosedBook = "";
+        string chooseBook = "";
+        string message = "";
 
 
         public TheWorstOfTheBest()
         {
             InitializeComponent();
+            SetStrings();
             CloseYear.theWorstBookId = null;
             CloseYear.theWorstBookName = null;
             FillBestBooksGrid();
         }
 
+        private void SetStrings()
+        {
+            if(CloseYear.mode == "best")
+            {
+                chooseBook = "WYBIERZ NAJGORSZĄ KSIĄŻKĘ";
+                choosedBook = "WYBRANA NAJGORSZA KSIĄŻKA";
+                message = "Musisz najpierw wybrać najgorszą książkę";
+            }
+            else if(CloseYear.mode == "worst")
+            {
+                chooseBook = "WYBIERZ NAJEPSZĄ KSIĄŻKĘ";
+                choosedBook = "WYBRANA NAJLEPSZA KSIĄŻKA";
+                message = "Musisz najpierw wybrać najlepszą książkę";
+            }
+            topLabel.Text = chooseBook;
+        }
+
         private void FillBestBooksGrid()
         {
-            //Database databaseObject = new Database();
-            //SQLiteCommand GetBooks = new SQLiteCommand("SELECT ms.best_id, b.name FROM month_statistics ms LEFT JOIN books b ON ms.best_id = b.id WHERE ms.year LIKE @yearToClose", databaseObject.dbConnection);
-            //GetBooks.Parameters.AddWithValue("@yearToClose", CloseYear.yearToClose);
-            //databaseObject.OpenConnection();
-            //SQLiteDataReader result = GetBooks.ExecuteReader();
-            //if (result.HasRows)
-            //{
-            //    while (result.Read())
-            //    {
-            //        BestBooksGrid.Rows.Add(new object[]
-            //        {
-            //            result.GetValue(0),
-            //            result.GetValue(1),
-            //            "Wybierz"
-            //        });
-
-            //    }
-            //}
-            //result.Close();
-            //databaseObject.CloseConnection();
-
             foreach(Book book in CloseYear.books)
             {
                 BestBooksGrid.Rows.Add(new object[]
@@ -73,14 +73,14 @@ namespace MyBook.Forms.CentrumSubForms
                         worstBook.name,
                         "Zmień"
                     });
-                    topLabel.Text = "WYBRANA NAJGORSZA KSIĄŻKA";
+                    topLabel.Text = choosedBook;
                     Grid.DefaultCellStyle.BackColor = Color.FromArgb(176, 109, 84);
                     Grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(176, 109, 84);
                     worstChosed = true;
                 }
                 else
                 {
-                    topLabel.Text = "WYBIERZ NAJGORSZĄ KSIĄŻKĘ";
+                    topLabel.Text = chooseBook;
                     Grid.DefaultCellStyle.BackColor = Color.FromArgb(255, 235, 201);
                     Grid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 235, 201);
                     worstChosed = false;
@@ -100,7 +100,7 @@ namespace MyBook.Forms.CentrumSubForms
             }
             else
             {
-                MessageBox.Show("Musisz najpierw wybrać najgorszą książkę");
+                MessageBox.Show(message);
             }
         }
 

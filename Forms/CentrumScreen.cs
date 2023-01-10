@@ -16,7 +16,8 @@ namespace MyBook.forms
 
 		public static string readId;
 		bool isMonthToClose = false;
-		ConsoleLog ConsoleLog = new ConsoleLog();
+        public static Book BestBook;
+        ConsoleLog ConsoleLog = new ConsoleLog();
 
 		public CentrumScreen()
 		{
@@ -220,8 +221,35 @@ namespace MyBook.forms
 		private void CloseYearButton_Click(object sender, EventArgs e)
 		{
             CloseYear CloseYearForm = new CloseYear();
-            //CloseYearForm.FormClosed += CloseYearForm_FormClosed;
+            CloseYearForm.FormClosed += CloseYearForm_FormClosed;
             CloseYearForm.ShowDialog();
+        }
+
+		private void CloseYearForm_FormClosed(object sender, EventArgs e)
+		{
+			if(CloseYear.mode == "change")
+			{
+                CloseYear CloseYearForm = new CloseYear();
+                CloseYearForm.FormClosed += CloseYearForm_FormClosed;
+                CloseYearForm.ShowDialog();
+            }
+			else
+			{
+                ShowCloseMonthButton();
+                ShowCloseYearButton();
+            }
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Database databaseObject = new Database();
+			databaseObject.OpenConnection();
+            SQLiteCommand addAuthor = new SQLiteCommand("UPDATE books SET name = @authorName WHERE id = @oldAuthorId", databaseObject.dbConnection);
+            addAuthor.Parameters.AddWithValue("@authorName", "test");
+            addAuthor.Parameters.AddWithValue("@oldAuthorId", "1");
+            int i = addAuthor.ExecuteNonQuery();
+            MessageBox.Show("edytowano: " + i.ToString());
+			databaseObject.CloseConnection();
         }
 	}
 }

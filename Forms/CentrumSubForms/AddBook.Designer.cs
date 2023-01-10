@@ -30,6 +30,10 @@ namespace MyBook.Forms.CentrumSubForms
         private void InitializeComponent()
         {
             this.Container = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.InfoButton = new System.Windows.Forms.Button();
+            this.EditRadioButton = new System.Windows.Forms.RadioButton();
+            this.ChangeRadioButton = new System.Windows.Forms.RadioButton();
             this.HoursNumeric = new System.Windows.Forms.NumericUpDown();
             this.MinutesNumeric = new System.Windows.Forms.NumericUpDown();
             this.TimeMiddleLabel = new System.Windows.Forms.Label();
@@ -73,6 +77,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.panel2 = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.Container.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).BeginInit();
@@ -86,6 +91,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             this.Container.AutoSize = true;
             this.Container.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
+            this.Container.Controls.Add(this.panel5);
             this.Container.Controls.Add(this.HoursNumeric);
             this.Container.Controls.Add(this.MinutesNumeric);
             this.Container.Controls.Add(this.TimeMiddleLabel);
@@ -119,6 +125,56 @@ namespace MyBook.Forms.CentrumSubForms
             this.Container.Name = "Container";
             this.Container.Size = new System.Drawing.Size(600, 798);
             this.Container.TabIndex = 0;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.InfoButton);
+            this.panel5.Controls.Add(this.EditRadioButton);
+            this.panel5.Controls.Add(this.ChangeRadioButton);
+            this.panel5.Location = new System.Drawing.Point(504, 92);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(93, 126);
+            this.panel5.TabIndex = 28;
+            // 
+            // InfoButton
+            // 
+            this.InfoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.InfoButton.FlatAppearance.BorderSize = 0;
+            this.InfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InfoButton.Location = new System.Drawing.Point(9, 88);
+            this.InfoButton.Name = "InfoButton";
+            this.InfoButton.Size = new System.Drawing.Size(75, 23);
+            this.InfoButton.TabIndex = 2;
+            this.InfoButton.Text = "INFO";
+            this.InfoButton.UseVisualStyleBackColor = false;
+            this.InfoButton.Visible = false;
+            this.InfoButton.Click += new System.EventHandler(this.InfoButton_Click);
+            // 
+            // EditRadioButton
+            // 
+            this.EditRadioButton.AutoSize = true;
+            this.EditRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditRadioButton.Location = new System.Drawing.Point(3, 63);
+            this.EditRadioButton.Name = "EditRadioButton";
+            this.EditRadioButton.Size = new System.Drawing.Size(58, 19);
+            this.EditRadioButton.TabIndex = 1;
+            this.EditRadioButton.TabStop = true;
+            this.EditRadioButton.Text = "Edycja";
+            this.EditRadioButton.UseVisualStyleBackColor = true;
+            this.EditRadioButton.Visible = false;
+            // 
+            // ChangeRadioButton
+            // 
+            this.ChangeRadioButton.AutoSize = true;
+            this.ChangeRadioButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangeRadioButton.Location = new System.Drawing.Point(3, 44);
+            this.ChangeRadioButton.Name = "ChangeRadioButton";
+            this.ChangeRadioButton.Size = new System.Drawing.Size(67, 19);
+            this.ChangeRadioButton.TabIndex = 0;
+            this.ChangeRadioButton.TabStop = true;
+            this.ChangeRadioButton.Text = "Zmiana ";
+            this.ChangeRadioButton.UseVisualStyleBackColor = true;
+            this.ChangeRadioButton.Visible = false;
             // 
             // HoursNumeric
             // 
@@ -601,6 +657,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.AuthorComboBox.Size = new System.Drawing.Size(400, 38);
             this.AuthorComboBox.TabIndex = 6;
             this.AuthorComboBox.Text = "Autor...";
+            this.AuthorComboBox.TextChanged += new System.EventHandler(this.AuthorComboBox_TextChanged);
             // 
             // TitleComboBox
             // 
@@ -691,6 +748,8 @@ namespace MyBook.Forms.CentrumSubForms
             this.Text = "AddBook";
             this.Container.ResumeLayout(false);
             this.Container.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HoursNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinutesNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RatingNumeric)).EndInit();
@@ -750,5 +809,9 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button InfoButton;
+        private System.Windows.Forms.RadioButton EditRadioButton;
+        private System.Windows.Forms.RadioButton ChangeRadioButton;
     }
 }

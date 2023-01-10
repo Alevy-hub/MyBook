@@ -125,7 +125,8 @@ namespace MyBook.forms
 					AddBook.readId = readId;
 					AddBook.fromWhere = "edit";
 					AddBook addBookForm = new AddBook();
-					addBookForm.ShowDialog();
+                    addBookForm.FormClosed += addBookForm_FormClosed;
+                    addBookForm.ShowDialog();
                 }
             }
 			else if (e.ColumnIndex == 8)
@@ -189,7 +190,15 @@ namespace MyBook.forms
 			}
 		}
 
-        private void ReadBooksGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		private void addBookForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			ReadBooksGrid.Rows.Clear();
+			GenreSearchBox.Items.Clear();
+            FillReadBooksGrid();
+            FillGenreSearchBox();
+        }
+
+		private void ReadBooksGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 			if(e.ColumnIndex != 7 && e.ColumnIndex != 8 && e.RowIndex != -1)
             {			
