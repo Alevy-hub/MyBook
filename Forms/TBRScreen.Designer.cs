@@ -29,15 +29,16 @@ namespace MyBook.forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DecreaseYearButton = new System.Windows.Forms.Button();
             this.IncreaseYearButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ChallengeYearLabel = new System.Windows.Forms.Label();
+            this.YearLabel = new System.Windows.Forms.Label();
             this.TBRGrid = new System.Windows.Forms.DataGridView();
             this.isRead = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TBRGrid)).BeginInit();
             this.SuspendLayout();
@@ -73,22 +74,22 @@ namespace MyBook.forms
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            this.panel1.Controls.Add(this.ChallengeYearLabel);
+            this.panel1.Controls.Add(this.YearLabel);
             this.panel1.Location = new System.Drawing.Point(470, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(150, 50);
             this.panel1.TabIndex = 5;
             // 
-            // ChallengeYearLabel
+            // YearLabel
             // 
-            this.ChallengeYearLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChallengeYearLabel.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ChallengeYearLabel.Location = new System.Drawing.Point(0, 0);
-            this.ChallengeYearLabel.Name = "ChallengeYearLabel";
-            this.ChallengeYearLabel.Size = new System.Drawing.Size(150, 50);
-            this.ChallengeYearLabel.TabIndex = 0;
-            this.ChallengeYearLabel.Text = "2022";
-            this.ChallengeYearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.YearLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.YearLabel.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.YearLabel.Location = new System.Drawing.Point(0, 0);
+            this.YearLabel.Name = "YearLabel";
+            this.YearLabel.Size = new System.Drawing.Size(150, 50);
+            this.YearLabel.TabIndex = 0;
+            this.YearLabel.Text = "2022";
+            this.YearLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TBRGrid
             // 
@@ -98,27 +99,28 @@ namespace MyBook.forms
             this.TBRGrid.AllowUserToResizeRows = false;
             this.TBRGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(151)))), ((int)(((byte)(113)))));
             this.TBRGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TBRGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(91)))), ((int)(((byte)(59)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TBRGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.TBRGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TBRGrid.ColumnHeadersVisible = false;
             this.TBRGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.isRead,
-            this.Title});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TBRGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Title,
+            this.bookId});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TBRGrid.DefaultCellStyle = dataGridViewCellStyle4;
             this.TBRGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.TBRGrid.EnableHeadersVisualStyles = false;
             this.TBRGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(52)))), ((int)(((byte)(34)))));
@@ -136,6 +138,7 @@ namespace MyBook.forms
             this.TBRGrid.ShowRowErrors = false;
             this.TBRGrid.Size = new System.Drawing.Size(901, 678);
             this.TBRGrid.TabIndex = 8;
+            this.TBRGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TBRGrid_CellClick);
             // 
             // isRead
             // 
@@ -150,6 +153,13 @@ namespace MyBook.forms
             this.Title.Name = "Title";
             this.Title.ReadOnly = true;
             this.Title.Width = 818;
+            // 
+            // bookId
+            // 
+            this.bookId.HeaderText = "bookId";
+            this.bookId.Name = "bookId";
+            this.bookId.ReadOnly = true;
+            this.bookId.Visible = false;
             // 
             // TBRScreen
             // 
@@ -175,9 +185,10 @@ namespace MyBook.forms
         private System.Windows.Forms.Button DecreaseYearButton;
         private System.Windows.Forms.Button IncreaseYearButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label ChallengeYearLabel;
+        private System.Windows.Forms.Label YearLabel;
         private System.Windows.Forms.DataGridView TBRGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn isRead;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookId;
     }
 }

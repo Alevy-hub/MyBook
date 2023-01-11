@@ -22,6 +22,7 @@ namespace MyBook.Forms.CentrumSubForms
 
 		public static string fromWhere;
 		public static string readId;
+		public static string bookId;
 		string startingAutor;
 		int authorSupport;
 
@@ -58,7 +59,7 @@ namespace MyBook.Forms.CentrumSubForms
 
 		private void LoadData()
 		{
-			if(fromWhere == "edit")
+			if (fromWhere == "edit")
 			{
 				Database databaseObject = new Database();
 				databaseObject.OpenConnection();
@@ -67,7 +68,7 @@ namespace MyBook.Forms.CentrumSubForms
 				SQLiteDataReader result = LoadData.ExecuteReader();
 				if (result.HasRows)
 				{
-					if(result.Read())
+					if (result.Read())
 					{
 						TitleComboBox.Text = result[0].ToString();
 						StartDatePicker.Value = DateTime.Parse(result[1].ToString());
@@ -75,7 +76,7 @@ namespace MyBook.Forms.CentrumSubForms
 						CommentTextBox.Text = result[5].ToString();
 						UkonczoneRadio.Checked = true;
 
-						if(result[3].ToString() == "0")
+						if (result[3].ToString() == "0")
 						{
 							NoRateCheckBox.Checked = true;
 						}
@@ -85,7 +86,7 @@ namespace MyBook.Forms.CentrumSubForms
 							RatingNumeric.Value = decimal.Parse(result[3].ToString());
 						}
 
-						if(result[4].ToString() == "papier")
+						if (result[4].ToString() == "papier")
 						{
 							PapierRadio.Checked = true;
 							PagesCountNumeric.Value = int.Parse(result[6].ToString());
@@ -103,7 +104,24 @@ namespace MyBook.Forms.CentrumSubForms
 						}
 
 
-						startingAutor = AuthorComboBox.Text;		
+						startingAutor = AuthorComboBox.Text;
+					}
+				}
+				result.Close();
+				databaseObject.CloseConnection();
+			}
+			else if (fromWhere == "tbr")
+			{
+				Database databaseObject = new Database();
+				databaseObject.OpenConnection();
+				SQLiteCommand LoadData = new SQLiteCommand("SELECT name FROM books WHERE id LIKE @bookId", databaseObject.dbConnection);
+				LoadData.Parameters.AddWithValue("bookId", bookId);
+				SQLiteDataReader result = LoadData.ExecuteReader();
+				if (result.HasRows)
+				{
+					if (result.Read())
+					{
+						TitleComboBox.Text = result[0].ToString();
 					}
 				}
 				result.Close();
