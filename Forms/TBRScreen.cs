@@ -16,6 +16,7 @@ namespace MyBook.forms
         public TBRScreen()
         {
             InitializeComponent();
+            YearLabel.Text = DateTime.Now.Year.ToString();
             ShowChangeYearButtons();
             FillTBRGrid();         
         }

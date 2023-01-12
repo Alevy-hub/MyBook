@@ -193,7 +193,12 @@ namespace MyBook.Forms.CentrumSubForms
 				NoRateCheckBox.Enabled = false;
 				NoRateCheckBox.Visible = false;
 				PagesCountNumeric.Enabled = true;
-			}
+                PapierRadio.Visible = true;
+                EbookRadio.Visible = true;
+                AudiobookRadio.Visible = true;
+                FormaLabel.Text = "FORMA";
+                TBRYear.Visible = false;
+            }
 			else if (TBRRadio.Checked == true)
 			{
 				StartDatePicker.Enabled = false;
@@ -201,6 +206,12 @@ namespace MyBook.Forms.CentrumSubForms
 				RatingNumeric.Enabled = false;
 				NoRateCheckBox.Visible = false;
 				PagesCountNumeric.Enabled = false;
+				PapierRadio.Visible = false;
+				EbookRadio.Visible = false;
+				AudiobookRadio.Visible = false;
+				FormaLabel.Text = "ROK TBR";
+				TBRYear.Value = int.Parse(DateTime.Now.Year.ToString());
+				TBRYear.Visible = true;
 			}
 			else if (UkonczoneRadio.Checked)
 			{
@@ -210,8 +221,13 @@ namespace MyBook.Forms.CentrumSubForms
 				NoRateCheckBox.Enabled = true;
 				NoRateCheckBox.Visible = true;
 				PagesCountNumeric.Enabled = true;
-			}
-			StatusAlertLabel.Visible = false;
+                PapierRadio.Visible = true;
+                EbookRadio.Visible = true;
+                AudiobookRadio.Visible = true;
+                FormaLabel.Text = "FORMA";
+                TBRYear.Visible = false;
+            }
+            StatusAlertLabel.Visible = false;
 		}
 
 		private void FormRadio_CheckedChanged(object sender, EventArgs e)
@@ -238,7 +254,7 @@ namespace MyBook.Forms.CentrumSubForms
 
 		private bool CheckRadioButtons()
 		{
-			if (PapierRadio.Checked == false && EbookRadio.Checked == false && AudiobookRadio.Checked == false)
+			if (TBRRadio.Checked == false && PapierRadio.Checked == false && EbookRadio.Checked == false && AudiobookRadio.Checked == false)
 			{
 				FormAlertLabel.Visible = true;
 				return false;
@@ -408,9 +424,10 @@ namespace MyBook.Forms.CentrumSubForms
 			}
 			else if (TBRRadio.Checked == true)
 			{
-				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO tbr ('year', 'book_id') VALUES (@year, @bookId)", databaseObject.dbConnection);
-				addBookToRead.Parameters.AddWithValue("@year", DateTime.Now.Year);
+				SQLiteCommand addBookToRead = new SQLiteCommand("INSERT INTO tbr ('year', 'book_id', is_read) VALUES (@year, @bookId, @is_read)", databaseObject.dbConnection);
+				addBookToRead.Parameters.AddWithValue("@year", TBRYear.Value.ToString());
 				addBookToRead.Parameters.AddWithValue("@bookId", bookId);
+				addBookToRead.Parameters.AddWithValue("@is_read", "0");
 				addBookToRead.ExecuteNonQuery();
 			}
 			
@@ -599,7 +616,7 @@ namespace MyBook.Forms.CentrumSubForms
 
 		private void AuthorComboBox_TextChanged(object sender, EventArgs e)
 		{
-			if(authorSupport > 0)
+			if(authorSupport > 0 && fromWhere == "edit")
 			{
 				if(AuthorComboBox.Text != startingAutor)
 				{

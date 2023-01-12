@@ -62,6 +62,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.CzytamRadio = new System.Windows.Forms.RadioButton();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.FormPanel = new System.Windows.Forms.Panel();
+            this.TBRYear = new System.Windows.Forms.NumericUpDown();
             this.FormAlertLabel = new System.Windows.Forms.Label();
             this.AudiobookRadio = new System.Windows.Forms.RadioButton();
             this.EbookRadio = new System.Windows.Forms.RadioButton();
@@ -84,6 +85,7 @@ namespace MyBook.Forms.CentrumSubForms
             ((System.ComponentModel.ISupportInitialize)(this.PagesCountNumeric)).BeginInit();
             this.StatusPanel.SuspendLayout();
             this.FormPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TBRYear)).BeginInit();
             this.TopBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -547,6 +549,7 @@ namespace MyBook.Forms.CentrumSubForms
             // 
             // FormPanel
             // 
+            this.FormPanel.Controls.Add(this.TBRYear);
             this.FormPanel.Controls.Add(this.FormAlertLabel);
             this.FormPanel.Controls.Add(this.AudiobookRadio);
             this.FormPanel.Controls.Add(this.EbookRadio);
@@ -556,6 +559,32 @@ namespace MyBook.Forms.CentrumSubForms
             this.FormPanel.Name = "FormPanel";
             this.FormPanel.Size = new System.Drawing.Size(300, 168);
             this.FormPanel.TabIndex = 8;
+            // 
+            // TBRYear
+            // 
+            this.TBRYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(201)))));
+            this.TBRYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TBRYear.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TBRYear.Location = new System.Drawing.Point(103, 73);
+            this.TBRYear.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.TBRYear.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TBRYear.Name = "TBRYear";
+            this.TBRYear.Size = new System.Drawing.Size(92, 39);
+            this.TBRYear.TabIndex = 29;
+            this.TBRYear.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.TBRYear.Visible = false;
             // 
             // FormAlertLabel
             // 
@@ -758,6 +787,7 @@ namespace MyBook.Forms.CentrumSubForms
             this.StatusPanel.PerformLayout();
             this.FormPanel.ResumeLayout(false);
             this.FormPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TBRYear)).EndInit();
             this.TopBar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -813,5 +843,6 @@ namespace MyBook.Forms.CentrumSubForms
         private System.Windows.Forms.Button InfoButton;
         private System.Windows.Forms.RadioButton EditRadioButton;
         private System.Windows.Forms.RadioButton ChangeRadioButton;
+        private System.Windows.Forms.NumericUpDown TBRYear;
     }
 }
